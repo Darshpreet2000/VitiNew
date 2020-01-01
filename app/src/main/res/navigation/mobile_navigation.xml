@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/home2">
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.myapplication.ui.Home"
+        android:label="Home"
+        tools:layout="@layout/fragment_home2">
+        <action
+            android:id="@+id/action_home2_to_search2"
+            app:destination="@id/search2" />
+    </fragment>
+    <fragment
+        android:id="@+id/about_us2"
+        android:name="com.example.myapplication.ui.About_us"
+        android:label="About us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/city"
+        android:name="com.example.myapplication.ui.City"
+        android:label="City"
+        tools:layout="@layout/fragment_city2" />
+    <fragment
+        android:id="@+id/my_Missions"
+        android:name="com.example.myapplication.ui.My_Missions"
+        android:label="My Missions"
+        tools:layout="@layout/fragment_my__missions2" />
+    <fragment
+        android:id="@+id/my_Interships"
+        android:name="com.example.myapplication.ui.My_Interships"
+        android:label="My Internships"
+        tools:layout="@layout/fragment_my__interships" />
+    <fragment
+        android:id="@+id/resume"
+        android:name="com.example.myapplication.ui.Resume"
+        android:label="Resume"
+        tools:layout="@layout/fragment_resume2" />
+    <fragment
+        android:id="@+id/support"
+        android:name="com.example.myapplication.ui.Support"
+        android:label="Support"
+        tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/wallet"
+        android:name="com.example.myapplication.ui.Wallet"
+        android:label="Wallet"
+        tools:layout="@layout/fragment_wallet2" />
+    <fragment
+        android:id="@+id/internships"
+        android:name="com.example.myapplication.ui.Internships"
+        android:label="Internships"
+        tools:layout="@layout/fragment_internships" >
+        <action
+            android:id="@+id/action_internships_to_my_Interships"
+            app:destination="@id/my_Interships" />
+    </fragment>
+    <fragment
+        android:id="@+id/missions"
+        android:name="com.example.myapplication.ui.Missions"
+        android:label="Missions"
+        tools:layout="@layout/fragment_missions" >
+        <action
+            android:id="@+id/action_missions_to_my_Missions"
+            app:destination="@id/my_Missions" />
+        <action
+            android:id="@+id/action_missions_to_frappProfile"
+            app:destination="@id/frappProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/search2"
+        android:name="com.example.myapplication.ui.Search"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/frappProfile"
+        android:name="com.example.myapplication.ui.frappProfile"
+        android:label="Frapp Profile"
+        tools:layout="@layout/fragment_frapp_profile" />
+  <fragment
+    android:id="@+id/logout2"
+    android:name="com.example.myapplication.ui.Logout"
+    android:label="fragment_logout"
+    tools:layout="@layout/fragment_logout" />
+</navigation>

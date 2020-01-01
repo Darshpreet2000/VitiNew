@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Home">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="100dp" />
+ <TextView
+     android:paddingLeft="10dp"
+     android:layout_toRightOf="@id/userimagenew"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:textStyle="bold"
+     android:id="@+id/username"
+     android:textSize="18sp"
+     android:textColor="@color/white"
+     android:text="Darshpreet Singh"/>
+    <ImageView
+        android:id="@+id/userimagenew"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/user_image" />
+    <TextView
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_toRightOf="@id/userimagenew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:id="@+id/starting"
+        android:textColor="@color/white"
+        android:text="Welcome to Frapp app.Complete "/>
+    <TextView
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@id/userimagenew"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/starting"
+        android:textColor="@color/white"
+        android:text="Mission to earn Money."/>
+    <ImageView
+        android:layout_below="@id/userimagenew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/temporary" />
+</RelativeLayout>
