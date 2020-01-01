@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
 DrawerLayout drawer;
     NavController navController;
    BottomNavigationView bottom;
+   public void claimReward(View view){
+       //claim reward code will be written here
+
+       Snackbar.make(view,"congrats you have claimed 100 rupee",Snackbar.LENGTH_SHORT).show();
+
+   }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
