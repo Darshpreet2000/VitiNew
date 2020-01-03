@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!-- mission renamed as  and internship renamed as  Projects -->
     <item
         android:id="@+id/home2"
         android:icon="@drawable/homeic"
@@ -9,9 +9,9 @@
     <item
         android:id="@+id/missions"
         android:icon="@drawable/missiongoal"
-        android:title="Missions" />
+        android:title="Gigs" />
     <item
         android:id="@+id/internships"
         android:icon="@drawable/newtool"
-        android:title="Internships" />
+        android:title="Projects" />
 </menu>
