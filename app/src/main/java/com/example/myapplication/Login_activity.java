@@ -23,12 +23,11 @@ public class Login_activity extends AppCompatActivity {
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
         if(username.getText().toString()=="12345"&&password.getText().toString()=="12345"){
-          //  Intent intent=new Intent(this,MainActivity.class);
-          //  startActivity(intent);
-        }
+
+          }
         else{
-          //  Snackbar.make(view,"please check your password or username",Snackbar.LENGTH_SHORT).show();
-        }
+
+         }
 
 
     }
