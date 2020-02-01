@@ -45,7 +45,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     EditText username;
     EditText password;
-    public  void Loginhere(View view){
+
+
+  public  void Loginhere(View view){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
     }
@@ -61,12 +63,7 @@ DrawerLayout drawer;
        Snackbar.make(view,"congrats you have claimed 100 rupee",Snackbar.LENGTH_SHORT).show();
 
    }
-   public void Register(View view){
-       Intent intent=new Intent(this,Register.class);
 
-       startActivity(intent);
-
-   }
 
 
 
@@ -77,12 +74,11 @@ DrawerLayout drawer;
         password=findViewById(R.id.password);
 
 
-       // setContentView(R.layout.activity_login_activity);
+
 
 
         setContentView(R.layout.activity_main);
-           /* Intent intent=new Intent(this,Login_activity.class);
-            startActivity(intent);*/
+
 
 
             toolbar = findViewById(R.id.toolbar);
