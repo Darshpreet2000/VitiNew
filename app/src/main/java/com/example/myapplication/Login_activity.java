@@ -13,15 +13,21 @@ public class Login_activity extends AppCompatActivity {
     EditText username;
     EditText password;
 
+    public void Register(View view){
+        Intent intent=new Intent(this,Register.class);
+
+        startActivity(intent);
+
+    }
     public  void Loginhere(View view){
-        username=findViewById(R.id.username);
-        password=findViewById(R.id.password);
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
         if(username.getText().toString()=="12345"&&password.getText().toString()=="12345"){
-            setContentView(R.layout.activity_main);
-        }
+
+          }
         else{
-            Snackbar.make(view,"please check your password or username",Snackbar.LENGTH_SHORT).show();
-        }
+
+         }
 
 
     }
@@ -30,5 +36,7 @@ public class Login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
+        username=findViewById(R.id.username);
+        password=findViewById(R.id.password);
     }
 }
