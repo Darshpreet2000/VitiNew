@@ -46,17 +46,8 @@ public class MainActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     public  void Loginhere(View view){
-
-
-
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-
-
-
-
-
     }
 
    Toolbar toolbar;
@@ -80,7 +71,6 @@ DrawerLayout drawer;
 
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         username=findViewById(R.id.username);
