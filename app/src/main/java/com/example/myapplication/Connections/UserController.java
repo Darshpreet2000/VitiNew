@@ -25,12 +25,6 @@ public class UserController {
      */
 
 
-    public void postWithUrlEncodedRequest(Map<String, String> pHeader, Map<String, String> pParm, String url, ResponseListener pResponseListener) {
-        if (pResponseListener != null) {
-            pResponseListener.onRequestStart();
-        }
-        mUserModel.postWithUrlEncodedRequest(pHeader, pParm, url, pResponseListener);
-    }
 
 
     /**
@@ -63,24 +57,9 @@ public class UserController {
      */
 
 
-    public void putRequest(Map<String, String> pHeader, String url, ResponseListener pResponseListener) {
-        if (pResponseListener != null) {
-            pResponseListener.onRequestStart();
-        }
-        mUserModel.putRequest(pHeader, url, pResponseListener);
-    }
 
 
-    /**
-     * Request for Put with json object
-     */
-
-    public void putWithJsonRequest(String url,  JSONObject jsonObject, ResponseListener pResponseListener) {
-        if (pResponseListener != null) {
-            pResponseListener.onRequestStart();
-        }
-        mUserModel.putWithJsonRequest(url,  jsonObject, pResponseListener);
-    }
+  
 
 
     /**
