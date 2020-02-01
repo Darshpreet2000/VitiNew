@@ -1,5 +1,7 @@
 package com.example.myapplication.Webrequest;
 
+import android.util.Log;
+
 import androidx.collection.ArrayMap;
 
 import com.android.volley.AuthFailureError;
@@ -12,18 +14,8 @@ import java.util.Map;
 
 public class PostWithJsonRequest  extends JsonObjectRequest {
 
-    Map<String ,String> mHeader = new ArrayMap<>();
-
-    public PostWithJsonRequest(String  url , String token, final JSONObject jsonRequest, final Response.Listener listener, final Response.ErrorListener errorListener) {
+    public PostWithJsonRequest(String  url ,  final JSONObject jsonRequest, final Response.Listener listener, final Response.ErrorListener errorListener) {
         super(Method.POST,url, jsonRequest, listener, errorListener);
-        mHeader.put("Accept", "application/json");
-        mHeader.put("Content-Type", "application/json");
-        mHeader.put("Authorization","Bearer "+token);
+        Log.v("url",url);
     }
-
-    @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        return mHeader;
-    }
-
 }

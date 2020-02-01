@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,19 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
 import com.example.myapplication.Webrequest.ResponseListener;
 
-import org.json.JSONArray;
+import com.example.myapplication.ui.Extras.BaseActivity;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import static android.view.View.GONE;
 
-public class Register extends AppCompatActivity {
+public class Register extends BaseActivity {
     EditText username,name,referal,confirmpassword,email,phonenumber;
     EditText password;
     Button signup;
@@ -50,7 +49,7 @@ public class Register extends AppCompatActivity {
         final String Phonenumber = phonenumber.getText().toString().trim();
         final String Confirmpassword = confirmpassword.getText().toString().trim();
 
-        if(Password!=Confirmpassword){
+        if(!Password.equals(Confirmpassword)){
             password.setError("Confirm Password must be same as Password");
             password.requestFocus();
             return;
@@ -85,17 +84,15 @@ public class Register extends AppCompatActivity {
             name.requestFocus();
             return;
         }
-        JSONArray request = generateRequest();
+        JSONObject request = generateRequest();
 
         Log.d("mukesh",request.toString());
 
         String url = API.SIGN_UP;
 
 
-        userController.postWithArrayString(url , request.toString(), signUpListner);
+        userController.postWithJsonRequest(url , request, signUpListner);
 
-        Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
     }
     private final ResponseListener signUpListner = new ResponseListener() {
 
@@ -108,17 +105,33 @@ public class Register extends AppCompatActivity {
         public void onSuccess(String response) {
             try {
 
-                JSONObject jsonObject = new JSONObject(response);
-
-                if (jsonObject.getInt("status")==200)
-                {
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                String code=jsonObject.getString("code");
+            switch(code){
+                case "SUCCESS":
+                    JSONObject user=new JSONObject();
+                    user= jsonObject.getJSONObject("user");
+                    int id=user.getInt("id");
+                    String name=user.getString("name");
+                    setIntInSettings("id",id);
+                    setStringInSettings("name",name);
                     Intent i = new Intent(Register.this,MainActivity.class);
+                    Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     startActivity(i);
-
                     finish();
-                }
 
-
+                    break;
+                case "REFRAL CODE DOES NOT EXIST":
+                    Toast.makeText(Register.this, "REFRAL CODE DOES NOT EXIST", Toast.LENGTH_SHORT).show();
+                            break;
+                case "EMAIL ALREADY EXISTS":
+                    Toast.makeText(Register.this, "EMAIL ALREADY EXISTS", Toast.LENGTH_SHORT).show();
+                    break;
+                case "PASSWORDS DO NOT MATCH":
+                    Toast.makeText(Register.this, "PASSWORDS DO NOT MATCH", Toast.LENGTH_SHORT).show();
+                    break;
+            }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -136,21 +149,20 @@ public class Register extends AppCompatActivity {
     };
 
 
-    private JSONArray generateRequest(){
-
-        JSONArray jsonArray = new JSONArray();
+    private JSONObject generateRequest(){
 
         JSONObject jsonData = new JSONObject();
 
         try {
             jsonData.put("name", name.getText().toString());
+            if(!referal.getText().toString().isEmpty())
+            jsonData.put("ref_by", referal.getText().toString());
             jsonData.put("email", email.getText().toString());
             jsonData.put("password", password.getText().toString());
             jsonData.put("password_confirmation", confirmpassword.getText().toString());
 
             jsonData.put("phone", phonenumber.getText().toString());
 
-            jsonArray.put(jsonData);
 
             //mainObj.put("",jsonArray);
 
@@ -158,7 +170,7 @@ public class Register extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        return jsonArray;
+        return jsonData;
     }
 
 }
