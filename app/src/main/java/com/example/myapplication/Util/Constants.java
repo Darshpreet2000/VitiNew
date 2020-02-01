@@ -7,10 +7,6 @@ public class Constants {
     public static String preferences = "preferences";
 
     public static String NO_CONNECTION = "Please connect to internet";
-
-    public static String AUTH_USER_NAME = "wms-ui";
-
-    public static String AUTH_CLIENT_NAME = "easyops-admin";
     public  static String ROLES="";
 
     // TEST API
