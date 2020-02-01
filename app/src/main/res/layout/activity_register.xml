@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:hint="Phone Number"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
                     android:paddingBottom="15dp"
                     android:textColorHint="@color/colorAccent" />
 

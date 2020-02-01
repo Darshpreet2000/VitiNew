@@ -50,11 +50,11 @@ public class UserController {
      * Request for Post with json object
      */
 
-    public void postWithJsonRequest(String url, String token, JSONObject jsonObject, ResponseListener pResponseListener) {
+    public void postWithJsonRequest(String url,  JSONObject jsonObject, ResponseListener pResponseListener) {
         if (pResponseListener != null) {
             pResponseListener.onRequestStart();
         }
-        mUserModel.postWithJsonRequest(url, token, jsonObject, pResponseListener);
+        mUserModel.postWithJsonRequest(url,jsonObject, pResponseListener);
     }
 
 
@@ -75,11 +75,11 @@ public class UserController {
      * Request for Put with json object
      */
 
-    public void putWithJsonRequest(String url, String token, JSONObject jsonObject, ResponseListener pResponseListener) {
+    public void putWithJsonRequest(String url,  JSONObject jsonObject, ResponseListener pResponseListener) {
         if (pResponseListener != null) {
             pResponseListener.onRequestStart();
         }
-        mUserModel.putWithJsonRequest(url, token, jsonObject, pResponseListener);
+        mUserModel.putWithJsonRequest(url,  jsonObject, pResponseListener);
     }
 
 

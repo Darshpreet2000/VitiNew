@@ -29,31 +29,6 @@ public class UserModel {
 
 
 
-    // API FOR POST
-
-
-    void postWithUrlEncodedRequest(Map<String,String> pHeader, Map<String,String> pParm, String url , final ResponseListener mUserResponseListener){
-        VolleyManager.getInstance(mContext).addRequest(new com.example.myapplication.Webrequest.PostWithUrlEncodedRequest(pHeader,pParm,url, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String res) {
-                if (mUserResponseListener!=null){
-                    mUserResponseListener.onSuccess(res);
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (mUserResponseListener != null) {
-                    mUserResponseListener.onError(error);
-                }
-            }
-        }));
-    }
-
-
-
 
 
     /**
@@ -86,8 +61,8 @@ public class UserModel {
     // API FOR POST REQUEST
 
 
-    void postWithJsonRequest(String url , String token, JSONObject jsonObject, final ResponseListener mUserResponseListener){
-        VolleyManager.getInstance(mContext).addRequest(new PostWithJsonRequest(url,token,jsonObject, new Response.Listener<JSONObject>() {
+    void postWithJsonRequest(String url , JSONObject jsonObject, final ResponseListener mUserResponseListener){
+        VolleyManager.getInstance(mContext).addRequest(new PostWithJsonRequest(url,jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject res) {
 
@@ -108,61 +83,6 @@ public class UserModel {
 
 
 
-    /**
-     * Api For PUT String Request
-     *
-     */
-
-    void putRequest(Map<String,String> pHeader,String url , final ResponseListener mUserResponseListener){
-        VolleyManager.getInstance(mContext).addRequest(new PutStringRequest(pHeader,url,new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-
-                if (mUserResponseListener!=null){
-                    mUserResponseListener.onSuccess(response);
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (mUserResponseListener != null) {
-                    mUserResponseListener.onError(error);
-                }
-            }
-        }));
-    }
-
-
-
-
-
-
-
-
-    // API FOR PUT JSON REQUEST
-
-
-    void putWithJsonRequest(String url , String token, JSONObject jsonObject, final ResponseListener mUserResponseListener){
-        VolleyManager.getInstance(mContext).addRequest(new PutJsonRequest(url,token,jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject res) {
-
-                if (mUserResponseListener!=null){
-                    mUserResponseListener.onSuccess(res.toString());
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (mUserResponseListener != null) {
-                    mUserResponseListener.onError(error);
-                }
-            }
-        }));
-    }
 
 
 

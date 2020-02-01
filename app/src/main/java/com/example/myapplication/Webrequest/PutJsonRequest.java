@@ -12,19 +12,13 @@ import java.util.Map;
 
 public class PutJsonRequest extends JsonObjectRequest {
 
-    Map<String ,String> mHeader = new ArrayMap<>();
 
-    public PutJsonRequest(String  url , String token, final JSONObject jsonRequest, final Response.Listener listener, final Response.ErrorListener errorListener) {
+
+    public PutJsonRequest(String  url ,  final JSONObject jsonRequest, final Response.Listener listener, final Response.ErrorListener errorListener) {
         super(Method.PUT,url, jsonRequest, listener, errorListener);
-        mHeader.put("Accept", "application/json");
-        mHeader.put("Content-Type", "application/json");
-        mHeader.put("Authorization","Bearer "+token);
+
     }
 
-    @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        return mHeader;
-    }
 
 }
 
