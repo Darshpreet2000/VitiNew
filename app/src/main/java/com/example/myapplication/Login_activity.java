@@ -18,6 +18,8 @@ import com.example.myapplication.Classes.SaveSharedPreference;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
 import com.example.myapplication.Util.Constants;
+import com.example.myapplication.Connections.UserController;
+import com.example.myapplication.Util.API;
 import com.example.myapplication.Webrequest.ResponseListener;
 import com.example.myapplication.ui.Extras.BaseActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -94,6 +96,8 @@ public class Login_activity extends BaseActivity {
         { startActivity(new Intent(Login_activity.this,MainActivity.class));
             // Stay at the current activity.
         }
+        userController=new UserController(Login_activity.this);
+        progressBarRegister.setVisibility(GONE);
 
 
     }
@@ -117,11 +121,11 @@ public class Login_activity extends BaseActivity {
                         user= jsonObject.getJSONObject("user");
                         int id=user.getInt("id");
                         String name=user.getString("name");
-                        setIntInSettings("id",id);
-                        setStringInSettings("name",name);
                         Intent i = new Intent(Login_activity.this,MainActivity.class);
                         SaveSharedPreference.setUserName(Login_activity.this,name);
+                        SaveSharedPreference.setUserId(Login_activity.this,id);
                         Toast.makeText(Login_activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
                         startActivity(i);
                         finish();
 

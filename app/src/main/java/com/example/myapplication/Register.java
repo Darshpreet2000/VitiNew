@@ -128,10 +128,8 @@ public class Register extends BaseActivity {
                     user= jsonObject.getJSONObject("user");
                     int id=user.getInt("id");
                     String name=user.getString("name");
-                    setIntInSettings("id",id);
                     SaveSharedPreference.setUserName(Register.this,name);
-                    setStringInSettings("name",name);
-                    setIntInSettings(Constants.LoginStatus,1);
+                    SaveSharedPreference.setUserId(Register.this,id);
                     Intent i = new Intent(Register.this,MainActivity.class);
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     startActivity(i);
