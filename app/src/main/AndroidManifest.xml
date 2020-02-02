@@ -24,8 +24,7 @@
         <activity android:name=".ui.Extras.BaseActivity" />
         <activity android:name=".Register"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ui.Extras.BaseActivity" />
-        <activity android:name=".Register" />
+       
         <activity
             android:name=".MainActivity"
             android:label="Viti"
