@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_resume_to_addSkill"
             app:destination="@id/addSkill" />
+        <action
+            android:id="@+id/action_resume_to_addEducation"
+            app:destination="@id/addEducation" />
     </fragment>
     <fragment
         android:id="@+id/support"
@@ -93,4 +96,9 @@
         android:name="com.example.myapplication.ui.ResumeExtra.AddSkill"
         android:label="fragment_add_skill"
         tools:layout="@layout/fragment_add_skill" />
+    <fragment
+        android:id="@+id/addEducation"
+        android:name="com.example.myapplication.ui.ResumeExtra.AddEducation"
+        android:label="fragment_add_education"
+        tools:layout="@layout/fragment_add_education" />
 </navigation>

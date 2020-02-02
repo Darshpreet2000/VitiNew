@@ -36,7 +36,7 @@ public class Resume extends Fragment {
     int ratingadded;
     Toolbar toolbar;
     UserController userController;
-    Button addskills;
+    Button addskills,addeducation;
     public Resume() {
         // Required empty public constructor
     }
@@ -48,15 +48,19 @@ public class Resume extends Fragment {
         addskills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Addskills();
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSkill);
+            }
+        });
+        addeducation=view.findViewById(R.id.add_education);
+        addeducation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addEducation);
             }
         });
        userController=new UserController(getContext());
     }
-    private void Addskills(){
-        Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSkill);
 
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
