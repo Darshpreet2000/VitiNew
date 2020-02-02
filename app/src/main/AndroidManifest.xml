@@ -18,6 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".Login_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.Extras.BaseActivity" />
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.Extras.BaseActivity" />
         <activity android:name=".Register" />
         <activity
@@ -25,8 +31,9 @@
             android:label="Viti"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Login_activity"
-            android:label="@string/app_name">
+            android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
