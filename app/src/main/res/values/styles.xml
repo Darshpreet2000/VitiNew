@@ -9,6 +9,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#ffd700</item>
+        <item name="colorControlActivated">#d3d3d3</item>
+    </style>
     <style name="colorPrimary" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/light_grey</item>

@@ -117,10 +117,9 @@ public class Login_activity extends BaseActivity {
                         user= jsonObject.getJSONObject("user");
                         int id=user.getInt("id");
                         String name=user.getString("name");
-                        setIntInSettings("id",id);
-                        setStringInSettings("name",name);
                         Intent i = new Intent(Login_activity.this,MainActivity.class);
                         SaveSharedPreference.setUserName(Login_activity.this,name);
+                        SaveSharedPreference.setUserId(Login_activity.this,id);
                         Toast.makeText(Login_activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(i);
                         finish();

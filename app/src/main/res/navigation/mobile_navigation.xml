@@ -37,7 +37,11 @@
         android:id="@+id/resume"
         android:name="com.example.myapplication.ui.Resume"
         android:label="Resume"
-        tools:layout="@layout/fragment_resume2" />
+        tools:layout="@layout/fragment_resume2" >
+        <action
+            android:id="@+id/action_resume_to_addSkill"
+            app:destination="@id/addSkill" />
+    </fragment>
     <fragment
         android:id="@+id/support"
         android:name="com.example.myapplication.ui.Support"
@@ -84,4 +88,9 @@
     android:name="com.example.myapplication.ui.Logout"
     android:label="fragment_logout"
     tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/addSkill"
+        android:name="com.example.myapplication.ui.ResumeExtra.AddSkill"
+        android:label="fragment_add_skill"
+        tools:layout="@layout/fragment_add_skill" />
 </navigation>
