@@ -11,8 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.myapplication.Classes.SaveSharedPreference;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
+import com.example.myapplication.Util.Constants;
 import com.example.myapplication.Webrequest.ResponseListener;
 
 import com.example.myapplication.ui.Extras.BaseActivity;
@@ -28,10 +30,22 @@ public class Register extends BaseActivity {
     Button signup;
     UserController userController;
     ProgressBar progressBarRegister;
+    public  void  Login(View view){
+        Intent intent=new Intent(this,Login_activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        if(SaveSharedPreference.getUserName(Register.this).length() == 0)
+        {
+            // call Login Activity
+        }
+        else
+        { startActivity(new Intent(Register.this,MainActivity.class));
+            // Stay at the current activity.
+        }
         name=findViewById(R.id.FullName);
         referal=findViewById(R.id.referal);
         userController=new UserController(Register.this);
@@ -115,7 +129,9 @@ public class Register extends BaseActivity {
                     int id=user.getInt("id");
                     String name=user.getString("name");
                     setIntInSettings("id",id);
+                    SaveSharedPreference.setUserName(Register.this,name);
                     setStringInSettings("name",name);
+                    setIntInSettings(Constants.LoginStatus,1);
                     Intent i = new Intent(Register.this,MainActivity.class);
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     startActivity(i);
@@ -160,7 +176,6 @@ public class Register extends BaseActivity {
             jsonData.put("email", email.getText().toString());
             jsonData.put("password", password.getText().toString());
             jsonData.put("password_confirmation", confirmpassword.getText().toString());
-
             jsonData.put("phone", phonenumber.getText().toString());
 
 

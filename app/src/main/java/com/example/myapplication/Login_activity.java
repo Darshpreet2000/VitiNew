@@ -3,7 +3,10 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.myapplication.Classes.SaveSharedPreference;
+import com.example.myapplication.Connections.UserController;
+import com.example.myapplication.Util.API;
+import com.example.myapplication.Util.Constants;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
 import com.example.myapplication.Webrequest.ResponseListener;
@@ -77,9 +84,20 @@ public class Login_activity extends BaseActivity {
         username=findViewById(R.id.username);
         passwordEt=findViewById(R.id.password);
         progressBarRegister=findViewById(R.id.progressBarLogin);
+
         userController=new UserController(Login_activity.this);
         progressBarRegister.setVisibility(GONE);
 
+        if(SaveSharedPreference.getUserName(Login_activity.this).length() == 0)
+        {
+            // call Login Activity
+        }
+        else
+        { startActivity(new Intent(Login_activity.this,MainActivity.class));
+            // Stay at the current activity.
+        }
+        userController=new UserController(Login_activity.this);
+        progressBarRegister.setVisibility(GONE);
 
 
     }
@@ -106,8 +124,9 @@ public class Login_activity extends BaseActivity {
                         setIntInSettings("id",id);
                         setStringInSettings("name",name);
                         Intent i = new Intent(Login_activity.this,MainActivity.class);
+                        SaveSharedPreference.setUserName(Login_activity.this,name);
+                        Toast.makeText(Login_activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                       Toast.makeText(Login_activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(i);
                         finish();
 
