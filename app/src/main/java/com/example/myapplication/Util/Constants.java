@@ -2,6 +2,7 @@ package com.example.myapplication.Util;
 
 public class Constants {
     public static String preferences = "preferences";
+    public  static  String LoginStatus="LoginStatus";
 
 
     // TEST API
