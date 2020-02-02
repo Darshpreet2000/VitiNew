@@ -23,11 +23,11 @@
             android:theme="@style/LoginRegister"></activity>
         <activity
             android:name=".Login_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/LoginTheme" />
         <activity android:name=".ui.Extras.BaseActivity" />
         <activity
             android:name=".Register"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".MainActivity"
             android:label="Viti"
