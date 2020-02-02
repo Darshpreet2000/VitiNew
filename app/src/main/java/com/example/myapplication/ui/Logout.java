@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.Classes.SaveSharedPreference;
 import com.example.myapplication.Login_activity;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.Util.Constants;
 
@@ -33,13 +35,10 @@ public class Logout extends Fragment {
         Intent intent=new Intent(getContext(),Login_activity.class);
         startActivity(intent);
         getActivity().finish();
-        SharedPreferences settings = getContext().getSharedPreferences(Constants.preferences, 0);
-        SharedPreferences.Editor settingsWriter = settings.edit();
-        settingsWriter.putInt(Constants.LoginStatus, 0);
-        settingsWriter.commit();
+        SaveSharedPreference.setUserName(getActivity(),"");
         ///delete shared preferences here
 
-        return inflater.inflate(R.layout.activity_login_activity, container, false);
+        return inflater.inflate(null, container, false);
     }
 
 }

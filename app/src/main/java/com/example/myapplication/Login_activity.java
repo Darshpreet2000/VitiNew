@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.myapplication.Classes.SaveSharedPreference;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
 import com.example.myapplication.Util.Constants;
@@ -83,16 +84,16 @@ public class Login_activity extends BaseActivity {
         progressBarRegister=findViewById(R.id.progressBarLogin);
 
         userController=new UserController(Login_activity.this);
-        SharedPreferences shared = getSharedPreferences(Constants.preferences, MODE_PRIVATE);
-        int LoginStatus = (shared.getInt(Constants.LoginStatus, 0));
-        if(LoginStatus==1){
-            Intent intent =new Intent(this,MainActivity.class);
-            startActivity(intent);
-            finish();
-
-        }
         progressBarRegister.setVisibility(GONE);
 
+        if(SaveSharedPreference.getUserName(Login_activity.this).length() == 0)
+        {
+            // call Login Activity
+        }
+        else
+        { startActivity(new Intent(Login_activity.this,MainActivity.class));
+            // Stay at the current activity.
+        }
 
 
     }
@@ -119,10 +120,9 @@ public class Login_activity extends BaseActivity {
                         setIntInSettings("id",id);
                         setStringInSettings("name",name);
                         Intent i = new Intent(Login_activity.this,MainActivity.class);
-
+                        SaveSharedPreference.setUserName(Login_activity.this,name);
                         Toast.makeText(Login_activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(i);
-                        setIntInSettings(Constants.LoginStatus,1);
                         finish();
 
                         break;
