@@ -18,11 +18,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="80dp"
                 android:gravity="center"
                 android:text="Register"
-                android:textColor="@color/white"
-                android:textSize="28sp" />
+                android:textColor="#642ACC"
+                android:textSize="28sp"
+                android:textStyle="bold|italic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,7 +30,6 @@
                 android:layout_below="@+id/tempregister"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="80dp"
                 android:layout_marginEnd="0dp"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"
@@ -44,7 +43,8 @@
                     android:hint="Full Name"
                     android:inputType="textEmailAddress"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
 
                 <EditText
@@ -52,10 +52,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:hint="Referal Code if any"
+                    android:hint="Referal Code (optional)"
                     android:inputType="textEmailAddress"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
 
                 <EditText
@@ -66,7 +67,8 @@
                     android:hint="Username"
                     android:inputType="textEmailAddress"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/password"
@@ -76,7 +78,8 @@
                     android:hint="password"
                     android:inputType="textPassword"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
 
                 <EditText
@@ -87,7 +90,8 @@
                     android:hint="confirm password"
                     android:inputType="textPassword"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/Email"
@@ -97,7 +101,8 @@
                     android:hint="email"
                     android:inputType="textEmailAddress"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
 
                 <EditText
@@ -108,7 +113,8 @@
                     android:hint="Phone Number"
                     android:inputType="phone"
                     android:paddingBottom="15dp"
-                    android:textColorHint="@color/colorAccent" />
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="14sp" />
 
 
                 <Button
@@ -117,17 +123,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="7dp"
-                    android:text="Sign Up"
                     android:onClick="Signup"
+                    android:text="Sign Up"
                     android:textAllCaps="false"
                     android:textColor="@color/colorAccent" />
-
 
 
                 <TextView
                     android:id="@+id/textViewLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="Login"
                     android:padding="15dp"
                     android:text="Already have an account? Login"
                     android:textAlignment="center"

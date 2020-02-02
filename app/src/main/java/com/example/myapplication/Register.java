@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.example.myapplication.Classes.SaveSharedPreference;
 import com.example.myapplication.Connections.UserController;
 import com.example.myapplication.Util.API;
+import com.example.myapplication.Util.Constants;
 import com.example.myapplication.Webrequest.ResponseListener;
 
 import com.example.myapplication.ui.Extras.BaseActivity;
@@ -29,6 +30,10 @@ public class Register extends BaseActivity {
     Button signup;
     UserController userController;
     ProgressBar progressBarRegister;
+    public  void  Login(View view){
+        Intent intent=new Intent(this,Login_activity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +130,8 @@ public class Register extends BaseActivity {
                     String name=user.getString("name");
                     setIntInSettings("id",id);
                     SaveSharedPreference.setUserName(Register.this,name);
+                    setStringInSettings("name",name);
+                    setIntInSettings(Constants.LoginStatus,1);
                     Intent i = new Intent(Register.this,MainActivity.class);
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     startActivity(i);
