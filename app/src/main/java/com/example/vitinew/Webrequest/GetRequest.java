@@ -1,5 +1,7 @@
 package com.example.vitinew.Webrequest;
 
+import android.util.Log;
+
 import androidx.collection.ArrayMap;
 
 import com.android.volley.AuthFailureError;
@@ -10,19 +12,15 @@ import java.util.Map;
 
 public class GetRequest  extends StringRequest {
 
-    Map<String,String> mHeader = new ArrayMap<>();
     Map<String,String> mParms = new ArrayMap<>();
 
-    public GetRequest(Map<String,String> pHeader,Map<String,String> pParms,String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        super(Method.GET,url, listener, errorListener);
-        this.mHeader = pHeader;
+    public GetRequest(Map<String,String> pParms,String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        super(Method.POST,url, listener, errorListener);
+
         this.mParms = pParms;
 
     }
-    @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        return mHeader;
-    }
+
 
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {

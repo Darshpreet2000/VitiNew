@@ -34,8 +34,8 @@ public class UserModel {
      *
      */
 
-    void getRequest(Map<String,String> pHeader,Map<String,String> pParms,String url , final ResponseListener mUserResponseListener){
-        VolleyManager.getInstance(mContext).addRequest(new GetRequest(pHeader,pParms,url,new Response.Listener<String>() {
+    void getRequest(Map<String,String> pParms,String url , final ResponseListener mUserResponseListener){
+        VolleyManager.getInstance(mContext).addRequest(new GetRequest(pParms,url,new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (mUserResponseListener!=null){

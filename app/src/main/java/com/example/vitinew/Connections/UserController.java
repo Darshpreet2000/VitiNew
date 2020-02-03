@@ -32,11 +32,11 @@ public class UserController {
      */
 
 
-    public void getRequest(Map<String, String> pHeader, Map<String, String> pParms, String url, ResponseListener pResponseListener) {
+    public void getRequest( Map<String, String> pParms, String url, ResponseListener pResponseListener) {
         if (pResponseListener != null) {
             pResponseListener.onRequestStart();
         }
-        mUserModel.getRequest(pHeader, pParms, url, pResponseListener);
+        mUserModel.getRequest( pParms, url, pResponseListener);
     }
 
 
