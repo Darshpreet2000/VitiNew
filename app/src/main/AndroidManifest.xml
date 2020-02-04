@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.vitinew">
+    <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -10,30 +11,30 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
-
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Herody"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginRegister"
+        <activity android:name="com.example.vitinew.LoginRegister"
             android:theme="@style/LoginRegister"></activity>
         <activity
-            android:name=".Login_activity"
+            android:name="com.example.vitinew.Login_activity"
             android:theme="@style/LoginTheme" />
-        <activity android:name=".ui.Extras.BaseActivity" />
+        <activity android:name="com.example.vitinew.ui.Extras.BaseActivity" />
         <activity
-            android:name=".Register"
+            android:name="com.example.vitinew.Register"
             android:theme="@style/LoginTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.vitinew.MainActivity"
             android:label="Viti"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.example.vitinew.SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -42,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.truecaller.android.sdk.PartnerKey" android:value="@string/partnerKey"/>
     </application>
 
 </manifest>
