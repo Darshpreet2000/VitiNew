@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.vitinew.Adapters.addskilladapter;
+import com.example.vitinew.Classes.Addskills;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Login_activity;
@@ -46,11 +51,11 @@ import static android.view.View.GONE;
 public class Resume extends Fragment {
     String skilladded;
     int ratingadded;
-    List<String> Finalskills=new ArrayList<>();
+    List<Addskills> Finalskills=new ArrayList<>();
     Toolbar toolbar;
     ProgressBar progressBarResume;
     UserController userController;
-    ListView addskillList;
+    RecyclerView addskillList;
     Button addskills, addeducation;
 
     public Resume() {
@@ -77,13 +82,15 @@ public class Resume extends Fragment {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 JSONArray skills=jsonObject.getJSONArray("skills");
+                Finalskills.clear();
                 for(int i=0;i<skills.length();i++){
                     JSONObject skillobj=skills.getJSONObject(i);
-                    Finalskills.add(skillobj.getString("name"));
+                    Addskills add=new Addskills(skillobj.getString("name"),skillobj.getString("rating"));
+                    Finalskills.add(add);
                 }
-                ArrayAdapter<String> itemsAdapter =
-                        new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, Finalskills);
-                addskillList.setAdapter(itemsAdapter);
+                addskillList.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addskilladapter addskilladapter=new addskilladapter(Finalskills);
+                addskillList.setAdapter(addskilladapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -109,6 +116,7 @@ public class Resume extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSkill);
+
             }
         });
         addeducation = view.findViewById(R.id.add_education);
