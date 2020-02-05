@@ -1,6 +1,8 @@
 package com.example.vitinew.Classes;
 
-public class gigsClass {
+import java.io.Serializable;
+
+public class gigsClass implements Serializable {
     String cats;
     String campaign_title;
     String description;

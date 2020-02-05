@@ -1,10 +1,12 @@
 package com.example.vitinew;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +59,15 @@ public class gigsAdapter  extends
         holder.title.setText(currentnote.getCampaign_title());
         holder.gigsbrand.setText(currentnote.getBrand());
         holder.description.setText(String.valueOf(currentnote.getDescription()));
+        holder.gigsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(v.getContext(),gigDetails.class);
+                intent.putExtra("class",currentnote);
+
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
 
@@ -66,12 +77,14 @@ public class gigsAdapter  extends
 
     }
 
+
     class gigsholder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView title;
         private TextView gigscat;
         private TextView gigsbrand;
         private TextView description;
         private  ImageView gigsicon;
+        private LinearLayout gigsLayout;
         public gigsholder(@NonNull View itemView) {
             super(itemView);
             title=itemView.findViewById(R.id.gigstitle);
@@ -79,6 +92,7 @@ public class gigsAdapter  extends
             gigscat=itemView.findViewById(R.id.gigscats);
             gigsbrand=itemView.findViewById(R.id.gigsbrand);
             description=itemView.findViewById(R.id.gigs_description);
+            gigsLayout=itemView.findViewById(R.id.gigs_layout);
         }
 
         @Override
