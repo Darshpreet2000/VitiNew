@@ -9,7 +9,10 @@ public class API {
 
     public static final String UPDATE_SKILL = API_DOMAIN + "/api/user/skillsUpdate";
     public static final String TRUECALLER= API_DOMAIN + "/api/user/loginTC";
-   public static final String SKILLS=API_DOMAIN+"/api/user/skills";
+    public static final String SKILLS=API_DOMAIN+"/api/user/skills";
+    public static final  String Gigs=API_DOMAIN+"/api/gigs";
+
+
 
 
 }
