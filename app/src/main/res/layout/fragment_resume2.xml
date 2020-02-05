@@ -123,14 +123,17 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
                 android:text="Education" />
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_below="@id/Education"
+                android:layout_height="wrap_content"
+                android:id="@+id/addedu"/>
             <Button
                 android:id="@+id/add_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="143dp"
-                android:layout_marginBottom="174dp"
+                android:layout_below="@id/addedu"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
@@ -138,8 +141,6 @@
                 android:minHeight="0dp"
                 android:text="Add Education"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
@@ -176,8 +177,7 @@
                 android:minHeight="0dp"
                 android:text="Add Skills"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_below="@id/addskillList"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>

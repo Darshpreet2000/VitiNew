@@ -36,13 +36,18 @@ public class addEducationAdapter  extends RecyclerView.Adapter<addEducationAdapt
     @Override
     public myskillholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemview= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_add_skills,parent,false);
+                .inflate(R.layout.itemaddeducation,parent,false);
         return new addEducationAdapter.myskillholder(itemview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull myskillholder holder, int position) {
         final AddEducation currentnote=cartlist.get(position);
+         holder.type.setText(currentnote.getType());
+        holder.name.setText(currentnote.getName());
+        holder.course.setText(currentnote.getCourse());
+        holder.start.setText(currentnote.getStart());
+        holder.end.setText(currentnote.getEnd());
 
     }
 
@@ -57,6 +62,15 @@ public class addEducationAdapter  extends RecyclerView.Adapter<addEducationAdapt
         public myskillholder(@NonNull View itemView) {
             super(itemView);
             //        Removecart.setOnClickListener(this);
+
+           type=itemView.findViewById(R.id.type);
+
+            name=itemView.findViewById(R.id.name);
+
+            course=itemView.findViewById(R.id.course);
+            start=itemView.findViewById(R.id.start);
+
+            end=itemView.findViewById(R.id.end);
         }
 
         @Override

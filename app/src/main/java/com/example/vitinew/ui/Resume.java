@@ -24,7 +24,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.vitinew.Adapters.addEducationAdapter;
 import com.example.vitinew.Adapters.addskilladapter;
+import com.example.vitinew.Classes.AddEducation;
 import com.example.vitinew.Classes.Addskills;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
@@ -52,16 +54,23 @@ public class Resume extends Fragment {
     String skilladded;
     int ratingadded;
     List<Addskills> Finalskills=new ArrayList<>();
+
+    List<AddEducation> FinalEducations=new ArrayList<>();
     Toolbar toolbar;
     ProgressBar progressBarResume;
     UserController userController;
-    RecyclerView addskillList;
+    RecyclerView addskillList,addedu;
     Button addskills, addeducation;
 
     public Resume() {
         // Required empty public constructor
     }
+private void getallEducation(){
+    Map<String, String> dataMap = new HashMap<String,String>();
+    dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+    userController.getRequest(dataMap, API.EDUCATION,getallEducationListener);
 
+}
     private void getallSkills() {
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
@@ -106,11 +115,52 @@ public class Resume extends Fragment {
 
         }
     };
+
+    private final ResponseListener getallEducationListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+            progressBarResume.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                JSONArray skills=jsonObject.getJSONArray("edus");
+                FinalEducations.clear();
+                for(int i=0;i<skills.length();i++){
+                    JSONObject skillobj=skills.getJSONObject(i);
+                    AddEducation add=new AddEducation(skillobj.getString("type"),skillobj.getString("name"),skillobj.getString("course"),skillobj.getString("start"),skillobj.getString("end"));
+                    FinalEducations.add(add);
+                }
+
+                addedu.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addEducationAdapter addskilladapter=new addEducationAdapter(FinalEducations);
+                addedu.setAdapter(addskilladapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                progressBarResume.setVisibility(GONE);
+
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+            progressBarResume.setVisibility(GONE);
+
+        }
+    };
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         addskills = getActivity().findViewById(R.id.Add_Skills);
         progressBarResume=view.findViewById(R.id.progressBarResume);
+        addedu=view.findViewById(R.id.addedu);
         addskillList = view.findViewById(R.id.addskillList);
         addskills.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +178,7 @@ public class Resume extends Fragment {
         });
         userController = new UserController(getContext());
 getallSkills();
+getallEducation();
     }
 
     @Override
