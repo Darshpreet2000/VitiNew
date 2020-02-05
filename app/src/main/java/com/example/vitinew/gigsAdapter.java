@@ -1,0 +1,107 @@
+package com.example.vitinew;
+
+import android.content.Intent;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.vitinew.Classes.gigsClass;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class gigsAdapter  extends
+        RecyclerView.Adapter<gigsAdapter.gigsholder> {
+
+    public gigsAdapter(List<gigsClass> gigs) {
+        this.gigs = gigs;
+    }
+
+    private List<gigsClass> gigs=new ArrayList<>();
+    private OnItemClicked onClick;
+
+    public gigsAdapter(List<gigsClass> gigs, OnItemClicked onClick) {
+        this.gigs =gigs;
+        this.onClick = onClick;
+    }
+
+    public gigsAdapter() {
+
+    }
+
+    //make interface like this
+    public interface OnItemClicked {
+        void onItemClick(int position);
+        void onbuttonclicked(int position);
+        //   void onbidclicked(int position);
+    }
+
+    @NonNull
+    @Override
+    public gigsAdapter.gigsholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemview= LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.gigslist,parent,false);
+        return new gigsholder(itemview);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull gigsholder holder, int position) {
+
+        final gigsClass currentnote=gigs.get(position);
+        holder.title.setText(currentnote.getCampaign_title());
+        holder.gigsbrand.setText(currentnote.getBrand());
+        holder.description.setText(String.valueOf(currentnote.getDescription()));
+        holder.gigsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(v.getContext(),gigDetails.class);
+                intent.putExtra("class",currentnote);
+
+                v.getContext().startActivity(intent);
+            }
+        });
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return gigs.size();
+
+    }
+
+
+    class gigsholder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView title;
+        private TextView gigscat;
+        private TextView gigsbrand;
+        private TextView description;
+        private  ImageView gigsicon;
+        private LinearLayout gigsLayout;
+        public gigsholder(@NonNull View itemView) {
+            super(itemView);
+            title=itemView.findViewById(R.id.gigstitle);
+            gigsicon=itemView.findViewById(R.id.gigsicon);
+            gigscat=itemView.findViewById(R.id.gigscats);
+            gigsbrand=itemView.findViewById(R.id.gigsbrand);
+            description=itemView.findViewById(R.id.gigs_description);
+            gigsLayout=itemView.findViewById(R.id.gigs_layout);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onClick.onbuttonclicked(getAdapterPosition());
+            // onClick.onbidclicked(getAdapterPosition());
+        }
+    }
+
+    public class ViewHolder {
+    }
+}

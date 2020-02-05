@@ -12,4 +12,10 @@ public class API {
    public static final String SKILLS=API_DOMAIN+"/api/user/skills";
     public static final String UPDATEEDUCATION=API_DOMAIN+ "/api/user/eduUpdate";
     public static final String EDUCATION=API_DOMAIN+ "/api/user/edu";
+    public static final String SKILLS=API_DOMAIN+"/api/user/skills";
+    public static final  String Gigs=API_DOMAIN+"/api/gigs";
+
+
+
+
 }
