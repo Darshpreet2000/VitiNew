@@ -87,7 +87,7 @@ public class Missions extends Fragment {
                             int per_cost=gigsObject.getInt("per_cost");
                             String gigs_title=gigsObject.getString("campaign_title");
                             String gigs_description=gigsObject.getString("description");
-                            int user_id=gigsObject.getInt("user_id");
+                            String user_id=gigsObject.getString("user_id");
                             String brand=gigsObject.getString("brand");
                             String logo=gigsObject.getString("logo");
                             String created_at=gigsObject.getString("created_at");

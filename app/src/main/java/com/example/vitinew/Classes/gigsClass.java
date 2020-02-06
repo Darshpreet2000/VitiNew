@@ -27,8 +27,16 @@ public class gigsClass implements Serializable {
         this.logo = logo;
     }
 
-    String logo;
-    int id,user_id;
+    String logo,user_id;
+    int id;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public gigsClass() {
     }
@@ -89,11 +97,4 @@ public class gigsClass implements Serializable {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 }
