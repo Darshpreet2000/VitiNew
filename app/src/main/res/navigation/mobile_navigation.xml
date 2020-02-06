@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_resume_to_addEducation"
             app:destination="@id/addEducation" />
+        <action
+            android:id="@+id/action_resume_to_addProject"
+            app:destination="@id/addProject" />
     </fragment>
     <fragment
         android:id="@+id/support"
@@ -101,4 +104,9 @@
         android:name="com.example.vitinew.ui.ResumeExtra.AddEducation"
         android:label="fragment_add_education"
         tools:layout="@layout/fragment_add_education" />
+    <fragment
+        android:id="@+id/addProject"
+        android:name="com.example.vitinew.ui.ResumeExtra.AddProject"
+        android:label="fragment_add_project"
+        tools:layout="@layout/fragment_add_project" />
 </navigation>

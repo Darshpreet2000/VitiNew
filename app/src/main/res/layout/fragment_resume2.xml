@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameresume"
     android:layout_width="match_parent"
-    tools:layout_marginTop="-322dp"
+    tools:layout_marginTop="-100dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,22 +90,25 @@
                 android:layout_margin="20dp"
                 android:text="About me" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/about_me"
+                android:id="@+id/projectsrecycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <Button
-                android:id="@+id/decription_button"
+                android:layout_below="@id/projectsrecycle"
+                android:id="@+id/project_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="143dp"
-                android:layout_marginBottom="174dp"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:text="Add Description"
+                android:text="Add Projects"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
