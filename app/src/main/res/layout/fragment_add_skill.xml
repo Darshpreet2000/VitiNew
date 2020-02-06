@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/addskillfrag"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ResumeExtra.AddSkill">
+
+    <EditText
+        android:layout_margin="20dp"
+        android:id="@+id/skillname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Skill name"/>
+
+    <RatingBar
+        android:layout_margin="20dp"
+        android:id="@+id/ratingBar"
+        android:theme="@style/RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/addskillfinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD SKILL" />
+
+    <ProgressBar
+        android:id="@+id/addskillprogressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>
+</FrameLayout>
