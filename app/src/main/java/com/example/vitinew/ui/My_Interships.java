@@ -28,7 +28,7 @@ public class My_Interships extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setuptoolbar();
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         return inflater.inflate(R.layout.fragment_my__interships, container, false);
     }
     private void setuptoolbar(){
