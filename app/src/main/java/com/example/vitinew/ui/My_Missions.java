@@ -28,7 +28,7 @@ public class My_Missions extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setuptoolbar();
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         return inflater.inflate(R.layout.fragment_my__missions2, container, false);
     }
     private void setuptoolbar(){

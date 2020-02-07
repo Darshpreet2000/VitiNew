@@ -87,7 +87,7 @@ public class Missions extends Fragment {
                             int per_cost=gigsObject.getInt("per_cost");
                             String gigs_title=gigsObject.getString("campaign_title");
                             String gigs_description=gigsObject.getString("description");
-                            int user_id=gigsObject.getInt("user_id");
+                            String user_id=gigsObject.getString("user_id");
                             String brand=gigsObject.getString("brand");
                             String logo=gigsObject.getString("logo");
                             String created_at=gigsObject.getString("created_at");
@@ -141,7 +141,7 @@ public class Missions extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         View view=inflater.inflate(R.layout.fragment_missions, container, false);
         setuptoolbar();
          gigsRecyclerview = view.findViewById(R.id.gigsRecyclerView);
@@ -158,7 +158,7 @@ public class Missions extends Fragment {
 
         // Create adapter passing in the sample user data
 
-        // Set layout manager to position the items
+        // Set projectlist manager to position the items
 
         return view;
     }

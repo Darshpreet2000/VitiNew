@@ -47,6 +47,18 @@
         <action
             android:id="@+id/action_resume_to_addProject"
             app:destination="@id/addProject" />
+        <action
+            android:id="@+id/action_resume_to_addHobbies"
+            app:destination="@id/addHobbies" />
+        <action
+            android:id="@+id/action_resume_to_addExperience"
+            app:destination="@id/addExperience" />
+        <action
+            android:id="@+id/action_resume_to_addAchievements"
+            app:destination="@id/addAchievements" />
+        <action
+            android:id="@+id/action_resume_to_addSocial"
+            app:destination="@id/addSocial" />
     </fragment>
     <fragment
         android:id="@+id/support"
@@ -109,4 +121,24 @@
         android:name="com.example.vitinew.ui.ResumeExtra.AddProject"
         android:label="fragment_add_project"
         tools:layout="@layout/fragment_add_project" />
+    <fragment
+        android:id="@+id/addHobbies"
+        android:name="com.example.vitinew.ui.ResumeExtra.AddHobbies"
+        android:label="fragment_add_hobbies"
+        tools:layout="@layout/fragment_add_hobbies" />
+    <fragment
+        android:id="@+id/addExperience"
+        android:name="com.example.vitinew.ui.ResumeExtra.AddExperience"
+        android:label="fragment_add_experience"
+        tools:layout="@layout/fragment_add_experience" />
+    <fragment
+        android:id="@+id/addAchievements"
+        android:name="com.example.vitinew.ui.ResumeExtra.AddAchievements"
+        android:label="fragment_add_achievements"
+        tools:layout="@layout/fragment_add_achievements" />
+    <fragment
+        android:id="@+id/addSocial"
+        android:name="com.example.vitinew.ui.ResumeExtra.AddSocial"
+        android:label="fragment_add_social"
+        tools:layout="@layout/fragment_add_social" />
 </navigation>

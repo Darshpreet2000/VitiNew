@@ -46,7 +46,7 @@ public class bottomdialog extends BottomSheetDialogFragment {
         View contentView = View.inflate(getContext(), R.layout.fragment_bottomdialog, null);
         dialog.setContentView(contentView);
 
-        //Set the coordinator layout behavior
+        //Set the coordinator projectlist behavior
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) contentView.getParent()).getLayoutParams();
         CoordinatorLayout.Behavior behavior = params.getBehavior();
 
