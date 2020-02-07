@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Viti</string>
+    <string name="app_name">Herody</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -30,4 +30,5 @@
     <string name="travel_hospitality"><![CDATA[Travel & Hospitality]]></string>
     <string name="accounts">Accounts</string>
     <string name="filter">Filter</string>
+    <string name="partnerKey">MKVFQ3c8e9faca34246a08c6390addf63971f</string>
 </resources>
