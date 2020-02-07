@@ -1,27 +1,26 @@
 package com.example.vitinew.Adapters;
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vitinew.Classes.AddEducation;
 import com.example.vitinew.Classes.Addskills;
+import com.example.vitinew.Classes.ProjectDetails;
 import com.example.vitinew.R;
+import com.example.vitinew.ui.ResumeExtra.AddProject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class addEducationAdapter  extends RecyclerView.Adapter<addEducationAdapter.myskillholder> {
-    private List<AddEducation> cartlist=new ArrayList<>();
+public class addProjectAdapter  extends RecyclerView.Adapter<addProjectAdapter.myskillholder> {
+    private List< ProjectDetails> cartlist=new ArrayList<>();
     private addskilladapter.OnItemClicked onClick;
 
-    public addEducationAdapter(List<AddEducation> cartlist) {
+    public addProjectAdapter(List< ProjectDetails> cartlist) {
         this.cartlist = cartlist;
         //  this.onClick = onClick;
     }
@@ -36,19 +35,15 @@ public class addEducationAdapter  extends RecyclerView.Adapter<addEducationAdapt
     @Override
     public myskillholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemview= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.itemaddeducation,parent,false);
-        return new addEducationAdapter.myskillholder(itemview);
+                .inflate(R.layout.itemprojectresume,parent,false);
+        return new addProjectAdapter.myskillholder(itemview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull myskillholder holder, int position) {
-        final AddEducation currentnote=cartlist.get(position);
-         holder.type.setText(currentnote.getType());
-        holder.name.setText(currentnote.getName());
-        holder.course.setText(currentnote.getCourse());
-        holder.start.setText(currentnote.getStart());
-        holder.end.setText(currentnote.getEnd());
-
+        final ProjectDetails currentnote=cartlist.get(position);
+        holder.title.setText(currentnote.getTitle());
+        holder.desc.setText(currentnote.getDesc());
     }
 
     @Override
@@ -57,20 +52,13 @@ public class addEducationAdapter  extends RecyclerView.Adapter<addEducationAdapt
     }
 
     class myskillholder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView type,name,course,start,end;
+        private TextView title,desc;
 
         public myskillholder(@NonNull View itemView) {
             super(itemView);
+            title=itemView.findViewById(R.id.title);
+            desc=itemView.findViewById(R.id.desc);
             //        Removecart.setOnClickListener(this);
-
-           type=itemView.findViewById(R.id.type);
-
-            name=itemView.findViewById(R.id.name);
-
-            course=itemView.findViewById(R.id.course);
-            start=itemView.findViewById(R.id.start);
-
-            end=itemView.findViewById(R.id.end);
         }
 
         @Override

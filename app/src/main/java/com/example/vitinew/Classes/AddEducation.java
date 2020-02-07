@@ -4,6 +4,14 @@ public class AddEducation {
 
     String type,name,course,start,end;
 
+    public AddEducation(String type, String name, String course, String start, String end) {
+        this.type = type;
+        this.name = name;
+        this.course = course;
+        this.start = start;
+        this.end = end;
+    }
+
     public String getType() {
         return type;
     }

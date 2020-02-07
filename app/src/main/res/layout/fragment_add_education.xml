@@ -7,12 +7,15 @@
     tools:context=".ui.ResumeExtra.AddEducation">
 
     <TextView
+        android:layout_margin="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:text="Institute Type"/>
-
     <Spinner
+
+        android:layout_margin="10dp"
         android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -20,25 +23,36 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:layout_margin="10dp"
         android:ems="10"
         android:hint="Institute Name"
         android:inputType="textPersonName" />
 
     <EditText
+
+        android:layout_margin="10dp"
         android:id="@+id/course"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:ems="10"
         android:hint="Course Name"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/start"
+    <ProgressBar
+        android:visibility="gone"
         android:layout_width="wrap_content"
+        android:id="@+id/progressbaraddedu"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+    <EditText
+
+        android:layout_margin="10dp"
+        android:id="@+id/start"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:ems="10"
@@ -46,12 +60,19 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:layout_margin="10dp"
         android:id="@+id/end"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:ems="10"
         android:hint="End date"
         android:inputType="textPersonName" />
+    <Button
+        android:layout_margin="20dp"
+        android:text="ADD"
+        android:id="@+id/addedubutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

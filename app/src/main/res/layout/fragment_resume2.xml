@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameresume"
     android:layout_width="match_parent"
-    tools:layout_marginTop="-322dp"
+    tools:layout_marginTop="-810dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,22 +90,25 @@
                 android:layout_margin="20dp"
                 android:text="About me" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/about_me"
+                android:id="@+id/projectsrecycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <Button
-                android:id="@+id/decription_button"
+                android:layout_below="@id/projectsrecycle"
+                android:id="@+id/project_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="143dp"
-                android:layout_marginBottom="174dp"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
-                android:text="Add Description"
+                android:text="Add Projects"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
@@ -123,14 +126,17 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
                 android:text="Education" />
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_below="@id/Education"
+                android:layout_height="wrap_content"
+                android:id="@+id/addedu"/>
             <Button
                 android:id="@+id/add_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="143dp"
-                android:layout_marginBottom="174dp"
+                android:layout_below="@id/addedu"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
@@ -138,19 +144,48 @@
                 android:minHeight="0dp"
                 android:text="Add Education"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/add_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/add_education_relative">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Experience" />
+            <com.example.vitinew.Classes.NonScrollListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/experienceList"/>
+            <Button
+                android:id="@+id/addexperiences"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="150dp"
+                android:height="40dp"
+                android:background="@drawable/frapp_profile_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Add Experience"
+                android:textColor="@color/white"
+                app:theme="@style/profile_button" />
+
+        </LinearLayout>
         <RelativeLayout
             android:id="@+id/Skills_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_education_relative">
+            app:layout_constraintTop_toBottomOf="@id/add_experience">
        <androidx.recyclerview.widget.RecyclerView
            android:layout_width="match_parent"
            android:layout_below="@id/Skills"
@@ -176,8 +211,7 @@
                 android:minHeight="0dp"
                 android:text="Add Skills"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_below="@id/addskillList"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
@@ -191,5 +225,111 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+        <RelativeLayout
+            android:id="@+id/Hobbies_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Skills_relative"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/Hobbiestext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="20dp"
+                android:text="Hobbies" />
+        <com.example.vitinew.Classes.NonScrollListView
+            android:layout_below="@+id/Hobbiestext"
+            android:id="@+id/gridhobbies"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/Add_Hobbies"
+                android:layout_below="@+id/gridhobbies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:width="150dp"
+                android:height="40dp"
+                android:background="@drawable/frapp_profile_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Add Hobbies"
+                android:textColor="@color/white"
+                app:theme="@style/profile_button" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/achievements"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Hobbies_relative"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Achievements" />
+            <com.example.vitinew.Classes.NonScrollListView
+                android:id="@+id/achievementslist"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/Add_Achievements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:width="200dp"
+                android:height="40dp"
+                android:background="@drawable/frapp_profile_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Add Achievements"
+                android:textColor="@color/white"
+                app:theme="@style/profile_button" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/achievements"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:text="Social Profiles" />
+            <com.example.vitinew.Classes.NonScrollListView
+                android:id="@+id/sociallist"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/Add_Social"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:width="200dp"
+                android:height="40dp"
+                android:background="@drawable/frapp_profile_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Add Social Profiles"
+                android:textColor="@color/white"
+                app:theme="@style/profile_button" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
