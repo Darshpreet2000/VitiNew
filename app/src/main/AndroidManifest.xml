@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".gigDetails"></activity>
+        <activity android:name=".ProjectDetail"></activity>
+        <activity android:name=".gigDetails" />
         <activity
             android:name=".LoginRegister"
             android:theme="@style/LoginRegister" />

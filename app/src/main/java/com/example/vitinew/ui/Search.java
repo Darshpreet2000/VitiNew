@@ -28,7 +28,7 @@ public class Search extends Fragment {
                              Bundle savedInstanceState) {
 
         setuptoolbar();
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
    private void setuptoolbar(){

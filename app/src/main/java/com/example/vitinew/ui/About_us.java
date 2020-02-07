@@ -29,7 +29,7 @@ public class About_us extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setuptoolbar();
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         return inflater.inflate(R.layout.fragment_about_us, container, false);
     }
     private void setuptoolbar(){

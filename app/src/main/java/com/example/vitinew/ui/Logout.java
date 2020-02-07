@@ -27,7 +27,7 @@ public class Logout extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the projectlist for this fragment
         Intent intent=new Intent(getContext(),Login_activity.class);
         startActivity(intent);
         getActivity().finish();
