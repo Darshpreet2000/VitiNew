@@ -17,6 +17,8 @@ public class API {
 
     public static final  String UPDATEPROJECT=API_DOMAIN+ "/api/user/projectsUpdate";
     public static final  String PROJECT=API_DOMAIN+ "/api/user/projects";
+    public static final  String UPDATEHOBBY=API_DOMAIN+ "/api/user/hobbiesUpdate";
 
+    public static final  String HOBBY=API_DOMAIN+ "/api/user/hobbies";
 
 }

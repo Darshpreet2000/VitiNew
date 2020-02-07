@@ -55,11 +55,18 @@ public class Resume extends Fragment {
     ProgressBar progressBarResume;
     UserController userController;
     RecyclerView addskillList,addedu,addProjects;
-    Button addskills, addeducation,addproject;
+    Button addskills, addeducation,addproject,addhobby,addexperience,addachievement,socialprofile;
 
     public Resume() {
         // Required empty public constructor
     }
+    private void getallHobbies(){
+        Map<String, String> dataMap = new HashMap<String,String>();
+        dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        userController.getRequest(dataMap, API.EDUCATION,getallEducationListener);
+
+    }
+
 private void getallEducation(){
     Map<String, String> dataMap = new HashMap<String,String>();
     dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
@@ -204,6 +211,28 @@ private void getallEducation(){
         addProjects=view.findViewById(R.id.projectsrecycle);
         addproject=view.findViewById(R.id.project_button);
         addskillList = view.findViewById(R.id.addskillList);
+        addhobby=view.findViewById(R.id.Add_Hobbies);
+        addexperience=view.findViewById(R.id.addexperiences);
+        addachievement=view.findViewById(R.id.Add_Achievements);
+        addachievement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addAchievements);
+
+            }
+        });
+        addexperience.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addExperience);
+            }
+        });
+        addhobby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addHobbies);
+            }
+        });
         addproject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,6 +248,14 @@ private void getallEducation(){
             }
         });
         addeducation = view.findViewById(R.id.add_education);
+        socialprofile=view.findViewById(R.id.Add_Social);
+        socialprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSocial);
+            }
+        });
+
         addeducation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,6 +266,7 @@ private void getallEducation(){
 getallSkills();
 getallEducation();
 getallProjects();
+getallHobbies();
     }
 
     @Override
