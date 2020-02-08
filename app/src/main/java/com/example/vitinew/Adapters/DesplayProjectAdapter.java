@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,6 +20,7 @@ import com.example.vitinew.ProjectDetail;
 import com.example.vitinew.R;
 import com.example.vitinew.gigDetails;
 import com.example.vitinew.gigsAdapter;
+import com.truecaller.multisim.v;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -61,8 +63,9 @@ public class DesplayProjectAdapter extends
     @Override
     public void onBindViewHolder(@NonNull DesplayProjectAdapter.DesplayProjectHolder holder, int position) {
 
-        final ProjectDisplay currentnote=Project.get(position);
+         ProjectDisplay currentnote=Project.get(position);
         holder.Projecttitle.setText(currentnote.getTitle());
+
        // holder.description.setText(currentnote.getDes());
         holder.time.setText(currentnote.getDuration());
         holder.position.setText(currentnote.getCount()+" Positions");
