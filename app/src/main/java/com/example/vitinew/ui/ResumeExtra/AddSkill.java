@@ -32,12 +32,13 @@ import static android.view.View.GONE;
  * A simple {@link Fragment} subclass.
  */
 public class AddSkill extends Fragment {
-  UserController userController;
-  String url;
-  EditText addskill;
-  Button add;
-  RatingBar ratingBar;
-  ProgressBar addskillprogressBar;
+    UserController userController;
+    String url;
+    EditText addskill;
+    Button add;
+    RatingBar ratingBar;
+    ProgressBar addskillprogressBar;
+
     public AddSkill() {
         // Required empty public constructor
     }
@@ -53,32 +54,34 @@ public class AddSkill extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-      addskill=view.findViewById(R.id.skillname);
-      add=view.findViewById(R.id.addskillfinal);
-      ratingBar=view.findViewById(R.id.ratingBar);
-      addskillprogressBar=view.findViewById(R.id.addskillprogressBar);
-      userController=new UserController(getContext());
-      url= API.UPDATE_SKILL;
-      add.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              JSONObject request = generateRequest();
-              userController.postWithJsonRequest(url,request,AddSkillListner);
-          }
-      });
+        addskill = view.findViewById(R.id.skillname);
+        add = view.findViewById(R.id.addskillfinal);
+        ratingBar = view.findViewById(R.id.ratingBar);
+        addskillprogressBar = view.findViewById(R.id.addskillprogressBar);
+        userController = new UserController(getContext());
+        url = API.UPDATE_SKILL;
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONObject request = generateRequest();
+                userController.postWithJsonRequest(url, request, AddSkillListner);
+            }
+        });
     }
-  private JSONObject generateRequest(){
-       JSONObject json=new JSONObject();
-      try {
-          json.put("uid",SaveSharedPreference.getUserId(getActivity()));
-          json.put("name",addskill.getText().toString());
-          json.put("rating",ratingBar.getRating());
 
-      } catch (JSONException e) {
-          e.printStackTrace();
-      }
-  return json;
-  }
+    private JSONObject generateRequest() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("uid", SaveSharedPreference.getUserId(getActivity()));
+            json.put("name", addskill.getText().toString());
+            json.put("rating", ratingBar.getRating());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
     private final ResponseListener AddSkillListner = new ResponseListener() {
 
         @Override
@@ -92,8 +95,8 @@ public class AddSkill extends Fragment {
 
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
-                String code=jsonObject.getString("code");
-                switch(code){
+                String code = jsonObject.getString("code");
+                switch (code) {
                     case "SUCCESS":
                         Toast.makeText(getContext(), "Added Successful", Toast.LENGTH_SHORT).show();
                         break;

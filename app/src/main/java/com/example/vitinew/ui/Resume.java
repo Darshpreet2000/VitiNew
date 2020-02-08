@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -24,6 +25,7 @@ import com.example.vitinew.Adapters.addProjectAdapter;
 import com.example.vitinew.Adapters.addskilladapter;
 import com.example.vitinew.Classes.AddEducation;
 import com.example.vitinew.Classes.Addskills;
+import com.example.vitinew.Classes.NonScrollListView;
 import com.example.vitinew.Classes.ProjectDetails;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
@@ -51,9 +53,11 @@ public class Resume extends Fragment {
     List<Addskills> Finalskills=new ArrayList<>();
     List<ProjectDetails> Finalprojects=new ArrayList<ProjectDetails>();
     List<AddEducation> FinalEducations=new ArrayList<>();
+    List<String> FinalExperience=new ArrayList<>();
     Toolbar toolbar;
     ProgressBar progressBarResume;
     UserController userController;
+    NonScrollListView addExperience;
     RecyclerView addskillList,addedu,addProjects;
     Button addskills, addeducation,addproject,addhobby,addexperience,addachievement,socialprofile;
 
@@ -73,6 +77,13 @@ private void getallEducation(){
     userController.getRequest(dataMap, API.EDUCATION,getallEducationListener);
 
 }
+    private void getallExperiences(){
+        Map<String, String> dataMap = new HashMap<String,String>();
+        dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        userController.getRequest(dataMap, API.Experiences,getallexperienceListener);
+
+
+    }
     private void getallSkills() {
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
@@ -108,6 +119,43 @@ private void getallEducation(){
                 addProjects.setLayoutManager(new GridLayoutManager(getContext(), 2));
                 addProjectAdapter addskilladapter=new addProjectAdapter(Finalprojects);
                 addProjects.setAdapter(addskilladapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                progressBarResume.setVisibility(GONE);
+
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+            progressBarResume.setVisibility(GONE);
+
+        }
+    };
+
+    private final ResponseListener getallexperienceListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+            progressBarResume.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                JSONArray skills=jsonObject.getJSONArray("projects");
+                FinalExperience.clear();
+                for(int i=0;i<skills.length();i++){
+                    JSONObject skillobj=skills.getJSONObject(i);
+                    ProjectDetails add=new ProjectDetails(skillobj.getString("title"),skillobj.getString("des"));
+                    //FinalExperience.add(add);
+                }
+                //addExperience.setAdapter(new ArrayAdapter<>());
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -267,6 +315,7 @@ getallSkills();
 getallEducation();
 getallProjects();
 getallHobbies();
+getallExperiences();
     }
 
     @Override
