@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ResumeExtra.AddExperience">
+    android:orientation="vertical"
+    tools:context=".ui.ResumeExtra.AddEducation">
 
-    <!-- TODO: Update blank fragment projectlist -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Add Experiencce"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp" />
 
-</FrameLayout>
+
+    <EditText
+        android:id="@+id/organisation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:ems="10"
+        android:hint="Organization"
+        android:inputType="textPersonName" />
+
+    <EditText
+
+        android:id="@+id/designation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:ems="10"
+        android:hint="Designation"
+        android:inputType="textPersonName" />
+
+    <EditText
+
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:id="@+id/progressbaraddedu"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
+    <EditText
+
+        android:layout_margin="10dp"
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:hint="Start date"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:layout_margin="10dp"
+        android:id="@+id/end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:hint="End date"
+        android:inputType="textPersonName" />
+    <Button
+        android:layout_margin="20dp"
+        android:text="ADD"
+        android:id="@+id/addexperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

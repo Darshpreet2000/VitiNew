@@ -21,4 +21,12 @@ public class API {
 
     public static final  String HOBBY=API_DOMAIN+ "/api/user/hobbies";
 
+    public static final  String Experiences=API_DOMAIN+ "/api/user/exp";
+
+    public static final  String UpdateExperiences=API_DOMAIN+ "/api/user/expUpdate";
+
+    public static final  String UpdateAchievements=API_DOMAIN+ "/api/user/achievementsUpdate";
+
+    public static final  String UpdateSocial=API_DOMAIN+ "/api/user/socialUpdate";
+
 }

@@ -16,10 +16,10 @@ import com.example.vitinew.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class My_Missions extends Fragment {
+public class My_Gigs extends Fragment {
     Toolbar toolbar;
 
-    public My_Missions() {
+    public My_Gigs() {
         // Required empty public constructor
     }
 
@@ -29,7 +29,7 @@ public class My_Missions extends Fragment {
                              Bundle savedInstanceState) {
         setuptoolbar();
         // Inflate the projectlist for this fragment
-        return inflater.inflate(R.layout.fragment_my__missions2, container, false);
+        return inflater.inflate(R.layout.my_gigs, container, false);
     }
     private void setuptoolbar(){
         toolbar=getActivity().findViewById(R.id.toolbar);

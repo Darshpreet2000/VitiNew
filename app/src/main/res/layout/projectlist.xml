@@ -1,26 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/ProjectListLinearLayout"
-    android:layout_margin="2dp"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
-    <TextView
+    android:layout_marginEnd="8dp"
+    android:id="@+id/projectlistlayout"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_alignParentStart="true"
+            android:id="@+id/ProjectTitle"
+            android:layout_width="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_height="wrap_content"
+            android:text="Product Name" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/time"/>
+     <TextView
+
+         android:id="@+id/time"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="10dp"
+         android:text="Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/position1"/>
+
+            <TextView
+
+                android:id="@+id/postions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Positions" />
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ProjectTitle"
-        android:textSize="30sp"
-        android:textColor="#ffffff"
-        android:textStyle="bold|italic"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ProjectDes"
-        android:textSize="10sp"
-        android:textColor="#ffffff"
-        android:textStyle="bold|italic"/>
+        android:orientation="horizontal">
 
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/money"/>
+        <TextView
+            android:id="@+id/stipend"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Stipend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
+    </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
