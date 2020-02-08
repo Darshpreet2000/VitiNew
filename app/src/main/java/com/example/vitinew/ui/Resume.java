@@ -94,6 +94,7 @@ private void getallEducation(){
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
         userController.getRequest(dataMap, API.PROJECT,getallProjectsListener);
+
     }
 
     private final ResponseListener getallProjectsListener = new ResponseListener() {
