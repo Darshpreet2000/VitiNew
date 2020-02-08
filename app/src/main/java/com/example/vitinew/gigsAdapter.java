@@ -78,7 +78,7 @@ public class gigsAdapter  extends
     }
 
 
-    class gigsholder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class gigsholder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView title;
         private TextView gigscat;
         private TextView gigsbrand;
