@@ -23,12 +23,10 @@ import com.android.volley.VolleyError;
 import com.example.vitinew.Adapters.DesplayProjectAdapter;
 import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
-import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.example.vitinew.gigsAdapter;
 import com.example.vitinew.ui.Extras.bottomdialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -47,14 +45,14 @@ import static android.view.View.GONE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Internships extends Fragment {
+public class Projects extends Fragment {
     ProgressBar ProjectProgressbar;
     RecyclerView PrjectRecyclerView;
     UserController userController;
     private List<ProjectDisplay> allProject = new ArrayList<>();
 
     Toolbar toolbar;
-    public Internships() {
+    public Projects() {
         // Required empty public constructor
     }
 
@@ -85,6 +83,8 @@ public class Internships extends Fragment {
                             JSONObject gigsObject=InternshipArray.getJSONObject(i);
                             int id=gigsObject.getInt("id");
                             String cats=gigsObject.getString("cat");
+
+                            String stipend=gigsObject.getString("stipend");
                            // int per_cost=gigsObject.getInt("per_cost");
                             String title=gigsObject.getString("title");
                             String description=gigsObject.getString("des");
@@ -116,6 +116,7 @@ public class Internships extends Fragment {
                             thisProject.setUpdated_at(updated_at);
                             thisProject.setDuration(duration);
                             thisProject.setBenifits(benefits);
+                            thisProject.setStipend(stipend);
                             thisProject.setPlace(place);
                             thisProject.setCount(count);
                             thisProject.setSkill(skills);
@@ -169,7 +170,7 @@ public class Internships extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setuptoolbar();
-       View view=inflater.inflate(R.layout.fragment_internships, container, false);
+       View view=inflater.inflate(R.layout.fragment_projects, container, false);
         // Inflate the projectlist for this fragment
         //Find bottom Sheet I
         userController = new UserController(getContext());
