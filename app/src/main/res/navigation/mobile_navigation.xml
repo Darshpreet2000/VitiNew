@@ -25,14 +25,14 @@
         tools:layout="@layout/fragment_city2" />
     <fragment
         android:id="@+id/my_Missions"
-        android:name="com.example.vitinew.ui.My_Missions"
+        android:name="com.example.vitinew.ui.My_Gigs"
         android:label="My Missions"
-        tools:layout="@layout/fragment_my__missions2" />
+        tools:layout="@layout/my_gigs" />
     <fragment
         android:id="@+id/my_Interships"
-        android:name="com.example.vitinew.ui.My_Interships"
+        android:name="com.example.vitinew.ui.My_Projects"
         android:label="My Internships"
-        tools:layout="@layout/fragment_my__interships" />
+        tools:layout="@layout/my_projects" />
     <fragment
         android:id="@+id/resume"
         android:name="com.example.vitinew.ui.Resume"
@@ -72,18 +72,18 @@
         tools:layout="@layout/fragment_wallet2" />
     <fragment
         android:id="@+id/internships"
-        android:name="com.example.vitinew.ui.Internships"
+        android:name="com.example.vitinew.ui.Projects"
         android:label="Internships"
-        tools:layout="@layout/fragment_internships" >
+        tools:layout="@layout/fragment_projects" >
         <action
             android:id="@+id/action_internships_to_my_Interships"
             app:destination="@id/my_Interships" />
     </fragment>
     <fragment
         android:id="@+id/missions"
-        android:name="com.example.vitinew.ui.Missions"
+        android:name="com.example.vitinew.ui.Gigs"
         android:label="Missions"
-        tools:layout="@layout/fragment_missions" >
+        tools:layout="@layout/fragment_gigs" >
         <action
             android:id="@+id/action_missions_to_my_Missions"
             app:destination="@id/my_Missions" />

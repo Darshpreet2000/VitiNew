@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.ProjectDisplay;
@@ -18,6 +20,7 @@ import com.example.vitinew.ProjectDetail;
 import com.example.vitinew.R;
 import com.example.vitinew.gigDetails;
 import com.example.vitinew.gigsAdapter;
+import com.truecaller.multisim.v;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -60,13 +63,18 @@ public class DesplayProjectAdapter extends
     @Override
     public void onBindViewHolder(@NonNull DesplayProjectAdapter.DesplayProjectHolder holder, int position) {
 
-        final ProjectDisplay currentnote=Project.get(position);
+         ProjectDisplay currentnote=Project.get(position);
         holder.Projecttitle.setText(currentnote.getTitle());
-        holder.description.setText(currentnote.getDes());
+
+       // holder.description.setText(currentnote.getDes());
+        holder.time.setText(currentnote.getDuration());
+        holder.position.setText(currentnote.getCount()+" Positions");
+        holder.stipend.setText(currentnote.getStipend());
+
         Log.d("this",currentnote.getTitle());
         ///holder.gigsbrand.setText();
       //  holder.description.setText(String.valueOf(currentnote.getDescription()));
-        holder.ProjectListLayout.setOnClickListener(new View.OnClickListener() {
+       holder.ProjectListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(v.getContext(), ProjectDetail.class);
@@ -86,20 +94,26 @@ public class DesplayProjectAdapter extends
 
 
     class DesplayProjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Projecttitle;
+        private TextView Projecttitle,time,position,stipend;
         private TextView gigscat;
         private TextView gigsbrand;
         private TextView description;
         private ImageView gigsicon;
-        private LinearLayout ProjectListLayout;
+        private CardView ProjectListLayout;
         public DesplayProjectHolder(@NonNull View itemView) {
             super(itemView);
             Projecttitle=itemView.findViewById(R.id.ProjectTitle);
+            time=itemView.findViewById(R.id.time);
+            position=itemView.findViewById(R.id.postions);
+           stipend=itemView.findViewById(R.id.stipend);
+
+
             //gigsicon=itemView.findViewById(R.id.gigsicon);
            // gigscat=itemView.findViewById(R.id.gigscats);
           //  gigsbrand=itemView.findViewById(R.id.gigsbrand);
-            description=itemView.findViewById(R.id.ProjectDes);
-            ProjectListLayout=itemView.findViewById(R.id.ProjectListLinearLayout);
+         //   description=itemView.findViewById(R.id.ProjectDes);
+            ProjectListLayout=itemView.findViewById(R.id.projectlistlayout);
+
         }
 
 

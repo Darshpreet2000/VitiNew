@@ -1,11 +1,9 @@
 package com.example.vitinew.ui;
 
 
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
-import androidx.appcompat.view.menu.MenuView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,16 +16,10 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
-import com.example.vitinew.Login_activity;
-import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
@@ -38,7 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,14 +39,14 @@ import static android.view.View.GONE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Missions extends Fragment {
+public class Gigs extends Fragment {
 
     UserController userController;
     Toolbar toolbar;
     ProgressBar progressBarRegister;
     RecyclerView gigsRecyclerview;
     private List<gigsClass> mygigs = new ArrayList<>();
-    public Missions() {
+    public Gigs() {
         // Required empty
         // public constructor
     }
@@ -142,7 +133,7 @@ public class Missions extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the projectlist for this fragment
-        View view=inflater.inflate(R.layout.fragment_missions, container, false);
+        View view=inflater.inflate(R.layout.fragment_gigs, container, false);
         setuptoolbar();
          gigsRecyclerview = view.findViewById(R.id.gigsRecyclerView);
         progressBarRegister=view.findViewById(R.id.progressBargigs);
