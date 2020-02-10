@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameresume"
     android:layout_width="match_parent"
-    tools:layout_marginTop="-810dp"
+    tools:layout_marginTop="-822dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="Experience" />
-            <com.example.vitinew.Classes.NonScrollListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/experienceList"/>
@@ -240,15 +240,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
                 android:text="Hobbies" />
-        <com.example.vitinew.Classes.NonScrollListView
+        <TextView
             android:layout_below="@+id/Hobbiestext"
-            android:id="@+id/gridhobbies"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/hobbytext"
             android:layout_height="wrap_content"/>
             <Button
                 android:id="@+id/Add_Hobbies"
-                android:layout_below="@+id/gridhobbies"
+                android:layout_below="@+id/hobbytext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -276,11 +275,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="Achievements" />
-            <com.example.vitinew.Classes.NonScrollListView
-                android:id="@+id/achievementslist"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/achievementstext"/>
             <Button
                 android:id="@+id/Add_Achievements"
                 android:layout_width="wrap_content"
@@ -311,11 +309,10 @@
                 android:layout_margin="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="Social Profiles" />
-            <com.example.vitinew.Classes.NonScrollListView
-                android:id="@+id/sociallist"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/socialtext"/>
             <Button
                 android:id="@+id/Add_Social"
                 android:layout_width="wrap_content"

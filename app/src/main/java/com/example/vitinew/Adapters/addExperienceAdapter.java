@@ -12,13 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
-import com.example.vitinew.Classes.Addskills;
-import com.example.vitinew.Classes.ProjectDetails;
+import com.example.vitinew.Classes.AddEducation;
+import com.example.vitinew.Classes.AddExp;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.example.vitinew.ui.ResumeExtra.AddProject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,39 +25,35 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class addProjectAdapter  extends RecyclerView.Adapter<addProjectAdapter.myskillholder> {
-    private List< ProjectDetails> cartlist=new ArrayList<>();
-   Context context;
+public class addExperienceAdapter extends RecyclerView.Adapter<addExperienceAdapter.myskillholder> {
+    private List<AddExp> cartlist=new ArrayList<>();
+Context context;
 
-    public addProjectAdapter(List<ProjectDetails> cartlist, Context context) {
+    public addExperienceAdapter(List<AddExp> cartlist, Context context) {
         this.cartlist = cartlist;
         this.context = context;
     }
 
-    public addProjectAdapter(List< ProjectDetails> cartlist) {
+    public addExperienceAdapter(List<AddExp> cartlist) {
         this.cartlist = cartlist;
-        //  this.onClick = onClick;
     }
-
-    public interface OnItemClicked {
-        void onbuttonclicked(int position);
-        //   void onbidclicked(int position);
-    }
-
 
     @NonNull
     @Override
     public myskillholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemview= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.itemprojectresume,parent,false);
-        return new addProjectAdapter.myskillholder(itemview);
+                .inflate(R.layout.itemadd_experience,parent,false);
+        return new addExperienceAdapter.myskillholder(itemview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull myskillholder holder, int position) {
-        final ProjectDetails currentnote=cartlist.get(position);
-        holder.title.setText(currentnote.getTitle());
+        final AddExp currentnote=cartlist.get(position);
+        holder.org.setText(currentnote.getOrg());
+        holder.des.setText(currentnote.getDes());
         holder.desc.setText(currentnote.getDesc());
+        holder.start.setText(currentnote.getStart());
+        holder.end.setText(currentnote.getEnd());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +65,7 @@ public class addProjectAdapter  extends RecyclerView.Adapter<addProjectAdapter.m
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                user.postWithJsonRequest(API.DELETEPROJECT,jsonObject,getallProjectsListener);
+                user.postWithJsonRequest(API.DELETEEXP,jsonObject,getallProjectsListener);
                 cartlist.remove(position);
                 notifyDataSetChanged();
             }
@@ -79,24 +74,25 @@ public class addProjectAdapter  extends RecyclerView.Adapter<addProjectAdapter.m
 
     @Override
     public int getItemCount() {
-        return cartlist.size();
+     return  cartlist.size();
     }
 
-    class myskillholder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView title,desc;
+    class myskillholder extends RecyclerView.ViewHolder {
+        private TextView org,des,desc,start,end;
         private ImageView delete;
         public myskillholder(@NonNull View itemView) {
             super(itemView);
+            //        Removecart.setOnClickListener(this);
             delete=itemView.findViewById(R.id.deleteicon);
 
-            title=itemView.findViewById(R.id.title);
-            desc=itemView.findViewById(R.id.desc);
-            //        Removecart.setOnClickListener(this);
-        }
+            org=itemView.findViewById(R.id.type);
 
-        @Override
-        public void onClick(View v) {
+            des=itemView.findViewById(R.id.name);
 
+            desc=itemView.findViewById(R.id.course);
+            start=itemView.findViewById(R.id.start);
+
+            end=itemView.findViewById(R.id.end);
         }
     }
 
