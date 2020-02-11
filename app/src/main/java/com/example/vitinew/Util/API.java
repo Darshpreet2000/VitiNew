@@ -4,6 +4,8 @@ public class API {
 
     public static final String API_DOMAIN = "http://herody.in";
     public static final String LOGIN = API_DOMAIN + "/api/user/login";
+
+    public static final String USERDETAILS = API_DOMAIN + "/api/user/details";
     public static final String AllProject=API_DOMAIN+"/api/projects";
     public static final String PROJECT_DETAIL=AllProject+"/details";
     public static final String SIGN_UP = API_DOMAIN + "/api/user/register";
@@ -29,5 +31,12 @@ public class API {
     public static final  String UpdateAchievements=API_DOMAIN+ "/api/user/achievementsUpdate";
 
     public static final  String UpdateSocial=API_DOMAIN+ "/api/user/socialUpdate";
+    public static final String DELETEPROJECT = API_DOMAIN + "/api/user/projectsDelete";
+
+    public static final String DELETESKILL= API_DOMAIN + "/api/user/skillsDelete";
+
+    public static final String DELETEEDU = API_DOMAIN + "/api/user/eduDelete";
+
+    public static final String DELETEEXP = API_DOMAIN + "/api/user/expDelete";
 
 }

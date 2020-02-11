@@ -2,7 +2,24 @@ package com.example.vitinew.Classes;
 
 public class AddEducation {
 
-    String type,name,course,start,end;
+    String type,name,course,start,end,id;
+
+    public AddEducation(String type, String name, String course, String start, String end, String id) {
+        this.type = type;
+        this.name = name;
+        this.course = course;
+        this.start = start;
+        this.end = end;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public AddEducation(String type, String name, String course, String start, String end) {
         this.type = type;
