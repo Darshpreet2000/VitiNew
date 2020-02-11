@@ -27,8 +27,9 @@ public class ProjectDetail extends AppCompatActivity {
         JSONObject json = new JSONObject();
         try {
             // json.put("uid", SaveSharedPreference.getUserId(getActivity()));
-            json.put("id", projectdetail.getId());
-            json.put("uid", SaveSharedPreference.getUserId(ProjectDetail.this));
+            json.put("id", 2);
+            json.put("uid",8);
+            Log.d("Jsonstring",json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -190,25 +191,26 @@ public class ProjectDetail extends AppCompatActivity {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code = jsonObject.getString("code");
+                Log.d("Applied status",code);
                 switch (code) {
                     case "SUCCESS":
-
+                        Toast.makeText(ProjectDetail.this, "Applied Successfully", Toast.LENGTH_SHORT).show();
                         //Toast.makeText(getApplicationContext(), "Added Successful", Toast.LENGTH_SHORT).show();
                         break;
-                    case "EMAIL DOES NOT EXIST":
-                        Toast.makeText(getApplicationContext(), "Email Does Not EXIST", Toast.LENGTH_SHORT).show();
+                    case "USER NOT FOUND":
+                        Toast.makeText(getApplicationContext(), "Unauthorised user", Toast.LENGTH_SHORT).show();
                         break;
-                    case "PASSWORD NOT CORRECT":
-                        Toast.makeText(getApplicationContext(), "invalid", Toast.LENGTH_SHORT).show();
+                    case "USER HAS ALREADY APPLIED FOR THIS PROJECT":
+                        Toast.makeText(getApplicationContext(), "Already Applied For this Project", Toast.LENGTH_SHORT).show();
                         break;
-                    default:
-                        Toast.makeText(ProjectDetail.this, "Something wrong", Toast.LENGTH_SHORT).show();
-
+                    case "PROJECT NOT FOUND":
+                        Toast.makeText(ProjectDetail.this,"Sorry this project is not available Now" , Toast.LENGTH_SHORT).show();
+                        break;
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                //Log.d("projectDetail",e.toString());
+                Log.d("Applied status error",e.toString());
             } finally {
                 //   addskillprogressBar.setVisibility(GONE);
             }
@@ -217,6 +219,7 @@ public class ProjectDetail extends AppCompatActivity {
         @Override
         public void onError(VolleyError error) {
             String s = "";
+            Log.d("Applied status error",error.toString());
 
         }
     };
