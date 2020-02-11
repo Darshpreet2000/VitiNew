@@ -15,17 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.example.vitinew.Adapters.addEducationAdapter;
+import com.example.vitinew.Adapters.addExperienceAdapter;
 import com.example.vitinew.Adapters.addProjectAdapter;
 import com.example.vitinew.Adapters.addskilladapter;
 import com.example.vitinew.Classes.AddEducation;
+import com.example.vitinew.Classes.AddExp;
 import com.example.vitinew.Classes.Addskills;
-import com.example.vitinew.Classes.NonScrollListView;
 import com.example.vitinew.Classes.ProjectDetails;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
@@ -53,11 +54,11 @@ public class Resume extends Fragment {
     List<Addskills> Finalskills=new ArrayList<>();
     List<ProjectDetails> Finalprojects=new ArrayList<ProjectDetails>();
     List<AddEducation> FinalEducations=new ArrayList<>();
-    List<String> FinalExperience=new ArrayList<>();
+    List<AddExp> FinalExperience=new ArrayList<>();
     Toolbar toolbar;
     ProgressBar progressBarResume;
     UserController userController;
-    NonScrollListView addExperience;
+    RecyclerView addExperience;
     RecyclerView addskillList,addedu,addProjects;
     Button addskills, addeducation,addproject,addhobby,addexperience,addachievement,socialprofile;
 
@@ -66,9 +67,8 @@ public class Resume extends Fragment {
     }
     private void getallHobbies(){
         Map<String, String> dataMap = new HashMap<String,String>();
-        dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
-        userController.getRequest(dataMap, API.EDUCATION,getallEducationListener);
-
+        dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        userController.getRequest(dataMap, API.USERDETAILS,getallHobbiesListener);
     }
 
 private void getallEducation(){
@@ -114,12 +114,54 @@ private void getallEducation(){
                 Finalprojects.clear();
                 for(int i=0;i<skills.length();i++){
                     JSONObject skillobj=skills.getJSONObject(i);
-                    ProjectDetails add=new ProjectDetails(skillobj.getString("title"),skillobj.getString("des"));
+                    ProjectDetails add=new ProjectDetails(skillobj.getString("title"),skillobj.getString("des"),skillobj.getString("id"));
                     Finalprojects.add(add);
                 }
                 addProjects.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                addProjectAdapter addskilladapter=new addProjectAdapter(Finalprojects);
+                addProjectAdapter addskilladapter=new addProjectAdapter(Finalprojects,getContext());
                 addProjects.setAdapter(addskilladapter);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                progressBarResume.setVisibility(GONE);
+
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+            progressBarResume.setVisibility(GONE);
+
+        }
+    };
+    private final ResponseListener getallHobbiesListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+            progressBarResume.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                JSONObject user = jsonObject.getJSONObject("user");
+                String hobbies=user.getString("hobbies");
+                String achievements=user.getString("achievements");
+                String twitter=user.getString("twitter");
+                String linkedin=user.getString("linkedin");
+                String github=user.getString("github");
+                String insta=user.getString("insta");
+                TextView achieve=getActivity().findViewById(R.id.achievementstext);
+                achieve.setText(achievements);
+                TextView social=getActivity().findViewById(R.id.socialtext);
+                TextView hobby=getActivity().findViewById(R.id.hobbytext);
+                social.setText("Twitter\n"+twitter+"\n"+"LinkedIn\n"+linkedin+"\n"+"Github\n"+github+"\n"+"Instagram\n"+insta);
+                hobby.setText(hobbies);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -149,14 +191,23 @@ private void getallEducation(){
 
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
-                JSONArray skills=jsonObject.getJSONArray("projects");
+                JSONArray skills=jsonObject.getJSONArray("exps");
                 FinalExperience.clear();
                 for(int i=0;i<skills.length();i++){
                     JSONObject skillobj=skills.getJSONObject(i);
-                    ProjectDetails add=new ProjectDetails(skillobj.getString("title"),skillobj.getString("des"));
-                    //FinalExperience.add(add);
+
+                    String id   = skillobj.getString("id");
+                    String org   = skillobj.getString("company");
+                    String des = skillobj.getString("designation");
+                    String desc= skillobj.getString("des");
+                    String start=  skillobj.getString("start");
+                    String end = skillobj.getString("end");
+                    AddExp add=new AddExp(org,des,desc,start,end,id);
+                   FinalExperience.add(add);
                 }
-                //addExperience.setAdapter(new ArrayAdapter<>());
+               addExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addExperienceAdapter addskilladapter=new addExperienceAdapter(FinalExperience,getContext());
+                addExperience.setAdapter(addskilladapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -190,11 +241,11 @@ private void getallEducation(){
                 Finalskills.clear();
                 for(int i=0;i<skills.length();i++){
                     JSONObject skillobj=skills.getJSONObject(i);
-                    Addskills add=new Addskills(skillobj.getString("name"),skillobj.getString("rating"));
+                    Addskills add=new Addskills(skillobj.getString("name"),skillobj.getString("rating"),skillobj.getString("id"));
                     Finalskills.add(add);
                 }
                 addskillList.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                addskilladapter addskilladapter=new addskilladapter(Finalskills);
+                addskilladapter addskilladapter=new addskilladapter(Finalskills,getContext());
                 addskillList.setAdapter(addskilladapter);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -229,12 +280,12 @@ private void getallEducation(){
                 FinalEducations.clear();
                 for(int i=0;i<skills.length();i++){
                     JSONObject skillobj=skills.getJSONObject(i);
-                    AddEducation add=new AddEducation(skillobj.getString("type"),skillobj.getString("name"),skillobj.getString("course"),skillobj.getString("start"),skillobj.getString("end"));
+                    AddEducation add=new AddEducation(skillobj.getString("type"),skillobj.getString("name"),skillobj.getString("course"),skillobj.getString("start"),skillobj.getString("end"),skillobj.getString("id"));
                     FinalEducations.add(add);
                 }
 
                 addedu.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                addEducationAdapter addskilladapter=new addEducationAdapter(FinalEducations);
+                addEducationAdapter addskilladapter=new addEducationAdapter(FinalEducations,getContext());
                 addedu.setAdapter(addskilladapter);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -262,6 +313,7 @@ private void getallEducation(){
         addskillList = view.findViewById(R.id.addskillList);
         addhobby=view.findViewById(R.id.Add_Hobbies);
         addexperience=view.findViewById(R.id.addexperiences);
+        addExperience=view.findViewById(R.id.experienceList);
         addachievement=view.findViewById(R.id.Add_Achievements);
         addachievement.setOnClickListener(new View.OnClickListener() {
             @Override

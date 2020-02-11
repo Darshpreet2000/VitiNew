@@ -23,16 +23,15 @@
                     android:id="@+id/ProjectTitle"
                     android:textSize="30sp"
                     android:text="Project Name"
-                    android:textStyle="bold|italic"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
 
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/companyName"
-                    android:textSize="20sp"
                     android:text="Company Name"
-                    android:textStyle="italic"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,8 +169,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="About The Project"
-                    android:textStyle="bold"
-                    android:textSize="30sp"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -207,9 +206,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About Company"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:text="About company"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -229,8 +228,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Skill Required"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -249,8 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Proof Required"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     />
                 <TextView
                     android:layout_width="wrap_content"
