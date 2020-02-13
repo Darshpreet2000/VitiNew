@@ -7,6 +7,7 @@ public class API {
 
     public static final String USERDETAILS = API_DOMAIN + "/api/user/details";
     public static final String AllProject=API_DOMAIN+"/api/projects";
+    public static final String MyProject=API_DOMAIN+"/api/user/jprojects";
     public static final String PROJECT_DETAIL=API_DOMAIN+"/api/project/details";
     public static final String SIGN_UP = API_DOMAIN + "/api/user/register";
     public static final String APPLY_PROJECT=API_DOMAIN+"/api/project/apply";
