@@ -43,6 +43,7 @@ public class Gigs extends Fragment {
 
     UserController userController;
     Toolbar toolbar;
+
     ProgressBar progressBarRegister;
     RecyclerView gigsRecyclerview;
     private List<gigsClass> mygigs = new ArrayList<>();
