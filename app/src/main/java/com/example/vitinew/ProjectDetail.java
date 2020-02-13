@@ -1,34 +1,59 @@
 package com.example.vitinew;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.vitinew.Adapters.questionsAdapter;
 import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
+import com.example.vitinew.Classes.questions;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProjectDetail extends AppCompatActivity {
     ProjectDisplay projectdetail;
+    RecyclerView questions;
+    List<com.example.vitinew.Classes.questions> questionsList=new ArrayList<>();
     TextView Description;
     private JSONObject generateApplyRequest() {
+        JSONArray array=new JSONArray();
         JSONObject json = new JSONObject();
         try {
             // json.put("uid", SaveSharedPreference.getUserId(getActivity()));
-            json.put("id", 2);
-            json.put("uid",8);
+            json.put("id", id);
+            json.put("uid",SaveSharedPreference.getUserId(getApplicationContext()));
+            for(int i=0;i<questionsList.size();i++){
+                View view = questions.getChildAt(i);
+                EditText nameEditText = (EditText) view.findViewById(R.id.ans);
+                String name = nameEditText.getText().toString();
+                if(name.isEmpty()){
+                    Toast.makeText(ctx, "All Fields are required", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    array.put(name);
+                }
+            }
+            json.put("answer",array);
             Log.d("Jsonstring",json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -45,7 +70,7 @@ public class ProjectDetail extends AppCompatActivity {
         }
         return json;
     }
-
+Context ctx;
     TextView ProjectTitle,CompanyName,Stipend,Duration,Position,ApplyBefore,WorkPlace,
             AboutProject,AboutCompany,Start,skill,Proof,benefits;
     Button ApplyNow;
@@ -85,20 +110,22 @@ public class ProjectDetail extends AppCompatActivity {
         benefits.setText(projectdetail.getBenefits());
 
     }
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_project_detail);
+
+        questions=findViewById(R.id.projectRecyclerView);
         Intent intent=getIntent();
       projectdetail= (ProjectDisplay) intent.getSerializableExtra("class");
-        int id=projectdetail.getId();
+      id=projectdetail.getId();
         Log.d("idkkkk",String.valueOf(projectdetail.getId()) );
         getAllwidget();
        // Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
         JSONObject request = generateRequest();
         UserController user = new UserController(getApplicationContext());
+       ctx=ProjectDetail.this;
         user.postWithJsonRequest(API.PROJECT_DETAIL, request,ProjectDetailListner);
      // Description=findViewById(R.id.ProjectDesCription);
   // Description.setText(projectdetail.getDes());
@@ -123,13 +150,14 @@ public class ProjectDetail extends AppCompatActivity {
         public void onSuccess(String response) {
             try {
                 Log.d("projectDetail",response);
-
                 JSONObject json = new JSONObject(response);
+                Log.v("JSON",""+json.toString());
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code = jsonObject.getString("code");
                 switch (code) {
                     case "SUCCESS":
                         Log.d("projectDetail",jsonObject.toString());
+                        JSONArray questionsarray=jsonObject.getJSONArray("questions");
                         JSONObject Aboutproject=jsonObject.getJSONObject("project");
                         projectdetail.setId(Aboutproject.getInt("id"));
                         projectdetail.setTitle(Aboutproject.getString("title"));
@@ -148,6 +176,16 @@ public class ProjectDetail extends AppCompatActivity {
                         projectdetail.setUpdated_at(Aboutproject.getString("updated_at"));
                         projectdetail.setCreated_at(Aboutproject.getString("created_at"));
                         SetAllWedget(projectdetail);
+                        for(int i=0;i<questionsarray.length();i++){
+                            JSONObject ques= (JSONObject) questionsarray.get(i);
+                             String question= (String) ques.get("question");
+                            com.example.vitinew.Classes.questions questions1 =new questions(question,"");
+                            questionsList.add(questions1);
+
+                        }
+                        questionsAdapter qadapter=new questionsAdapter(questionsList);
+                        questions.setLayoutManager(new LinearLayoutManager(ctx));
+                        questions.setAdapter(qadapter);
                         //Toast.makeText(getApplicationContext(), "Added Successful", Toast.LENGTH_SHORT).show();
                         break;
                     case "EMAIL DOES NOT EXIST":
@@ -186,7 +224,7 @@ public class ProjectDetail extends AppCompatActivity {
         @Override
         public void onSuccess(String response) {
             try {
-                //Log.d("projectDetail",response);
+                Log.d("projectDetail",response);
 
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
