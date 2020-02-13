@@ -1,64 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="8dp"
+    android:id="@+id/projectlistlayout"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="7dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp"
-    android:background="#673AB7"
     android:orientation="vertical"
     android:id="@+id/gigs_layout">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/gigstitle"
+            android:layout_margin="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gigs" />
     <ImageView
         android:id="@+id/gigsicon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         app:srcCompat="@drawable/com_truecaller_icon" />
 
-    <TextView
-        android:id="@+id/gigstitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-
-        android:text="gigs"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp"
-        android:textStyle="bold|italic" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/gigscats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-
-        android:paddingLeft="2dp"
-        android:text="gigs cats"
-        android:textColor="#ffffff"
-        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/gigsbrand"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="gigs brand"
-        android:textColor="#ffffff"
         android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/gigs_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-
-        android:text="gigs description"
-        android:textColor="#ffffff" />
-
-
 </LinearLayout>
+</androidx.cardview.widget.CardView>
