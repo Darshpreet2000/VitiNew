@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameresume"
     android:layout_width="match_parent"
-    tools:layout_marginTop="-810dp"
+
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Darshpreet Singh"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -85,6 +85,7 @@
             <TextView
                 android:id="@+id/about_me"
                 android:layout_width="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
@@ -121,6 +122,7 @@
 
             <TextView
                 android:id="@+id/Education"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -159,8 +161,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="Experience" />
-            <com.example.vitinew.Classes.NonScrollListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/experienceList"/>
@@ -186,14 +189,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_experience">
-       <androidx.recyclerview.widget.RecyclerView
-           android:layout_width="match_parent"
-           android:layout_below="@id/Skills"
-           android:layout_height="wrap_content"
-           android:id="@+id/addskillList"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_below="@id/Skills"
+                android:layout_height="wrap_content"
+                android:id="@+id/addskillList"/>
             <TextView
                 android:id="@+id/Skills"
                 android:layout_width="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
@@ -225,32 +229,37 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
         <RelativeLayout
             android:id="@+id/Hobbies_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/Skills_relative"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Skills_relative">
 
             <TextView
                 android:id="@+id/Hobbiestext"
                 android:layout_width="wrap_content"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
                 android:text="Hobbies" />
-        <com.example.vitinew.Classes.NonScrollListView
-            android:layout_below="@+id/Hobbiestext"
-            android:id="@+id/gridhobbies"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/Add_Hobbies"
-                android:layout_below="@+id/gridhobbies"
+
+            <TextView
+                android:id="@+id/hobbytext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/Hobbiestext" />
+
+            <Button
+                android:id="@+id/Add_Hobbies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hobbytext"
                 android:layout_centerHorizontal="true"
                 android:width="150dp"
                 android:height="40dp"
@@ -262,34 +271,39 @@
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
+
         <LinearLayout
-            android:layout_width="match_parent"
             android:id="@+id/achievements"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/Hobbies_relative"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="@id/Hobbies_relative">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_margin="20dp"
                 android:text="Achievements" />
-            <com.example.vitinew.Classes.NonScrollListView
-                android:id="@+id/achievementslist"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/achievementstext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/Add_Achievements"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:width="200dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
+                android:gravity="center"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:text="Add Achievements"
@@ -297,6 +311,7 @@
                 app:theme="@style/profile_button" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -311,11 +326,10 @@
                 android:layout_margin="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="Social Profiles" />
-            <com.example.vitinew.Classes.NonScrollListView
-                android:id="@+id/sociallist"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/socialtext"/>
             <Button
                 android:id="@+id/Add_Social"
                 android:layout_width="wrap_content"
