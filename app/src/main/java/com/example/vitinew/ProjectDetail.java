@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,9 +133,13 @@ Context ctx;
         ApplyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserController applyController=new UserController(getApplicationContext());
-                JSONObject request = generateApplyRequest();
-                applyController.postWithJsonRequest(API.APPLY_PROJECT, request,ProjectApplyListner);
+            //    UserController applyController=new UserController(getApplicationContext());
+
+                Intent i=new Intent(ProjectDetail.this,question_answer.class);
+                i.putExtra("class", (Serializable) projectdetail);
+                startActivity(i);
+                //JSONObject request = generateApplyRequest();
+                //applyController.postWithJsonRequest(API.APPLY_PROJECT, request,ProjectApplyListner);
 
             }
         });
@@ -158,11 +163,13 @@ Context ctx;
                     case "SUCCESS":
                         Log.d("projectDetail",jsonObject.toString());
                         JSONArray questionsarray=jsonObject.getJSONArray("questions");
+                        JSONObject company=jsonObject.getJSONObject("company");
                         JSONObject Aboutproject=jsonObject.getJSONObject("project");
                         projectdetail.setId(Aboutproject.getInt("id"));
                         projectdetail.setTitle(Aboutproject.getString("title"));
                         projectdetail.setDes(Aboutproject.getString("des"));
                         projectdetail.setCat(Aboutproject.getString("cat"));
+                        projectdetail.setPosition(Aboutproject.getString("count"));
                         projectdetail.setStart(Aboutproject.getString("start"));
                         projectdetail.setEnd(Aboutproject.getString("end"));
                         projectdetail.setDuration(Aboutproject.getString("duration"));
@@ -175,17 +182,9 @@ Context ctx;
                         projectdetail.setUser(Aboutproject.getString("user"));
                         projectdetail.setUpdated_at(Aboutproject.getString("updated_at"));
                         projectdetail.setCreated_at(Aboutproject.getString("created_at"));
+                           projectdetail.setCompanyName(company.getString("name"));
+                           projectdetail.setAboutCompany(company.getString("description"));
                         SetAllWedget(projectdetail);
-                        for(int i=0;i<questionsarray.length();i++){
-                            JSONObject ques= (JSONObject) questionsarray.get(i);
-                             String question= (String) ques.get("question");
-                            com.example.vitinew.Classes.questions questions1 =new questions(question,"");
-                            questionsList.add(questions1);
-
-                        }
-                        questionsAdapter qadapter=new questionsAdapter(questionsList);
-                        questions.setLayoutManager(new LinearLayoutManager(ctx));
-                        questions.setAdapter(qadapter);
                         //Toast.makeText(getApplicationContext(), "Added Successful", Toast.LENGTH_SHORT).show();
                         break;
                     case "EMAIL DOES NOT EXIST":
@@ -257,6 +256,7 @@ Context ctx;
         @Override
         public void onError(VolleyError error) {
             String s = "";
+            Toast.makeText(getApplicationContext(), "Already Applied For this Project", Toast.LENGTH_SHORT).show();
             Log.d("Applied status error",error.toString());
 
         }

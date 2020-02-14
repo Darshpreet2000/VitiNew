@@ -120,7 +120,6 @@
                     <TextView
                         android:id="@+id/ProjectPosition"
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="1"
@@ -138,7 +137,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="Work Place"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -146,7 +144,7 @@
                         android:id="@+id/ProjectWorkPlace"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Work From Home"
+                        android:text="Home"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 </LinearLayout>
@@ -306,19 +304,9 @@
                     android:text=""
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Questions"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
             </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/projectRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/ProjectApplyNow"

@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -124,7 +125,7 @@ public class Resume extends Fragment {
                     ProjectDetails add = new ProjectDetails(skillobj.getString("title"), skillobj.getString("des"), skillobj.getString("id"));
                     Finalprojects.add(add);
                 }
-                addProjects.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addProjects.setLayoutManager(new LinearLayoutManager(getContext()));
                 addProjectAdapter addskilladapter = new addProjectAdapter(Finalprojects, getContext());
                 addProjects.setAdapter(addskilladapter);
             } catch (JSONException e) {
@@ -156,6 +157,7 @@ public class Resume extends Fragment {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 JSONObject user = jsonObject.getJSONObject("user");
+                String uername=user.getString("name");
                 String hobbies = user.getString("hobbies");
                 String achievements = user.getString("achievements");
                 String twitter = user.getString("twitter");
@@ -163,6 +165,8 @@ public class Resume extends Fragment {
                 String github = user.getString("github");
                 String insta = user.getString("insta");
                 TextView achieve = getActivity().findViewById(R.id.achievementstext);
+                TextView usertext=getActivity().findViewById(R.id.username_resume);
+                 usertext.setText(uername);
                 achieve.setText(achievements);
                 TextView social = getActivity().findViewById(R.id.socialtext);
                 TextView hobby = getActivity().findViewById(R.id.hobbytext);
@@ -212,7 +216,7 @@ public class Resume extends Fragment {
                     AddExp add = new AddExp(org, des, desc, start, end, id);
                     FinalExperience.add(add);
                 }
-                addExperience.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addExperience.setLayoutManager(new LinearLayoutManager(getContext()));
                 addExperienceAdapter addskilladapter = new addExperienceAdapter(FinalExperience, getContext());
                 addExperience.setAdapter(addskilladapter);
             } catch (JSONException e) {
@@ -291,7 +295,7 @@ public class Resume extends Fragment {
                     FinalEducations.add(add);
                 }
 
-                addedu.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                addedu.setLayoutManager(new LinearLayoutManager(getContext()));
                 addEducationAdapter addskilladapter = new addEducationAdapter(FinalEducations, getContext());
                 addedu.setAdapter(addskilladapter);
             } catch (JSONException e) {
