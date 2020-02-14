@@ -33,5 +33,14 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:layout_margin="10dp"
         android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/applygig"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Apply Now"/>
 </LinearLayout>
 </ScrollView>

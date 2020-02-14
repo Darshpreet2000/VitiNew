@@ -43,5 +43,6 @@ public class API {
     public static final String DELETEEDU = API_DOMAIN + "/api/user/eduDelete";
 
     public static final String DELETEEXP = API_DOMAIN + "/api/user/expDelete";
-
+    public static final String GIGSAPPLY = API_DOMAIN +  "/api/gig/apply";
+    public static final String USERGIGS = API_DOMAIN +  "/api/user/gigs";
 }

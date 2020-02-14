@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.My_Gigs">
-
-
-    <ImageView
-        android:id="@+id/imageView3"
+    <ProgressBar
+        android:id="@+id/progressBargigs"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/no_mission" />
-</FrameLayout>
+        android:layout_height="wrap_content" />
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:id="@+id/gigsRecyclerView"
+    android:layout_height="wrap_content"/>
+
+</LinearLayout>
