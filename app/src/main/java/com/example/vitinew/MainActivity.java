@@ -28,6 +28,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import static com.example.vitinew.Classes.SaveSharedPreference.getUserName;
 
 public class MainActivity extends AppCompatActivity {
     EditText username;
@@ -66,6 +69,10 @@ DrawerLayout drawer;
 
         setContentView(R.layout.activity_main);
 
+
+           /* TextView navHeaderUserName;
+            navHeaderUserName=findViewById(R.id.NavHeaderUserName);
+            navHeaderUserName.setText(getUserName(MainActivity.this));*/
 
 
             toolbar = findViewById(R.id.toolbar);

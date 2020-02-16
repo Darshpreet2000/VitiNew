@@ -34,6 +34,15 @@ String name,phone,email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
+        if(SaveSharedPreference.getUserName(LoginRegister.this).length() == 0)
+        {
+            // call Login Activity
+        }
+        else
+        { startActivity(new Intent(LoginRegister.this,MainActivity.class));
+            finish();
+            // Stay at the current activity.
+        }
 
     }
     private final ITrueCallback sdkCallback = new ITrueCallback() {

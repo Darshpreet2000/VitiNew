@@ -46,7 +46,7 @@ import static com.example.vitinew.Classes.SaveSharedPreference.getUserName;
  */
 public class Home extends Fragment {
     private List<ProjectDisplay> allProject = new ArrayList<>();
-    TextView Username;
+    TextView Username,navHeaderUserName;
     UserController userController;
     gigsClass thisgig = new gigsClass();
     ProgressBar progressBarRegister;
@@ -58,6 +58,7 @@ public class Home extends Fragment {
     RecyclerView gigsRecyclerview;
     private  void getallwidget(View view){
         Username= view.findViewById(R.id.username);
+       // navHeaderUserName= view.findViewById(R.id.NavHeaderUserName);
         gigsRecyclerview = view.findViewById(R.id.HomegigsRecyclerView);
         progressBarRegister=view.findViewById(R.id.progressBarHome);
         userController = new UserController(getContext());
@@ -102,6 +103,7 @@ public class Home extends Fragment {
         MyAllAppliedProject();
         String username=getUserName(getContext());
         Username.setText(username);
+       // navHeaderUserName.setText(username);
 
         return view;
 

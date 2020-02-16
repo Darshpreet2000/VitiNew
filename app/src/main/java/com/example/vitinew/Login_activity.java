@@ -79,14 +79,15 @@ public class Login_activity extends BaseActivity {
         userController=new UserController(Login_activity.this);
         progressBarRegister.setVisibility(GONE);
 
-        if(SaveSharedPreference.getUserName(Login_activity.this).length() == 0)
+      /*  if(SaveSharedPreference.getUserName(Login_activity.this).length() == 0)
         {
             // call Login Activity
         }
         else
         { startActivity(new Intent(Login_activity.this,MainActivity.class));
-            // Stay at the current activity.
-        }
+            finish();
+        // Stay at the current activity.
+        }*/
         userController=new UserController(Login_activity.this);
         progressBarRegister.setVisibility(GONE);
 
