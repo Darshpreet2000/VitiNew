@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.vitinew.R;
 
@@ -17,6 +18,10 @@ import com.example.vitinew.R;
  * A simple {@link Fragment} subclass.
  */
 public class Home extends Fragment {
+    TextView Username;
+    private  void getallwidget(View view){
+        Username= view.findViewById(R.id.username);
+    }
 
 
     public Home() {
@@ -29,7 +34,11 @@ public class Home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the projectlist for this fragment
         setuptoolbar();
-        return inflater.inflate(R.layout.fragment_home2, container, false);
+        View view=inflater.inflate(R.layout.fragment_home2, container, false);
+        getallwidget(view);
+        Username.setText("Mahavir");
+
+        return view;
 
     }
     public void setuptoolbar(){
