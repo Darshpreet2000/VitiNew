@@ -172,6 +172,7 @@ public class My_Projects extends Fragment {
         @Override
         public void onSuccess(String response) {
             try {
+                //Toast.makeText(getContext(), "inside", Toast.LENGTH_SHORT).show();
                 Log.d("str",response);
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
@@ -181,18 +182,71 @@ public class My_Projects extends Fragment {
                     case "SUCCESS":
                         Log.d("myProject",jsonObject.toString());
                         JSONArray InternshipArray=new JSONArray();
-                        InternshipArray= jsonObject.getJSONArray("projects");
+                        InternshipArray= jsonObject.getJSONArray("projectsinfo");
                         Projectidlist.clear();
+                        if(InternshipArray.length()==0){
+                            Toast.makeText(getContext(), "you have not applied for any Project", Toast.LENGTH_SHORT).show();
+                        }
                         for(int i=0;i<InternshipArray.length();i++){
-                            JSONObject thisinternship=InternshipArray.getJSONObject(i);
-                            int id=thisinternship.getInt("id");
-                            String result=Integer.toString(id);
-                            Map<String, String> dataMap = new HashMap<String,String>();
-                            dataMap.put("id",result);
-                            Projectidlist.add(id);
-                            userController.getRequest(dataMap, API.PROJECT_DETAIL,responseListener);
+                            JSONObject gigsObject=InternshipArray.getJSONObject(i);
+                            int id=gigsObject.getInt("id");
+                            String cats=gigsObject.getString("cat");
+
+                            String stipend=gigsObject.getString("stipend");
+                            // int per_cost=gigsObject.getInt("per_cost");
+                            String title=gigsObject.getString("title");
+                            String description=gigsObject.getString("des");
+                            String user=gigsObject.getString("user");
+                            String start=gigsObject.getString("start");
+                            String end=gigsObject.getString("end");
+                            String created_at=gigsObject.getString("created_at");
+                            String updated_at=gigsObject.getString("updated_at");
+                            String duration=gigsObject.getString("duration");
+                            String benefits=gigsObject.getString("benefits");
+                            String place=gigsObject.getString("place");
+                            String count=gigsObject.getString("count");
+                            String skills=gigsObject.getString("skills");
+
+                            String proofs=gigsObject.getString("proofs");
+
+
+
+                            ProjectDisplay thisProject = new ProjectDisplay();
+                            thisProject.setId(id);
+                            thisProject.setCat(cats);
+                            thisProject.setTitle(title);
+                            //  Log.d("internship",thisProject.getTitle().toString());
+                            thisProject.setDes(description);
+                            thisProject.setUser(user);
+                            thisProject.setStart(start);
+                            thisProject.setEnd(end);
+                            thisProject.setCreated_at(created_at);
+                            thisProject.setUpdated_at(updated_at);
+                            thisProject.setDuration(duration);
+                            thisProject.setBenifits(benefits);
+                            thisProject.setStipend(stipend);
+                            thisProject.setPlace(place);
+                            thisProject.setCount(count);
+                            thisProject.setSkill(skills);
+                            thisProject.setProofs(proofs);
+                           /* thisgig.setBrand(brand);
+                            thisgig.setId(id);
+                            thisgig.setUser_id(user_id);
+                            thisgig.setPer_cost(per_cost);
+                            thisgig.setCampaign_title(gigs_title);
+                            thisgig.setCats(cats);
+                            thisgig.setDescription(gigs_description);
+                            thisgig.setLogo(logo);
+                            thisgig.setCreated_at_timestamp(created_at);
+                            thisgig.setUpdated_at(updated_at);*/
+                            allProject.add(thisProject);
 
                         }
+                        MyPrjectRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        DesplayProjectAdapter adapter = new DesplayProjectAdapter(allProject);
+                        // Attach the adapter to the recyclerview to populate items
+                        MyPrjectRecyclerView.setAdapter(adapter);
+                        MyPrjectRecyclerView.setHasFixedSize(true);
 
 
 
@@ -234,10 +288,10 @@ public class My_Projects extends Fragment {
         MyPrjectRecyclerView=view.findViewById(R.id.MyprojectRecyclerView);
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
-
+        //dataMap.put("id","4");
         myuserController.getRequest(dataMap, API.MyProject,MyProjectresponseListener);
 
-        MyProjectProgressbar.setVisibility(View.VISIBLE);
+     /*   MyProjectProgressbar.setVisibility(View.VISIBLE);
         Handler handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -263,7 +317,7 @@ public class My_Projects extends Fragment {
 
             }
         },3000);
-
+*/
 
 
 
