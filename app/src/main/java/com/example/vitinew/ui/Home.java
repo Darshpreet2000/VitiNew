@@ -1,6 +1,7 @@
 package com.example.vitinew.ui;
 
 
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 import static android.view.View.GONE;
+import static com.example.vitinew.Classes.SaveSharedPreference.getUserName;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,9 +97,11 @@ public class Home extends Fragment {
         setuptoolbar();
         View view=inflater.inflate(R.layout.fragment_home2, container, false);
         getallwidget(view);
-        Username.setText("Mahavir");
+
         MyAllAppliedgigs();
         MyAllAppliedProject();
+        String username=getUserName(getContext());
+        Username.setText(username);
 
         return view;
 
