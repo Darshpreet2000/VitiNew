@@ -31,9 +31,7 @@ public class Logout extends Fragment {
         Intent intent=new Intent(getContext(),Login_activity.class);
         startActivity(intent);
         getActivity().finish();
-        SaveSharedPreference.setUserName(getActivity(),"");
-        ///delete shared preferences here
-
+     SaveSharedPreference.clear(getActivity());
         return inflater.inflate(null, container, false);
     }
 

@@ -2,7 +2,7 @@ package com.example.vitinew.Util;
 
 public class API {
 
-    public static final String API_DOMAIN = "http://herody.in";
+    public static final String API_DOMAIN = "http://live.herody.in";
     public static final String LOGIN = API_DOMAIN + "/api/user/login";
 
     public static final String USERDETAILS = API_DOMAIN + "/api/user/details";

@@ -35,4 +35,8 @@ public class SaveSharedPreference
     {
         return getSharedPreferences(ctx).getInt(USER_ID, 0);
     }
+    public static void clear(Context ctx){
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+     editor.clear();
+    }
 }
