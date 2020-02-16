@@ -71,6 +71,7 @@ public class My_Gigs extends Fragment {
 
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        //dataMap.put("id","4");
         userController.getRequest(dataMap, API.USERGIGS,responseListener);
     }
 
@@ -101,7 +102,10 @@ public class My_Gigs extends Fragment {
                 switch(code){
                     case "SUCCESS":
                         JSONArray gigsarray=new JSONArray();
-                        gigsarray= jsonObject.getJSONArray("gigs");
+                        gigsarray= jsonObject.getJSONArray("gigsinfo");
+                        if(gigsarray.length()==0){
+                            Toast.makeText(getContext(), "you have not applied for any Gigs", Toast.LENGTH_SHORT).show();
+                        }
                         for(int i=0;i<gigsarray.length();i++){
                             JSONObject gigsObject=gigsarray.getJSONObject(i);
                             int id=gigsObject.getInt("id");
