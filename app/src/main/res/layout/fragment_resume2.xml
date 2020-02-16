@@ -85,23 +85,23 @@
             <TextView
                 android:id="@+id/about_me"
                 android:layout_width="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
-                android:text="About me" />
+                android:text="About me"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_below="@id/about_me"
                 android:id="@+id/projectsrecycle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_me" />
 
             <Button
-                android:layout_below="@id/projectsrecycle"
                 android:id="@+id/project_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/projectsrecycle"
                 android:layout_centerInParent="true"
                 android:width="150dp"
                 android:height="40dp"
@@ -122,23 +122,25 @@
 
             <TextView
                 android:id="@+id/Education"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
-                android:text="Education" />
+                android:text="Education"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/addedu"
                 android:layout_width="match_parent"
-                android:layout_below="@id/Education"
                 android:layout_height="wrap_content"
-                android:id="@+id/addedu"/>
+                android:layout_below="@id/Education" />
+
             <Button
                 android:id="@+id/add_education"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_below="@id/addedu"
+                android:layout_centerInParent="true"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
@@ -161,17 +163,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:text="Experience" />
+                android:text="Experience"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/experienceList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/experienceList"/>
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/addexperiences"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:width="150dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
@@ -182,6 +186,7 @@
                 app:theme="@style/profile_button" />
 
         </LinearLayout>
+
         <RelativeLayout
             android:id="@+id/Skills_relative"
             android:layout_width="match_parent"
@@ -189,24 +194,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_experience">
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/addskillList"
                 android:layout_width="match_parent"
-                android:layout_below="@id/Skills"
                 android:layout_height="wrap_content"
-                android:id="@+id/addskillList"/>
+                android:layout_below="@id/Skills" />
+
             <TextView
                 android:id="@+id/Skills"
                 android:layout_width="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
-                android:text="Skills" />
+                android:text="Skills"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <Button
                 android:id="@+id/Add_Skills"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/addskillList"
                 android:layout_centerHorizontal="true"
                 android:width="150dp"
                 android:height="40dp"
@@ -215,50 +223,57 @@
                 android:minHeight="0dp"
                 android:text="Add Skills"
                 android:textColor="@color/white"
-                android:layout_below="@id/addskillList"
                 app:theme="@style/profile_button" />
 
         </RelativeLayout>
 
         <ProgressBar
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/progressBarResume"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/Hobbies_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Skills_relative">
+            app:layout_constraintTop_toBottomOf="@id/Skills_relative"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Hobbiestext"
                 android:layout_width="wrap_content"
 
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="20dp"
-                android:text="Hobbies" />
+                android:text="Hobbies"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
             <TextView
                 android:id="@+id/hobbytext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_below="@+id/Hobbiestext" />
-
+            </androidx.cardview.widget.CardView>
             <Button
                 android:id="@+id/Add_Hobbies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_below="@+id/hobbytext"
                 android:layout_centerHorizontal="true"
                 android:width="150dp"
@@ -270,7 +285,7 @@
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/achievements"
@@ -286,14 +301,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_margin="20dp"
-                android:text="Achievements" />
+                android:text="Achievements"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <TextView
-                android:id="@+id/achievementstext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/achievementstext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/Add_Achievements"
@@ -315,30 +337,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/achievements"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:orientation="vertical">
+            app:layout_constraintTop_toBottomOf="@id/achievements">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:text="Social Profiles" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:text="Social Profiles"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/socialtext"/>
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/socialtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/Add_Social"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:width="200dp"
                 android:height="40dp"
                 android:background="@drawable/frapp_profile_button"
+                android:gravity="center"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:text="Add Social Profiles"
