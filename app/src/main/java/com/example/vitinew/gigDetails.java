@@ -119,7 +119,6 @@ Log.v("",""+"gig id is"+gig.getId());
        Log.v("",""+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()));
         Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
       //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
-        jsn.put("id",String.valueOf(gig.getId()));
         jsn.put("uid",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
         jsn.put("id",String.valueOf(gig.getId()));
        userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
