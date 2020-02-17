@@ -114,7 +114,7 @@ public class gigDetails extends AppCompatActivity {
 
     private void applynow() throws JSONException {
         JSONObject jsn=new JSONObject();
-        Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
         jsn.put("id",String.valueOf(gig.getId()));
         jsn.put("uid",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
        userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
