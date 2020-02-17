@@ -51,6 +51,7 @@ public class gigDetails extends AppCompatActivity {
         task=findViewById(R.id.tasks);
         userController = new UserController(gigDetails.this);
         Map<String, String> dataMap = new HashMap<String,String>();
+Log.v("",""+"gig id is"+gig.getId());
         dataMap.put("id",String.valueOf(gig.getId()));
         userController.getRequest(dataMap, API.GigsDetails,responseListener);
       apply=findViewById(R.id.applygig);
@@ -81,6 +82,7 @@ public class gigDetails extends AppCompatActivity {
                 Log.d("str",response);
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
+                String image=jsonObject.getString("image");
                 String code=jsonObject.getString("code");
                 switch(code){
                     case "SUCCESS":
@@ -114,9 +116,10 @@ public class gigDetails extends AppCompatActivity {
 
     private void applynow() throws JSONException {
         JSONObject jsn=new JSONObject();
+       Log.v("",""+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()));
         Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
-        jsn.put("id",String.valueOf(gig.getId()));
         jsn.put("uid",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
+        jsn.put("id",String.valueOf(gig.getId()));
        userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
     }
 

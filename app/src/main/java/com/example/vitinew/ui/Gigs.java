@@ -96,7 +96,7 @@ public class Gigs extends Fragment {
                            thisgig.setCampaign_title(gigs_title);
                            thisgig.setCats(cats);
                            thisgig.setDescription(gigs_description);
-                           thisgig.setLogo(logo);
+                           thisgig.setLogo("http://herody.in/assets/employer/profile_images/"+logo);
                            thisgig.setCreated_at_timestamp(created_at);
                            thisgig.setUpdated_at(updated_at);
                            mygigs.add(thisgig);

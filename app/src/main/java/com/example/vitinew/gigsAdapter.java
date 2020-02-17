@@ -1,5 +1,6 @@
 package com.example.vitinew;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.gigsClass;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class gigsAdapter  extends
 
     private List<gigsClass> gigs=new ArrayList<>();
     private OnItemClicked onClick;
-
+ Context context;
     public gigsAdapter(List<gigsClass> gigs, OnItemClicked onClick) {
         this.gigs =gigs;
         this.onClick = onClick;
@@ -58,6 +60,8 @@ public class gigsAdapter  extends
         final gigsClass currentnote=gigs.get(position);
         holder.title.setText(currentnote.getCampaign_title());
         holder.gigsbrand.setText(currentnote.getBrand());
+        Picasso.get().load(currentnote.getLogo()).into(holder.gigsicon);
+
 //        holder.description.setText(String.valueOf(currentnote.getDescription()));
         holder.gigsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
