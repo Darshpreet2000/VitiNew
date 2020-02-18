@@ -12,6 +12,13 @@ public class SaveSharedPreference
     static SharedPreferences getSharedPreferences(Context ctx) {
         return PreferenceManager.getDefaultSharedPreferences(ctx);
     }
+    public static  void ClearSharedPreferences( Context ctx){
+        SharedPreferences s=getSharedPreferences(ctx);
+
+        SharedPreferences.Editor editor = s.edit();
+        editor.clear();
+        editor.commit();
+    }
 
     public static void setUserName(Context ctx, String userName)
     {
