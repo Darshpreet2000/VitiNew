@@ -14,4 +14,8 @@
         android:id="@+id/internships"
         android:icon="@drawable/newtool"
         android:title="Projects" />
+    <item
+        android:id="@+id/campaign"
+        android:icon="@drawable/newtool"
+        android:title="Campaign" />
 </menu>

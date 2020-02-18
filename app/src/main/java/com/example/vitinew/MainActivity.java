@@ -83,7 +83,7 @@ DrawerLayout drawer;
             // Passing each menu ID as a set of Ids because each
             // menu should be considered as top level destinations.
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.home2, R.id.internships, R.id.missions)
+                    R.id.home2, R.id.internships, R.id.missions,R.id.campaign)
                     .setDrawerLayout(drawer)
                     .build();
             navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -129,6 +129,20 @@ DrawerLayout drawer;
                                 public boolean onMenuItemClick(MenuItem item) {
                                     if (item.getItemId() == R.id.mymission)
                                         navController.navigate(R.id.action_missions_to_my_Missions);
+                                    else
+                                        navController.navigate(R.id.action_missions_to_frappProfile);
+                                    return true;
+                                }
+                            });
+                            break;
+
+                        case R.id.campaign:
+                           // set_toolbar_mission();
+                            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                                @Override
+                                public boolean onMenuItemClick(MenuItem item) {
+                                    if (item.getItemId() == R.id.campaign)
+                                        navController.navigate(R.id.action_missions_to_campaign);
                                     else
                                         navController.navigate(R.id.action_missions_to_frappProfile);
                                     return true;

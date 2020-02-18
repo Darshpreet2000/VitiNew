@@ -20,6 +20,7 @@ public class API {
     public static final String EDUCATION = API_DOMAIN + "/api/user/edu";
 
     public static final String Gigs = API_DOMAIN + "/api/gigs";
+    public static final String Campaign=API_DOMAIN+"/api/campaigns";
     public static final String GigsDetails = API_DOMAIN + "/api/gig/details";
 
 
