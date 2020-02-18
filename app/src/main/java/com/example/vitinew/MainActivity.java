@@ -79,6 +79,11 @@ DrawerLayout drawer;
             setSupportActionBar(toolbar);
             drawer = findViewById(R.id.drawer_layout);
             NavigationView navigationView = findViewById(R.id.nav_view);
+
+
+       // SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        TextView Username=(TextView) navigationView.getHeaderView(0).findViewById(R.id.NavHeaderUserName);
+       Username.setText( getUserName(MainActivity.this));
             bottom = findViewById(R.id.bottomnav_view);
             // Passing each menu ID as a set of Ids because each
             // menu should be considered as top level destinations.
