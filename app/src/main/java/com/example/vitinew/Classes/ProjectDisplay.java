@@ -4,8 +4,40 @@ import java.io.Serializable;
 
 public class ProjectDisplay implements Serializable {
     int id;
-    String title,des,cat,start,end,duration,stipend,benifits,place,count,skill,
-    proofs,user,created_at,updated_at;
+    String title,des,cat,start,end,duration,stipend,benefits,place,count,skill,
+    proofs,user,created_at,updated_at,CompanyName,AboutCompany,Position,WorkPlace,AboutProject;
+
+    public String getAboutProject() {
+        return AboutProject;
+    }
+
+    public void setAboutProject(String aboutProject) {
+        AboutProject = aboutProject;
+    }
+
+    public String getWorkPlace() {
+        return WorkPlace;
+    }
+
+    public void setWorkPlace(String workPlace) {
+        WorkPlace = workPlace;
+    }
+
+    public String getCompanyName() {
+        return CompanyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        CompanyName = companyName;
+    }
+
+    public String getAboutCompany() {
+        return AboutCompany;
+    }
+
+    public void setAboutCompany(String aboutCompany) {
+        AboutCompany = aboutCompany;
+    }
 
     public ProjectDisplay() {
     }
@@ -74,12 +106,28 @@ public class ProjectDisplay implements Serializable {
         this.stipend = stipend;
     }
 
+    public String getBenefits() {
+        return benefits;
+    }
+
+    public void setBenefits(String benefits) {
+        this.benefits = benefits;
+    }
+
+    public String getPosition() {
+        return Position;
+    }
+
+    public void setPosition(String position) {
+        Position = position;
+    }
+
     public String getBenifits() {
-        return benifits;
+        return benefits;
     }
 
     public void setBenifits(String benifits) {
-        this.benifits = benifits;
+        this.benefits = benifits;
     }
 
     public String getPlace() {

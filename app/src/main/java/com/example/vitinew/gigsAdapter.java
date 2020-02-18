@@ -58,7 +58,7 @@ public class gigsAdapter  extends
         final gigsClass currentnote=gigs.get(position);
         holder.title.setText(currentnote.getCampaign_title());
         holder.gigsbrand.setText(currentnote.getBrand());
-        holder.description.setText(String.valueOf(currentnote.getDescription()));
+//        holder.description.setText(String.valueOf(currentnote.getDescription()));
         holder.gigsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class gigsAdapter  extends
 
     public class gigsholder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView title;
-        private TextView gigscat;
+
         private TextView gigsbrand;
         private TextView description;
         private  ImageView gigsicon;
@@ -89,9 +89,8 @@ public class gigsAdapter  extends
             super(itemView);
             title=itemView.findViewById(R.id.gigstitle);
             gigsicon=itemView.findViewById(R.id.gigsicon);
-            gigscat=itemView.findViewById(R.id.gigscats);
             gigsbrand=itemView.findViewById(R.id.gigsbrand);
-            description=itemView.findViewById(R.id.gigs_description);
+         //   description=itemView.findViewById(R.id.gigs_description);
             gigsLayout=itemView.findViewById(R.id.gigs_layout);
         }
 

@@ -106,6 +106,7 @@ public class Login_activity extends BaseActivity {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code=jsonObject.getString("code");
+                Log.d("logincode",code);
                 switch(code){
                     case "SUCCESS":
                         JSONObject user=new JSONObject();

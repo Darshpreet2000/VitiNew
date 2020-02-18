@@ -9,6 +9,7 @@ public class gigsClass implements Serializable {
     String brand;
     String created_at_timestamp;
     String updated_at;
+    String logo;
     int per_cost;
 
     public int getPer_cost() {
@@ -27,7 +28,7 @@ public class gigsClass implements Serializable {
         this.logo = logo;
     }
 
-    String logo,user_id;
+    String user_id;
     int id;
 
     public String getUser_id() {

@@ -4,6 +4,8 @@ package com.example.vitinew.ui;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -40,11 +43,14 @@ import static android.view.View.GONE;
  * A simple {@link Fragment} subclass.
  */
 public class Gigs extends Fragment {
+    gigsClass thisgig = new gigsClass();
 
     UserController userController;
     Toolbar toolbar;
+
     ProgressBar progressBarRegister;
     RecyclerView gigsRecyclerview;
+    Button apply;
     private List<gigsClass> mygigs = new ArrayList<>();
     public Gigs() {
         // Required empty
@@ -83,7 +89,6 @@ public class Gigs extends Fragment {
                             String logo=gigsObject.getString("logo");
                             String created_at=gigsObject.getString("created_at");
                             String updated_at=gigsObject.getString("updated_at");
-                            gigsClass thisgig = new gigsClass();
                            thisgig.setBrand(brand);
                            thisgig.setId(id);
                            thisgig.setUser_id(user_id);
@@ -145,8 +150,6 @@ public class Gigs extends Fragment {
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
         userController.getRequest(dataMap, API.Gigs,responseListener);
 
-
-
         // Create adapter passing in the sample user data
 
         // Set projectlist manager to position the items
@@ -162,5 +165,13 @@ public class Gigs extends Fragment {
         toolbar.setBackgroundColor(getResources().getColor(R.color.white));
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+
 
 }

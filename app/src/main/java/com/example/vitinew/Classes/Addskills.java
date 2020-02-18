@@ -1,7 +1,21 @@
 package com.example.vitinew.Classes;
 
 public class Addskills {
-    String skillname,rating;
+    String skillname,rating,id;
+
+    public Addskills(String skillname, String rating, String id) {
+        this.skillname = skillname;
+        this.rating = rating;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Addskills(String skillname, String rating) {
         this.skillname = skillname;
