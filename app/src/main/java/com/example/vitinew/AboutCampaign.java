@@ -197,7 +197,7 @@ public class AboutCampaign extends AppCompatActivity {
         public void onError(VolleyError error) {
             String s = "";
             error.printStackTrace();
-            Toast.makeText(AboutCampaign.this, "something wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AboutCampaign.this, "Apply Limit Exceeded", Toast.LENGTH_SHORT).show();
         }
     };
 

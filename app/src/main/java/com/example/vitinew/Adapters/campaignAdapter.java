@@ -73,7 +73,6 @@ public class campaignAdapter extends  RecyclerView.Adapter<campaignAdapter.campa
             public void onClick(View v) {
                 Intent intent =new Intent(v.getContext(), AboutCampaign.class);
                 intent.putExtra("class", (Serializable) currentnote);
-
                 v.getContext().startActivity(intent);
             }
         });

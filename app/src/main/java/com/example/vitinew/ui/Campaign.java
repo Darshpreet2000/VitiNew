@@ -85,7 +85,7 @@ public class Campaign extends Fragment {
                             thisclass.setUcount(campaignObject.getInt("ucount"));
                             thisclass.setTitle(campaignObject.getString("title"));
                             thisclass.setBrand(campaignObject.getString("brand"));
-                            thisclass.setLogo(campaignObject.getString("logo"));
+                            thisclass.setLogo("http://live.herody.in/assets/admin/img/camp-brand-logo/"+campaignObject.getString("logo"));
                             thisclass.setDes(campaignObject.getString("des"));
                             thisclass.setStart(campaignObject.getString("start"));
                             thisclass.setBefore(campaignObject.getString("before"));
