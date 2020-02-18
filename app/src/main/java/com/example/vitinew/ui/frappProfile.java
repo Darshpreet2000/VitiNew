@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -40,6 +41,8 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpResponse;
 import com.android.volley.toolbox.Volley;
+import com.example.vitinew.Adapters.DesplayProjectAdapter;
+import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
@@ -48,8 +51,7 @@ import com.example.vitinew.Webrequest.MultiPartRequest;
 import com.example.vitinew.Webrequest.ResponseListener;
 import com.example.vitinew.gigsAdapter;
 
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
+import net.gotev.uploadservice.protocols.multipart.MultipartUploadRequest;
 
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.params.HttpConnectionParams;
@@ -66,10 +68,18 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyStore;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.http.HTTP;
 
 import static android.app.Activity.RESULT_OK;
@@ -108,7 +118,7 @@ public class frappProfile extends Fragment {
                 String code = jsonObject.getString("code");
                 switch (code) {
                     case "SUCCESS":
-
+                        Toast.makeText(getContext(), "Data Uploaded", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         Toast.makeText(getContext(), "something wrong", Toast.LENGTH_SHORT).show();
@@ -151,6 +161,10 @@ public class frappProfile extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getallwidgets();
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         user = new UserController(getContext());
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +178,12 @@ public class frappProfile extends Fragment {
             public void onClick(View v) {
 
                 JSONObject request = generaterequest();
-                createProduct(request.toString());
+                UserController user=new UserController(getContext());
+                user.postWithJsonRequest(API.PROFILE,request,responseListener);
+                String path=getPath(filePath);
+                      //  uploadFile(path);
+                        fileUploadFunction(path);
+                //createProduct(String.valueOf(SaveSharedPreference.getUserId(getContext())));
             }
         });
     }
@@ -290,16 +309,6 @@ public class frappProfile extends Fragment {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
-                File f = new File(getContext().getCacheDir(), "driver_image.jpg");
-                f.createNewFile();
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
-                byte[] bitmapdata = bos.toByteArray();
-                FileOutputStream fos = new FileOutputStream(f);
-                fos.write(bitmapdata);
-                fos.flush();
-                fos.close();
-                mFile = f;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -309,7 +318,7 @@ public class frappProfile extends Fragment {
     private void createProduct(String data) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Map<String, String> mHeader = new HashMap<>();
-        MultiPartRequest mMultipartRequest = new MultiPartRequest(API.PROFILE, new Response.ErrorListener() {
+        MultiPartRequest mMultipartRequest = new MultiPartRequest(API.IMAGE+"?id="+data, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(final VolleyError error) {
                 String s = "";
@@ -344,8 +353,70 @@ public class frappProfile extends Fragment {
                     e.printStackTrace();
                 }
             }
-        }, mFile,data,mHeader);
+        }, mFile,mHeader);
         mMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(50000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(mMultipartRequest);
+    }
+    public void fileUploadFunction(String path) {
+        try {
+            String uploadId = UUID.randomUUID().toString();
+
+            //Creating a multi part request
+            MultipartUploadRequest request = new MultipartUploadRequest(getActivity(), API.IMAGE)
+                    .setMethod("POST");
+            request.addParameter("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+            request.addFileToUpload(path, "profile_image");
+           // request.setNotificationConfig(new UploadNotificationConfig());
+            request.setMaxRetries(2);
+
+            request.startUpload(); //Starting the upload
+
+        } catch (Exception exc) {
+            Toast.makeText(getContext(), exc.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("Profile",exc.getMessage());
+        }
+    }
+    private int uploadFile(String imagePath) {
+        Log.i("PATH",imagePath);
+        OkHttpClient client = new OkHttpClient();
+        File fileSource = new File(imagePath);
+        if (fileSource.isFile()){
+            Log.i("EXIST","exist");
+        }else {
+            Log.i("NOT EXIST","not exist");
+        }
+        final MediaType MEDIA_TYPE;
+        String imageType;
+        if (imagePath.endsWith("png")){
+            MEDIA_TYPE = MediaType.parse("image/png");
+            imageType = ".png";
+        }else {
+            MEDIA_TYPE = MediaType.parse("image/jpeg");
+            imageType = ".jpg";
+        }
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
+        String fileName = "Image_"+timeStamp+imageType;
+
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("id",String.valueOf(SaveSharedPreference.getUserId(getContext())))
+                .addFormDataPart("profile_image",fileName, RequestBody.create(MEDIA_TYPE,fileSource))
+                .build();
+        Request request = new Request.Builder()
+                .url(API.IMAGE)//your webservice url
+                .post(requestBody)
+                .build();
+        try {
+            okhttp3.Response response = client.newCall(request).execute();
+            if (response.isSuccessful()){
+                Log.i("SUCC",""+response.message());
+            }
+            String resp = response.message();
+            Log.i("MSG",resp);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

@@ -47,4 +47,6 @@ public class API {
     public static final String GIGSAPPLY = API_DOMAIN + "/api/gig/apply";
     public static final String USERGIGS = API_DOMAIN + "/api/user/gigs";
     public static final String PROFILE = API_DOMAIN + "/api/user/profileUpdate";
+    public static final String IMAGE = API_DOMAIN + "/api/user/profileImage";
+
 }

@@ -23,20 +23,17 @@ public class MultiPartRequest extends Request<String> {
 
     MultipartEntityBuilder entity = MultipartEntityBuilder.create();
     private HttpEntity httpentity;
-    private static final String FILE_PART_NAME = "profile_photo";
-    private static final String STRING_PART_NAME = "data";
+    private static final String FILE_PART_NAME = "profile_image";
     private final Response.Listener<String> mListener;
     private final File mFilePart;
-    private final String mStringPart;
     Map<String, String> header;
 
-    public MultiPartRequest(String url, Response.ErrorListener errorListener, Response.Listener<String> listener, File file, String stringPart,Map<String, String> header)
+    public MultiPartRequest(String url, Response.ErrorListener errorListener, Response.Listener<String> listener, File file,Map<String, String> header)
     {
         super(Method.POST, url, errorListener);
 
         mListener = listener;
         mFilePart = file;
-        mStringPart = stringPart;
         this.header = header;
         buildMultipartEntity();
         httpentity = entity.build();
@@ -47,14 +44,7 @@ public class MultiPartRequest extends Request<String> {
         if (mFilePart!=null){
             entity.addPart(FILE_PART_NAME, new FileBody(mFilePart));
         }
-        try
-        {
-            entity.addPart("", new StringBody(mStringPart));
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            VolleyLog.e("UnsupportedEncodingException");
-        }
+
     }
 
     @Override
