@@ -68,7 +68,6 @@ public class gigsAdapter  extends
             public void onClick(View v) {
                 Intent intent =new Intent(v.getContext(),gigDetails.class);
                 intent.putExtra("class",currentnote);
-
                 v.getContext().startActivity(intent);
             }
         });

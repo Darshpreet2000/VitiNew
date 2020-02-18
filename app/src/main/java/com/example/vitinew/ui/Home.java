@@ -48,13 +48,11 @@ public class Home extends Fragment {
     private List<ProjectDisplay> allProject = new ArrayList<>();
     TextView Username,navHeaderUserName;
     UserController userController;
-    gigsClass thisgig = new gigsClass();
     ProgressBar progressBarRegister;
     UserController myuserController;
     RecyclerView MyPrjectRecyclerView;
     ProgressBar MyProjectProgressbar;
     private List<gigsClass> mygigs = new ArrayList<>();
-
     RecyclerView gigsRecyclerview;
     private  void getallwidget(View view){
         Username= view.findViewById(R.id.username);
@@ -151,6 +149,7 @@ public class Home extends Fragment {
                             String logo=gigsObject.getString("logo");
                             String created_at=gigsObject.getString("created_at");
                             String updated_at=gigsObject.getString("updated_at");
+                            gigsClass thisgig = new gigsClass();
                             thisgig.setBrand(brand);
                             thisgig.setId(id);
                             thisgig.setUser_id(user_id);
@@ -158,7 +157,7 @@ public class Home extends Fragment {
                             thisgig.setCampaign_title(gigs_title);
                             thisgig.setCats(cats);
                             thisgig.setDescription(gigs_description);
-                            thisgig.setLogo(logo);
+                            thisgig.setLogo("http://herody.in/assets/employer/profile_images/"+logo);
                             thisgig.setCreated_at_timestamp(created_at);
                             thisgig.setUpdated_at(updated_at);
                             mygigs.add(thisgig);

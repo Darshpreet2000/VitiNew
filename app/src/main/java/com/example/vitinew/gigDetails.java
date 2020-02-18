@@ -116,12 +116,12 @@ Log.v("",""+"gig id is"+gig.getId());
 
     private void applynow() throws JSONException {
         JSONObject jsn=new JSONObject();
-       Log.v("",""+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()));
-        Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "id="+String.valueOf(gig.getId()+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))), Toast.LENGTH_SHORT).show();
       //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
-        jsn.put("id",String.valueOf(gig.getId()));
-        jsn.put("uid",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
-       userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
+     String id=String.valueOf(gig.getId());
+        String  uid=String.valueOf(SaveSharedPreference.getUserId(gigDetails.this));
+        userController.postWithJsonRequest(API.GIGSAPPLY+"?id="+id+"&uid="+uid,jsn,applyListener);
+        Log.v("JSON is",jsn.toString());
     }
 
     private final ResponseListener applyListener = new ResponseListener() {
@@ -141,11 +141,11 @@ Log.v("",""+"gig id is"+gig.getId());
                 switch(code){
                     case "SUCCESS":
 
-                        Toast.makeText(gigDetails.this, "Applied Successfulley", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(gigDetails.this, "Applied Successfully", Toast.LENGTH_SHORT).show();
 
                         break;
                     default:
-                        Toast.makeText(gigDetails.this, "something wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(gigDetails.this, ""+code, Toast.LENGTH_SHORT).show();
                         break;
 
                 }
@@ -159,8 +159,8 @@ Log.v("",""+"gig id is"+gig.getId());
         @Override
         public void onError(VolleyError error) {
             String s = "";
+            error.printStackTrace();
             Toast.makeText(gigDetails.this, "something wrong", Toast.LENGTH_SHORT).show();
-
         }
     };
 
