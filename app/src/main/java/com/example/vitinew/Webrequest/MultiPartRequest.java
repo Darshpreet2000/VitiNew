@@ -23,9 +23,8 @@ public class MultiPartRequest extends Request<String> {
 
     MultipartEntityBuilder entity = MultipartEntityBuilder.create();
     private HttpEntity httpentity;
-    private static final String FILE_PART_NAME = "image";
+    private static final String FILE_PART_NAME = "profile_photo";
     private static final String STRING_PART_NAME = "data";
-
     private final Response.Listener<String> mListener;
     private final File mFilePart;
     private final String mStringPart;
@@ -50,7 +49,7 @@ public class MultiPartRequest extends Request<String> {
         }
         try
         {
-            entity.addPart(STRING_PART_NAME, new StringBody(mStringPart));
+            entity.addPart("", new StringBody(mStringPart));
         }
         catch (UnsupportedEncodingException e)
         {

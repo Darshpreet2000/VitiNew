@@ -104,7 +104,7 @@ DrawerLayout drawer;
             navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
                 @Override
                 public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                    if (destination.getId() != R.id.internships && destination.getId() != R.id.missions && destination.getId() != R.id.home2) {
+                    if (destination.getId() != R.id.internships && destination.getId() != R.id.missions && destination.getId() != R.id.home2&&destination.getId()!=R.id.campaign) {
                         // add code calling your old flow here
                         hideBottomNavigationView(bottom);
                     } else {
