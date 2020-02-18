@@ -143,7 +143,7 @@ String name,phone,email;
                         JSONObject user=jsonObject.getJSONObject("user");
                         SaveSharedPreference.setUserId(LoginRegister.this,Integer.parseInt(String.valueOf(user.get("id"))));
 
-                        SaveSharedPreference.setUserName(LoginRegister.this,String.valueOf(user.get("name")));
+                        SaveSharedPreference.setUserName(LoginRegister.this,name);
                         Toast.makeText(LoginRegister.this, "Logging Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginRegister.this,MainActivity.class));
                         finish();
