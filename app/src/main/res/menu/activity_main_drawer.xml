@@ -29,6 +29,9 @@
         <item
             android:id="@+id/logout2"
             android:title="@string/logout" />
-</group>
+        <item
+            android:id="@+id/frappProfile"
+            android:title="My Profile" />
+    </group>
 
 </menu>

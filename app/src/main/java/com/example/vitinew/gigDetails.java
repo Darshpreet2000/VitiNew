@@ -51,6 +51,7 @@ public class gigDetails extends AppCompatActivity {
         task=findViewById(R.id.tasks);
         userController = new UserController(gigDetails.this);
         Map<String, String> dataMap = new HashMap<String,String>();
+Log.v("",""+"gig id is"+gig.getId());
         dataMap.put("id",String.valueOf(gig.getId()));
         userController.getRequest(dataMap, API.GigsDetails,responseListener);
       apply=findViewById(R.id.applygig);
@@ -81,6 +82,7 @@ public class gigDetails extends AppCompatActivity {
                 Log.d("str",response);
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
+                String image=jsonObject.getString("image");
                 String code=jsonObject.getString("code");
                 switch(code){
                     case "SUCCESS":
@@ -114,9 +116,12 @@ public class gigDetails extends AppCompatActivity {
 
     private void applynow() throws JSONException {
         JSONObject jsn=new JSONObject();
-        jsn.put("id",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
-        jsn.put("uid",String.valueOf(gig.getId()));
-       userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
+        Toast.makeText(this, "id="+String.valueOf(gig.getId()+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
+     String id=String.valueOf(gig.getId());
+        String  uid=String.valueOf(SaveSharedPreference.getUserId(gigDetails.this));
+        userController.postWithJsonRequest(API.GIGSAPPLY+"?id="+id+"&uid="+uid,jsn,applyListener);
+        Log.v("JSON is",jsn.toString());
     }
 
     private final ResponseListener applyListener = new ResponseListener() {
@@ -136,11 +141,11 @@ public class gigDetails extends AppCompatActivity {
                 switch(code){
                     case "SUCCESS":
 
-                        Toast.makeText(gigDetails.this, "Applied Successfulley", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(gigDetails.this, "Applied Successfully", Toast.LENGTH_SHORT).show();
 
                         break;
                     default:
-                        Toast.makeText(gigDetails.this, "something wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(gigDetails.this, ""+code, Toast.LENGTH_SHORT).show();
                         break;
 
                 }
@@ -154,8 +159,8 @@ public class gigDetails extends AppCompatActivity {
         @Override
         public void onError(VolleyError error) {
             String s = "";
+            error.printStackTrace();
             Toast.makeText(gigDetails.this, "something wrong", Toast.LENGTH_SHORT).show();
-
         }
     };
 

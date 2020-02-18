@@ -43,7 +43,6 @@ import static android.view.View.GONE;
  * A simple {@link Fragment} subclass.
  */
 public class Gigs extends Fragment {
-    gigsClass thisgig = new gigsClass();
 
     UserController userController;
     Toolbar toolbar;
@@ -87,8 +86,8 @@ public class Gigs extends Fragment {
                             String user_id=gigsObject.getString("user_id");
                             String brand=gigsObject.getString("brand");
                             String logo=gigsObject.getString("logo");
-                            String created_at=gigsObject.getString("created_at");
-                            String updated_at=gigsObject.getString("updated_at");
+
+                            gigsClass thisgig = new gigsClass();
                            thisgig.setBrand(brand);
                            thisgig.setId(id);
                            thisgig.setUser_id(user_id);
@@ -96,14 +95,8 @@ public class Gigs extends Fragment {
                            thisgig.setCampaign_title(gigs_title);
                            thisgig.setCats(cats);
                            thisgig.setDescription(gigs_description);
-                           thisgig.setLogo(logo);
-                           thisgig.setCreated_at_timestamp(created_at);
-                           thisgig.setUpdated_at(updated_at);
+                           thisgig.setLogo("http://herody.in/assets/employer/profile_images/"+logo);
                            mygigs.add(thisgig);
-
-
-
-
                         }
                         gigsRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
                         gigsAdapter adapter = new gigsAdapter(mygigs);

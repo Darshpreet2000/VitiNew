@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.frappProfile">
     <ImageView
-        app:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
         android:layout_margin="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/userimage_on_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,13 +19,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/constraint2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/userimage_on_profile"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintLeft_toRightOf="@id/userimage_on_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
      <TextView
-         app:layout_constraintLeft_toLeftOf="parent"
-         app:layout_constraintTop_toTopOf="parent"
+         card_view:layout_constraintLeft_toLeftOf="parent"
+         card_view:layout_constraintTop_toTopOf="parent"
          android:paddingBottom="10dp"
          android:textSize="20sp"
          android:textColor="@color/black"
@@ -36,57 +36,89 @@
          android:text="Darshpreet Singh"/>
         <ImageView
             android:id="@+id/phone_profile"
-            app:layout_constraintTop_toBottomOf="@id/username_frappprofile"
-            app:layout_constraintLeft_toLeftOf="@id/username_frappprofile"
+            android:layout_marginTop="18dp"
+            card_view:layout_constraintTop_toBottomOf="@id/username_frappprofile"
+            card_view:layout_constraintLeft_toLeftOf="@id/username_frappprofile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/phone_no"/>
-        <TextView
-            app:layout_constraintTop_toBottomOf="@id/username_frappprofile"
-            app:layout_constraintLeft_toLeftOf="parent"
+        <EditText
+            card_view:layout_constraintTop_toBottomOf="@id/username_frappprofile"
+            card_view:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/phone_number"
-            android:paddingLeft="30dp"
-            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:inputType="phone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="8826200426"/>
+            android:hint="phone number"/>
         <ImageView
             android:id="@+id/email_ic"
             android:paddingTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/phone_profile"
-            app:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/phone_profile"
+            card_view:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/email"/>
-        <TextView
-            app:layout_constraintTop_toTopOf="@id/phone_number"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:paddingLeft="30dp"
+        <EditText
+            card_view:layout_constraintTop_toTopOf="@id/phone_number"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:id="@+id/email"
-            android:text="dsingh200021@gmail.com"
+            android:layout_width="match_parent"
+            android:id="@+id/name"
+            android:hint="name"
+            android:layout_height="wrap_content"/>
+        <EditText
+            card_view:layout_constraintTop_toTopOf="@id/name"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="30dp"
+               android:id="@+id/city"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:hint="City"
             android:layout_height="wrap_content"/>
         <ImageView
             android:paddingTop="10dp"
             android:id="@+id/location_ic"
-            app:layout_constraintTop_toBottomOf="@id/email_ic"
-            app:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/email_ic"
+            card_view:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/location"/>
 
-        <TextView
-            app:layout_constraintTop_toTopOf="@id/email"
-            app:layout_constraintLeft_toLeftOf="parent"
+        <EditText
+            card_view:layout_constraintTop_toTopOf="@id/city"
+            card_view:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="30dp"
-            android:paddingLeft="30dp"
-            android:layout_width="wrap_content"
-            android:text="Delhi"
+            android:id="@+id/state"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:hint="State"
             android:layout_height="wrap_content"/>
+<ProgressBar
+    card_view:layout_constraintEnd_toEndOf="parent"
+    card_view:layout_constraintTop_toTopOf="parent"
+    card_view:layout_constraintLeft_toLeftOf="parent"
+    card_view:layout_constraintRight_toRightOf="parent"
+    android:visibility="gone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/progressbar"/>
+        <EditText
+            card_view:layout_constraintTop_toTopOf="@id/state"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="30dp"
+            android:id="@+id/zip"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:hint="Zip"
+            android:inputType="phone"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        app:layout_constraintTop_toBottomOf="@id/constraint2"
+        card_view:layout_constraintTop_toBottomOf="@id/constraint2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/card_view"
@@ -96,7 +128,7 @@
         card_view:cardElevation="1dp"
         card_view:cardUseCompatPadding="true">
         <RelativeLayout
-            app:layout_constraintTop_toBottomOf="@id/constraint2"
+            card_view:layout_constraintTop_toBottomOf="@id/constraint2"
             android:layout_margin="20dp"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
@@ -114,11 +146,10 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
-        app:layout_constraintTop_toBottomOf="@id/card_view"
+        card_view:layout_constraintTop_toBottomOf="@id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/card_view2"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="10dp"
         card_view:cardUseCompatPadding="true"
@@ -126,134 +157,142 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
+
             <TextView
-                android:paddingTop="10dp"
-                android:paddingLeft="10dp"
-                android:textSize="18sp"
-                android:textColor="@color/black"
                 android:id="@+id/mainheading1"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Skills and Talents"/>
-
-            <TextView
-               android:layout_below="@id/mainheading1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="-1dp"
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="what are you good at?"/>
-            <Button
-                app:theme="@style/profile_button"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:height="40dp"
-                android:width="100dp"
-                android:textColor="@color/white"
-                android:background="@drawable/frapp_profile_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="10dp"
-                android:text="Add skills"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        app:layout_constraintTop_toBottomOf="@id/card_view2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/card_view3"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardBackgroundColor="@color/white"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="1dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
-            <TextView
                 android:paddingTop="10dp"
-                android:paddingLeft="10dp"
+                android:text="Address"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:id="@+id/mainheading2"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profession"/>
-
-            <TextView
-                android:layout_below="@id/mainheading2"
-                android:paddingLeft="10dp"
-                android:textSize="16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="What do you currently do?"/>
-            <Button
-                app:theme="@style/profile_button"
-                android:textColor="@color/white"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:height="40dp"
-                android:width="160dp"
-                android:background="@drawable/frapp_profile_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="10dp"
-                android:text="Add profession"/>
+                android:textStyle="bold" />
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:layout_margin="10dp"
+                android:id="@+id/address"
+                android:layout_below="@id/mainheading1"
+                android:layout_height="100dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        app:layout_constraintTop_toBottomOf="@id/card_view3"
+        android:id="@+id/card_view3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/card_view4"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="1dp"
-        card_view:cardUseCompatPadding="true">
-        <RelativeLayout
+        card_view:cardUseCompatPadding="true"
+        card_view:layout_constraintTop_toBottomOf="@id/card_view2">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
-            <TextView
-                android:paddingTop="10dp"
-                android:textColor="@color/black"
-                android:paddingLeft="10dp"
-                android:textSize="18sp"
-                android:id="@+id/mainheading3"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Languages"/>
+            android:layout_height="150dp"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_below="@id/mainheading3"
+                android:id="@+id/mainheading2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:paddingTop="10dp"
+                android:text="Referall code"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="What do you speak?"/>
-            <Button
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:height="40dp"
-                android:width="160dp"
-                app:theme="@style/profile_button"
-                android:textColor="@color/white"
-                android:background="@drawable/frapp_profile_button"
+                android:layout_below="@id/mainheading2"
+                android:layout_margin="10dp"
+                android:paddingLeft="10dp"
+                android:text="Use this code to invite your friends to use the platform, and you will get 5% of your friend's earnings."
+                android:textSize="16sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="10dp"
-                android:text="Add language"/>
-        </RelativeLayout>
+                android:layout_margin="10dp"
+                android:hint="Code" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="1dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:layout_constraintTop_toBottomOf="@id/card_view3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/mainheading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Upload a pic"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/uploadimage"
+                android:layout_centerHorizontal="true"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_below="@id/mainheading3"
+                android:layout_margin="10dp" />
+
+            <Button
+                android:id="@+id/upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/uploadimage"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:width="160dp"
+                android:height="40dp"
+                android:background="@drawable/frapp_profile_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:text="Upload"
+                android:textColor="@color/white"
+                card_view:theme="@style/profile_button" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <Button
+        card_view:layout_constraintTop_toBottomOf="@id/card_view4"
+        card_view:layout_constraintLeft_toLeftOf="parent"
+        card_view:layout_constraintRight_toRightOf="parent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:height="40dp"
+        android:width="200dp"
+        android:id="@+id/save"
+        card_view:theme="@style/profile_button"
+        android:textColor="@color/white"
+        android:background="@drawable/frapp_profile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:text="Save Changes"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
