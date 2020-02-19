@@ -148,8 +148,7 @@ DrawerLayout drawer;
                                 public boolean onMenuItemClick(MenuItem item) {
                                     if (item.getItemId() == R.id.campaign)
                                         navController.navigate(R.id.action_missions_to_campaign);
-                                    else
-                                        navController.navigate(R.id.action_missions_to_frappProfile);
+
                                     return true;
                                 }
                             });
