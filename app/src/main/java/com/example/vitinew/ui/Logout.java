@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.vitinew.Classes.SaveSharedPreference;
+import com.example.vitinew.LoginRegister;
 import com.example.vitinew.Login_activity;
 
 /**
@@ -28,12 +29,11 @@ public class Logout extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the projectlist for this fragment
-        Intent intent=new Intent(getContext(),Login_activity.class);
+        Intent intent=new Intent(getContext(), LoginRegister.class);
         startActivity(intent);
         getActivity().finish();
-        SaveSharedPreference.setUserName(getActivity(),"");
-        ///delete shared preferences here
-
+     //SaveSharedPreference.clear(getActivity());
+     SaveSharedPreference.ClearSharedPreferences(getContext());
         return inflater.inflate(null, container, false);
     }
 

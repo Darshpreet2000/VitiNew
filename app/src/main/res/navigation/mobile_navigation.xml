@@ -90,6 +90,9 @@
         <action
             android:id="@+id/action_missions_to_frappProfile"
             app:destination="@id/frappProfile" />
+        <action
+            android:id="@+id/action_missions_to_campaign"
+            app:destination="@id/campaign" />
     </fragment>
     <fragment
         android:id="@+id/search2"
@@ -141,4 +144,9 @@
         android:name="com.example.vitinew.ui.ResumeExtra.AddSocial"
         android:label="fragment_add_social"
         tools:layout="@layout/fragment_add_social" />
+    <fragment
+        android:id="@+id/campaign"
+        android:name="com.example.vitinew.ui.Campaign"
+        android:label="campaign"
+        tools:layout="@layout/campaign" />
 </navigation>

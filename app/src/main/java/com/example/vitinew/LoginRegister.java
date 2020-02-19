@@ -34,6 +34,15 @@ String name,phone,email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
+        if(SaveSharedPreference.getUserName(LoginRegister.this).length() == 0)
+        {
+            // call Login Activity
+        }
+        else
+        { startActivity(new Intent(LoginRegister.this,MainActivity.class));
+            finish();
+            // Stay at the current activity.
+        }
 
     }
     private final ITrueCallback sdkCallback = new ITrueCallback() {
@@ -131,6 +140,10 @@ String name,phone,email;
                 String code=jsonObject.getString("code");
                 switch(code){
                     case "SUCCESS":
+                        JSONObject user=jsonObject.getJSONObject("user");
+                        SaveSharedPreference.setUserId(LoginRegister.this,Integer.parseInt(String.valueOf(user.get("id"))));
+
+                        SaveSharedPreference.setUserName(LoginRegister.this,name);
                         Toast.makeText(LoginRegister.this, "Logging Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginRegister.this,MainActivity.class));
                         finish();

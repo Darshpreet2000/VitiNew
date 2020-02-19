@@ -44,7 +44,6 @@ import static android.view.View.GONE;
 public class My_Gigs extends Fragment {
     Toolbar toolbar;
     UserController userController;
-    gigsClass thisgig = new gigsClass();
     ProgressBar progressBarRegister;
     private List<gigsClass> mygigs = new ArrayList<>();
 
@@ -70,7 +69,9 @@ public class My_Gigs extends Fragment {
         userController = new UserController(getContext());
 
         Map<String, String> dataMap = new HashMap<String,String>();
+      Log.e("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
         dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        //dataMap.put("id","4");
         userController.getRequest(dataMap, API.USERGIGS,responseListener);
     }
 
@@ -101,7 +102,10 @@ public class My_Gigs extends Fragment {
                 switch(code){
                     case "SUCCESS":
                         JSONArray gigsarray=new JSONArray();
-                        gigsarray= jsonObject.getJSONArray("gigs");
+                        gigsarray= jsonObject.getJSONArray("gigsinfo");
+                        if(gigsarray.length()==0){
+                            Toast.makeText(getContext(), "you have not applied for any Gigs", Toast.LENGTH_SHORT).show();
+                        }
                         for(int i=0;i<gigsarray.length();i++){
                             JSONObject gigsObject=gigsarray.getJSONObject(i);
                             int id=gigsObject.getInt("id");
@@ -114,6 +118,7 @@ public class My_Gigs extends Fragment {
                             String logo=gigsObject.getString("logo");
                             String created_at=gigsObject.getString("created_at");
                             String updated_at=gigsObject.getString("updated_at");
+                            gigsClass thisgig = new gigsClass();
                             thisgig.setBrand(brand);
                             thisgig.setId(id);
                             thisgig.setUser_id(user_id);
@@ -121,7 +126,7 @@ public class My_Gigs extends Fragment {
                             thisgig.setCampaign_title(gigs_title);
                             thisgig.setCats(cats);
                             thisgig.setDescription(gigs_description);
-                            thisgig.setLogo(logo);
+                            thisgig.setLogo("http://herody.in/assets/employer/profile_images/"+logo);
                             thisgig.setCreated_at_timestamp(created_at);
                             thisgig.setUpdated_at(updated_at);
                             mygigs.add(thisgig);
