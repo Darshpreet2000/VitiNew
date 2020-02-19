@@ -161,10 +161,6 @@ public class Home extends Fragment {
                             thisgig.setCreated_at_timestamp(created_at);
                             thisgig.setUpdated_at(updated_at);
                             mygigs.add(thisgig);
-
-
-
-
                         }
                         gigsRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
                         gigsAdapter adapter = new gigsAdapter(mygigs);

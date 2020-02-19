@@ -86,7 +86,6 @@ public class Gigs extends Fragment {
                             String user_id=gigsObject.getString("user_id");
                             String brand=gigsObject.getString("brand");
                             String logo=gigsObject.getString("logo");
-
                             gigsClass thisgig = new gigsClass();
                            thisgig.setBrand(brand);
                            thisgig.setId(id);
