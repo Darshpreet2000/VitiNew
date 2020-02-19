@@ -41,7 +41,8 @@
         <TextView
             android:id="@+id/gigsbrand"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="gigs brand" />

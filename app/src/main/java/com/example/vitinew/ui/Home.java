@@ -236,6 +236,7 @@ public class Home extends Fragment {
                             String place=gigsObject.getString("place");
                             String count=gigsObject.getString("count");
                             String skills=gigsObject.getString("skills");
+                            String image=gigsObject.getString("image");
 
                             String proofs=gigsObject.getString("proofs");
 
@@ -245,6 +246,7 @@ public class Home extends Fragment {
                             thisProject.setId(id);
                             thisProject.setCat(cats);
                             thisProject.setTitle(title);
+                            thisProject.setImage(image);
                             //  Log.d("internship",thisProject.getTitle().toString());
                             thisProject.setDes(description);
                             thisProject.setUser(user);

@@ -4,8 +4,16 @@ import java.io.Serializable;
 
 public class ProjectDisplay implements Serializable {
     int id;
-    String title,des,cat,start,end,duration,stipend,benefits,place,count,skill,
+    String image,title,des,cat,start,end,duration,stipend,benefits,place,count,skill,
     proofs,user,created_at,updated_at,CompanyName,AboutCompany,Position,WorkPlace,AboutProject;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getAboutProject() {
         return AboutProject;

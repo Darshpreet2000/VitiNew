@@ -100,10 +100,12 @@ public class Projects extends Fragment {
                             String skills=gigsObject.getString("skills");
 
                             String proofs=gigsObject.getString("proofs");
-
+                           String image=gigsObject.getString("image");
 
 
                             ProjectDisplay thisProject = new ProjectDisplay();
+
+                            thisProject.setImage(image);
                             thisProject.setId(id);
                             thisProject.setCat(cats);
                             thisProject.setTitle(title);

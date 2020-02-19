@@ -208,6 +208,7 @@ public class My_Projects extends Fragment {
                             String skills=gigsObject.getString("skills");
 
                             String proofs=gigsObject.getString("proofs");
+                            String image=gigsObject.getString("image");
 
 
 
@@ -215,6 +216,7 @@ public class My_Projects extends Fragment {
                             thisProject.setId(id);
                             thisProject.setCat(cats);
                             thisProject.setTitle(title);
+                            thisProject.setImage(image);
                             //  Log.d("internship",thisProject.getTitle().toString());
                             thisProject.setDes(description);
                             thisProject.setUser(user);

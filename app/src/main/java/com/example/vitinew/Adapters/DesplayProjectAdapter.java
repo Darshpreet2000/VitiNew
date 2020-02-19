@@ -20,6 +20,7 @@ import com.example.vitinew.ProjectDetail;
 import com.example.vitinew.R;
 import com.example.vitinew.gigDetails;
 import com.example.vitinew.gigsAdapter;
+import com.squareup.picasso.Picasso;
 import com.truecaller.multisim.v;
 
 import java.io.Serializable;
@@ -69,8 +70,10 @@ public class DesplayProjectAdapter extends
        // holder.description.setText(currentnote.getDes());
         holder.position.setText(currentnote.getCount()+" Positions");
         holder.stipend.setText(currentnote.getStipend());
-
+      holder.time.setText(currentnote.getDuration());
         Log.d("this",currentnote.getTitle());
+
+        Picasso.get().load(currentnote.getImage()).into(holder.gigsicon);
         holder.cat.setText(currentnote.getCat());
         ///holder.gigsbrand.setText();
       //  holder.description.setText(String.valueOf(currentnote.getDescription()));
@@ -103,11 +106,11 @@ public class DesplayProjectAdapter extends
         public DesplayProjectHolder(@NonNull View itemView) {
             super(itemView);
             Projecttitle=itemView.findViewById(R.id.ProjectTitle);
-            time=itemView.findViewById(R.id.time);
+            time=itemView.findViewById(R.id.duration);
             position=itemView.findViewById(R.id.postions);
            stipend=itemView.findViewById(R.id.stipend);
      cat=itemView.findViewById(R.id.category);
-
+        gigsicon=itemView.findViewById(R.id.projectlogo);
             //gigsicon=itemView.findViewById(R.id.gigsicon);
            // gigscat=itemView.findViewById(R.id.gigscats);
           //  gigsbrand=itemView.findViewById(R.id.gigsbrand);
