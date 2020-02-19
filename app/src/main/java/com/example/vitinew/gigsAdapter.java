@@ -20,6 +20,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class gigsAdapter  extends
         RecyclerView.Adapter<gigsAdapter.gigsholder> {
 
@@ -87,7 +89,7 @@ public class gigsAdapter  extends
         private TextView title;
         private TextView gigsbrand,percost;
         private TextView description;
-        private  ImageView gigsicon;
+        private ImageView gigsicon;
         private LinearLayout gigsLayout;
         public gigsholder(@NonNull View itemView) {
             super(itemView);

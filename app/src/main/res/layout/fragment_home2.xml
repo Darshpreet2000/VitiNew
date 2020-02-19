@@ -66,20 +66,23 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HomeMyprojectRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="213dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/ImageViewHome" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_margin="10dp"
         android:text="My Gigs"
+        android:id="@+id/mygigs"
         android:layout_below="@+id/HomeMyprojectRecyclerView"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HomegigsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="213dp"
-        android:layout_below="@+id/HomeMyprojectRecyclerView" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mygigs" />
 
     <ProgressBar
         android:id="@+id/progressBarHome"

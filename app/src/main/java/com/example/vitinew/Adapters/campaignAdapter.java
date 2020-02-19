@@ -66,6 +66,8 @@ public class campaignAdapter extends  RecyclerView.Adapter<campaignAdapter.campa
         holder.title.setText(currentnote.getTitle());
         holder.campaignbrand.setText(currentnote.getBrand());
         Picasso.get().load(currentnote.getLogo()).into(holder.campaignicon);
+        holder.pos.setText(String.valueOf(currentnote.getUcount()));
+        holder.stipend.setText(String.valueOf(currentnote.getReward()));
 
 //        holder.description.setText(String.valueOf(currentnote.getDescription()));
         holder.campaignLayout.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +91,7 @@ public class campaignAdapter extends  RecyclerView.Adapter<campaignAdapter.campa
     public class campaignsholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView title;
 
-        private TextView campaignbrand;
+        private TextView campaignbrand,pos,stipend;
         private TextView description;
         private ImageView campaignicon;
         private LinearLayout campaignLayout;
@@ -99,6 +101,9 @@ public class campaignAdapter extends  RecyclerView.Adapter<campaignAdapter.campa
             title = itemView.findViewById(R.id.campaigntitle);
             campaignicon = itemView.findViewById(R.id.campaignicon);
             campaignbrand = itemView.findViewById(R.id.campaignbrand);
+
+            pos = itemView.findViewById(R.id.postions);
+            stipend = itemView.findViewById(R.id.stipend);
             //   description=itemView.findViewById(R.id.gigs_description);
             campaignLayout = itemView.findViewById(R.id.campaignlistlayout);
         }
