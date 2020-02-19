@@ -67,11 +67,11 @@ public class DesplayProjectAdapter extends
         holder.Projecttitle.setText(currentnote.getTitle());
 
        // holder.description.setText(currentnote.getDes());
-        holder.time.setText(currentnote.getDuration());
         holder.position.setText(currentnote.getCount()+" Positions");
         holder.stipend.setText(currentnote.getStipend());
 
         Log.d("this",currentnote.getTitle());
+        holder.cat.setText(currentnote.getCat());
         ///holder.gigsbrand.setText();
       //  holder.description.setText(String.valueOf(currentnote.getDescription()));
        holder.ProjectListLayout.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,7 @@ public class DesplayProjectAdapter extends
 
 
     class DesplayProjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView Projecttitle,time,position,stipend;
+        private TextView Projecttitle,time,position,stipend,cat;
         private TextView gigscat;
         private TextView gigsbrand;
         private TextView description;
@@ -106,7 +106,7 @@ public class DesplayProjectAdapter extends
             time=itemView.findViewById(R.id.time);
             position=itemView.findViewById(R.id.postions);
            stipend=itemView.findViewById(R.id.stipend);
-
+     cat=itemView.findViewById(R.id.category);
 
             //gigsicon=itemView.findViewById(R.id.gigsicon);
            // gigscat=itemView.findViewById(R.id.gigscats);

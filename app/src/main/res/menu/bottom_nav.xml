@@ -12,7 +12,7 @@
         android:title="Gigs" />
     <item
         android:id="@+id/internships"
-        android:icon="@drawable/newtool"
+        android:icon="@drawable/project"
         android:title="Projects" />
     <item
         android:id="@+id/campaign"
