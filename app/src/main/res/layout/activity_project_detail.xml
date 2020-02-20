@@ -73,14 +73,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:orientation="horizontal">
 
                 <RelativeLayout
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="4dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -113,13 +114,12 @@
                 <View
                     android:layout_margin="10dp"
                     android:layout_width="1dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:background="@color/dark_gray"
                     android:layout_weight="0.01"/>
                 <RelativeLayout
-
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="4dp"
                     android:orientation="vertical">
@@ -152,50 +152,84 @@
 
 
             </LinearLayout>
-
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Starting From"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <RelativeLayout
+                    android:layout_width="0dp"
 
-                <TextView
-                    android:id="@+id/ProjectStarting"
+                    android:layout_margin="4dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    <TextView
+
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Project Start"
+                        android:id="@+id/ps"
+                        android:layout_marginBottom="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                    <TextView
+                        android:layout_above="@+id/ps"
+                        android:id="@+id/ProjectStarting"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="28-2-2019"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
-            </LinearLayout>
+                </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:orientation="vertical">
+                <View
+                    android:layout_width="1dp"
+                    android:layout_margin="10dp"
+                    android:layout_height="100dp"
+                    android:background="@color/dark_gray"
+                    android:layout_weight="0.01"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Apply Before"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <RelativeLayout
 
-                <TextView
-                    android:id="@+id/ProjectApplyBefore"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apply By"
+                        android:id="@+id/applyby"
+                      android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                    android:layout_height="wrap_content"
-                    android:text="28-2-2019"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    <TextView
+                        android:layout_above="@+id/applyby"
+                        android:id="@+id/ProjectApplyBefore"
+                        android:layout_width="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="18sp"
 
+                        android:layout_height="wrap_content"
+                        android:text="28-2-2019"
+                        android:layout_marginBottom="5dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -251,17 +285,44 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view_benefit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Benefit"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                <TextView
-                    android:id="@+id/ProjectBenefit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
+                    expandableTextView:maxCollapsedLines="1"
+                    expandableTextView:animDuration="200">
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/more2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_more"/>
+                        <ImageButton
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:id="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/more2"
+                            android:id="@id/expandable_text"
+                            android:layout_toLeftOf="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16sp"
+                            android:textColor="#666666" />
+                    </RelativeLayout>
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
 
 
             </LinearLayout>
@@ -319,20 +380,44 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view_skill"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Skill Required"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                <TextView
-                    android:id="@+id/ProjectSkill"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    expandableTextView:maxCollapsedLines="1"
+                    expandableTextView:animDuration="200">
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/more3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_more"/>
+                        <ImageButton
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:id="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/more3"
+                            android:id="@id/expandable_text"
+                            android:layout_toLeftOf="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16sp"
+                            android:textColor="#666666" />
+                    </RelativeLayout>
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
 
 
             </LinearLayout>

@@ -70,8 +70,8 @@ public class AboutCampaign extends AppCompatActivity {
         title.setText(campaigns.getTitle());
         Date start = DateTimeUtils.formatDate(campaigns.getStart());
         Date endD = DateTimeUtils.formatDate(campaigns.getEnd());
-      String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.LONG);
-        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.LONG);
+      String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.MEDIUM);
+        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.MEDIUM);
         Start.setText(s);
         end.setText(e);
 

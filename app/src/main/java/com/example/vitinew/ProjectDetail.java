@@ -25,6 +25,8 @@ import com.example.vitinew.Classes.questions;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.github.thunder413.datetimeutils.DateTimeStyle;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
@@ -34,6 +36,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ProjectDetail extends AppCompatActivity {
@@ -79,9 +82,9 @@ public class ProjectDetail extends AppCompatActivity {
     }
 
     Context ctx;
-    ExpandableTextView AboutProject, AboutCompany;
+    ExpandableTextView AboutProject, AboutCompany,skill,benefits;
     TextView ProjectTitle, CompanyName, Stipend, Duration, Position, ApplyBefore, WorkPlace,
-            Start, skill, Proof, benefits;
+            Start,Proof;
     Button ApplyNow;
     ImageView imageView;
 
@@ -100,9 +103,9 @@ public class ProjectDetail extends AppCompatActivity {
         AboutCompany = (ExpandableTextView) findViewById(R.id.expand_text_view2);
         // AboutCompany=findViewById(R.id.ProjectAboutCompany);
         Start = findViewById(R.id.ProjectStarting);
-        skill = findViewById(R.id.ProjectSkill);
+        skill = (ExpandableTextView) findViewById(R.id.expand_text_view_skill);
         Proof = findViewById(R.id.ProjectProofRequired);
-        benefits = findViewById(R.id.ProjectBenefit);
+        benefits = (ExpandableTextView) findViewById(R.id.expand_text_view_benefit);
 
 
     }
@@ -113,7 +116,12 @@ public class ProjectDetail extends AppCompatActivity {
 //        Stipend.setText(projectdetail.getStipend());
         Duration.setText(projectdetail.getDuration());
         Position.setText(projectdetail.getPosition());
-        ApplyBefore.setText(projectdetail.getStart());
+
+        Date start = DateTimeUtils.formatDate(projectdetail.getStart());
+        Date endD = DateTimeUtils.formatDate(projectdetail.getEnd());
+        String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.MEDIUM);
+        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.MEDIUM);
+        ApplyBefore.setText(e);
   //      WorkPlace.setText(projectdetail.getWorkPlace());
         if (Build.VERSION.SDK_INT >= 24) {
             AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes(), Html.FROM_HTML_MODE_LEGACY));
@@ -124,18 +132,18 @@ public class ProjectDetail extends AppCompatActivity {
 
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            benefits.setText(Html.fromHtml(projectdetail.getBenefits(), Html.FROM_HTML_MODE_LEGACY));
+            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits(), Html.FROM_HTML_MODE_LEGACY));
             AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany(), Html.FROM_HTML_MODE_LEGACY));
-            skill.setText(Html.fromHtml(projectdetail.getSkill(), Html.FROM_HTML_MODE_LEGACY));
+            skill.setText(Html.fromHtml("<strong><h2>Skills</h2></strong>" +projectdetail.getSkill(), Html.FROM_HTML_MODE_LEGACY));
 
         } else {
-            skill.setText(Html.fromHtml(projectdetail.getSkill()));
+            skill.setText(Html.fromHtml("<strong><h2>Skills Required</h2></strong>" +projectdetail.getSkill()));
 
-            benefits.setText(Html.fromHtml(projectdetail.getBenefits()));
+            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits()));
             AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany()));
 
         }
-        Start.setText(projectdetail.getStart());
+        Start.setText(s);
         Proof.setText(projectdetail.getProofs());
 
     }
