@@ -17,7 +17,7 @@
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -30,7 +30,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="900"
+                    android:id="@+id/TotalWalletBalance"
                     android:textColor="@color/white"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
             >
@@ -59,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
+                    android:id="@+id/Reffered"
                     android:textColor="@color/white"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -75,7 +77,7 @@
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -88,7 +90,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/referal"
+                    android:id="@+id/referalwallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -106,7 +108,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
             >
@@ -139,7 +141,7 @@
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
@@ -166,7 +168,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:orientation="horizontal"
             android:background="@color/colorPrimary"
             >
@@ -211,6 +213,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:padding="4dp"
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
@@ -219,9 +222,9 @@
                 android:text="Paytm Wallet"
                 android:textColor="@color/white"/>
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/paytmicon"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -234,6 +237,7 @@
             android:background="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_weight="1"
+            android:padding="4dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="4dp">
@@ -243,9 +247,9 @@
                 android:text="Amazon Gift Card"
                 android:textColor="@color/white"/>
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/amazongiftcard"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

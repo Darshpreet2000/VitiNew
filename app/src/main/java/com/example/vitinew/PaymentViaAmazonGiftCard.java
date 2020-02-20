@@ -1,7 +1,9 @@
 package com.example.vitinew;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -98,13 +100,68 @@ public class PaymentViaAmazonGiftCard extends AppCompatActivity {
         WithdrawNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(AmountDetail.getText().toString()) < 500) {
-                    Toast.makeText(PaymentViaAmazonGiftCard.this, "Amount Should Greater then 500 Rs", Toast.LENGTH_SHORT).show();
+                if (Integer.parseInt("0"+AmountDetail.getText().toString()) < 500) {
+                    if(AmountDetail.getText().toString().isEmpty()){
+                        AmountDetail.setError("Enter Amount");
+                        AmountDetail.requestFocus();
+
+
+                    }
+                    if(Emaildetail.getText().toString().isEmpty()){
+                        AmountDetail.setError("Enter Email Detail");
+                        AmountDetail.requestFocus();
+
+
+                    }
+                    Toast.makeText(PaymentViaAmazonGiftCard.this, "Amount Should Greater then 500 Rs ", Toast.LENGTH_SHORT).show();
                 } else {
+
 
                             amount= AmountDetail.getText().toString();
                     paymentdetail = Emaildetail.getText().toString();
-                    Withdraw(paymentdetail);
+                    if(amount.isEmpty()){
+                        AmountDetail.setError("Enter Amount");
+                        AmountDetail.requestFocus();
+                        return;
+
+
+                    }
+                    if(paymentdetail.isEmpty()){
+                        AmountDetail.setError("Enter Email Detail");
+                        AmountDetail.requestFocus();
+                        return;
+
+
+                    }
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PaymentViaAmazonGiftCard.this);
+
+                    // set title
+                    alertDialogBuilder.setTitle("Alert");
+
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("Does Your Email Correct ?")
+                            .setCancelable(false)
+                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Withdraw(paymentdetail);
+
+                                }
+                            })
+                            .setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(PaymentViaAmazonGiftCard.this, "CANCEL button click ", Toast.LENGTH_SHORT).show();
+
+                                    dialog.cancel();
+                                }
+                            });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+
                 }
             }
         });
