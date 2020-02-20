@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,16 +19,20 @@ import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.github.thunder413.datetimeutils.DateTimeStyle;
+import com.github.thunder413.datetimeutils.DateTimeUtils;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AboutCampaign extends AppCompatActivity {
-
+     ImageView imageView;
     TextView campaigndetail;
     CheckBox termAndCondition;
     TextView Reward,Term,ImpTerm,City,instruction,benifits,requirement,title
@@ -44,8 +49,11 @@ public class AboutCampaign extends AppCompatActivity {
         Intent intent=getIntent();
         campaigns= (campaignClass) intent.getSerializableExtra("class");
         campaigndetail.setText(campaigns.getDes());
+
         Reward=findViewById(R.id.campaignReward);
         Term=findViewById(R.id.campaignTerm);
+        imageView=findViewById(R.id.imageView1);
+
         ImpTerm=findViewById(R.id.campaignImpTerm);
         termAndCondition=findViewById(R.id.checkboxTerm);
         City=findViewById(R.id.campaigCity);
@@ -60,9 +68,14 @@ public class AboutCampaign extends AppCompatActivity {
         Start=findViewById(R.id.campaignStarting);
         end=findViewById(R.id.campaignEnding);
         title.setText(campaigns.getTitle());
-        Start.setText(campaigns.getStart());
-        end.setText(campaigns.getEnd());
+        Date start = DateTimeUtils.formatDate(campaigns.getStart());
+        Date endD = DateTimeUtils.formatDate(campaigns.getEnd());
+      String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.LONG);
+        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.LONG);
+        Start.setText(s);
+        end.setText(e);
 
+        Picasso.get().load(campaigns.getLogo()).into(imageView);
 
         userController = new UserController(AboutCampaign.this);
         Map<String, String> dataMap = new HashMap<String,String>();
