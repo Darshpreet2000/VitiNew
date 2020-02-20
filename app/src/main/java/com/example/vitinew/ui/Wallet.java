@@ -1,6 +1,7 @@
 package com.example.vitinew.ui;
 
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ import com.example.vitinew.Adapters.DesplayProjectAdapter;
 import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.PaymentViaAmazonGiftCard;
+import com.example.vitinew.PaymentViaPaytm;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
@@ -40,6 +44,7 @@ import static android.view.View.GONE;
  */
 public class Wallet extends Fragment {
     TextView referall, gig, project, campaign;
+    LinearLayout withdrawPaytm,WithdrawAmazonGiftCard;
     Toolbar toolbar;
 
     public Wallet() {
@@ -63,6 +68,29 @@ public class Wallet extends Fragment {
         gig = view.findViewById(R.id.gigs);
         project = view.findViewById(R.id.projects);
         campaign = view.findViewById(R.id.campaigns);
+        WithdrawAmazonGiftCard=view.findViewById(R.id.WithdrawAmazonGiftCard);
+        withdrawPaytm=view.findViewById(R.id.WithdrawViaPaytm);
+        withdrawPaytm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), PaymentViaPaytm.class);
+                intent.putExtra("id",1);
+                startActivity(intent);
+                //paytm process
+                //id 1
+
+            }
+        });
+        WithdrawAmazonGiftCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //withdraw amazon gift card
+                //id 2
+                Intent intent=new Intent(getContext(), PaymentViaAmazonGiftCard.class);
+                intent.putExtra("id",2);
+                startActivity(intent);
+            }
+        });
         UserController user = new UserController(getContext());
         Map<String, String> dataMap = new HashMap<String, String>();
         dataMap.put("id", String.valueOf(SaveSharedPreference.getUserId(getContext())));
