@@ -70,7 +70,7 @@
                             android:layout_margin="10dp"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/positions"/>
+                            android:src="@drawable/project_campaign_positions"/>
 
                         <TextView
                             android:layout_marginTop="15dp"
@@ -86,7 +86,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:id="@+id/moneyimage"
-                            android:src="@drawable/money" />
+                            android:src="@drawable/campaign_rewards" />
 
                         <TextView
                             android:layout_marginTop="15dp"

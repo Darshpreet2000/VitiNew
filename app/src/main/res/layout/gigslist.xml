@@ -55,7 +55,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:id="@+id/moneyimage"
-            android:src="@drawable/money" />
+            android:src="@drawable/campaign_rewards" />
 
             <TextView
                 android:id="@+id/stipendtext"

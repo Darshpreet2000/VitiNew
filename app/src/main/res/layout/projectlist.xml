@@ -79,7 +79,7 @@
                    android:layout_marginLeft="5dp"
                    android:layout_width="40dp"
                    android:layout_height="40dp"
-                   android:src="@drawable/positions"/>
+                   android:src="@drawable/project_campaign_positions"/>
 
                <TextView
                    android:layout_marginTop="10dp"
@@ -97,10 +97,10 @@
                android:orientation="horizontal">
 
                <ImageView
-
+                   android:layout_marginTop="5dp"
                    android:layout_width="30dp"
                    android:layout_height="30dp"
-                   android:src="@drawable/money"/>
+                   android:src="@drawable/campaign_rewards"/>
                <TextView
                    android:id="@+id/stipend"
                    android:layout_marginTop="10dp"

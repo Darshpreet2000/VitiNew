@@ -3,19 +3,19 @@
     <!-- mission renamed as  and internship renamed as  Projects -->
     <item
         android:id="@+id/home2"
-        android:icon="@drawable/homeic"
+        android:icon="@drawable/home_interactive_pic"
         android:title="Home" />
 
     <item
         android:id="@+id/missions"
-        android:icon="@drawable/missiongoal"
+        android:icon="@drawable/gigs"
         android:title="Gigs" />
     <item
         android:id="@+id/internships"
-        android:icon="@drawable/project"
+        android:icon="@drawable/projects"
         android:title="Projects" />
     <item
         android:id="@+id/campaign"
-        android:icon="@drawable/newtool"
+        android:icon="@drawable/campaigns"
         android:title="Campaign" />
 </menu>
