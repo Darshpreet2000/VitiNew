@@ -21,7 +21,7 @@
             android:title="@string/support" />
         <item
             android:id="@+id/city"
-            android:title="@string/city" />
+            android:title="Referrals" />
         <item
             android:id="@+id/about_us2"
             android:title="@string/about_us" />

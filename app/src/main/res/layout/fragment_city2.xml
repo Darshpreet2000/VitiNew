@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.City">
-
-    <!-- TODO: Update blank fragment projectlist -->
-    <TextView
+    <ImageView
+        android:id="@+id/imageView2"
+        android:scaleType="centerCrop"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:src="@drawable/referral" />
+    <TextView
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/refer_herody_app_with_your_friends_earn_5_on_ever_earning_made_through_your_referred_friend_hurry_up_rewards_are_for_limited_period"/>
+<TextView
+    android:textStyle="bold"
+    android:layout_margin="10dp"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Referall Code"/>
+<TextView
+    android:textStyle="bold"
+    android:id="@+id/code"
+    android:layout_margin="10dp"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"/>
 
-</FrameLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:text="INVITE FRIENDS"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+</ScrollView>

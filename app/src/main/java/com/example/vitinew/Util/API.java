@@ -50,4 +50,6 @@ public class API {
     public static final String PROFILE = API_DOMAIN + "/api/user/profileUpdate";
     public static final String IMAGE = API_DOMAIN + "/api/user/profileImage";
     public static final String TRANSACTIONS = API_DOMAIN + "/api/user/allTransactions";
+
+    public static final String REFERAL = API_DOMAIN + "api/user/register";
 }

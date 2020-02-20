@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/city"
         android:name="com.example.vitinew.ui.City"
-        android:label="City"
+        android:label="Referall"
         tools:layout="@layout/fragment_city2" />
     <fragment
         android:id="@+id/my_Missions"
