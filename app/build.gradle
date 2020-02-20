@@ -66,6 +66,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     compile 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'com.github.thunder413:DateTimeUtils:3.0'
 
 }
 repositories {

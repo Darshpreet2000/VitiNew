@@ -10,12 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="60dp"
+            app:layout_constraintBottom_toTopOf="@id/projectlistlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/com_truecaller_icon" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/projectlistlayout"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="7dp"
+            android:layout_marginStart="8dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -23,7 +50,9 @@
                 <TextView
                     android:layout_margin="10dp"
                     android:id="@+id/ProjectTitle"
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                   android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     android:text="Project Name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -31,68 +60,28 @@
                     />
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/companyName"
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/ProjectTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Company Name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <RelativeLayout
+
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="wrap_content"
-                        android:text="Stipend"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rs."
-                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                        <TextView
-                            android:id="@+id/ProjectStipend"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5000"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Duration"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                     <TextView
                         android:id="@+id/ProjectDuration"
@@ -100,54 +89,66 @@
                         android:layout_height="wrap_content"
 
                         android:text="1 month"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_above="@+id/duration"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+                    <TextView
+                        android:id="@+id/duration"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="Duration"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                </LinearLayout>
 
-                <LinearLayout
+                </RelativeLayout>
+
+                <View
+                    android:layout_margin="10dp"
+                    android:layout_width="1dp"
+                    android:layout_height="90dp"
+                    android:background="@color/dark_gray"
+                    android:layout_weight="0.01"/>
+                <RelativeLayout
+
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="4dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="wrap_content"
-                        android:text="Position"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                    <TextView
+                        android:layout_marginBottom="5dp"
                         android:id="@+id/ProjectPosition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:layout_centerHorizontal="true"
+                        android:layout_above="@+id/pos"
+                        android:textSize="18sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:id="@+id/pos"
+                        android:textSize="14sp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
                         android:layout_height="wrap_content"
-                        android:text="Work Place"
+                        android:text="Position"
+                        android:layout_marginBottom="10dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                    <TextView
-                        android:id="@+id/ProjectWorkPlace"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                </LinearLayout>
+                </RelativeLayout>
 
 
             </LinearLayout>
@@ -202,20 +203,44 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About The Project"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                <TextView
-                    android:id="@+id/ProjectDesCription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    expandableTextView:maxCollapsedLines="1"
+                    expandableTextView:animDuration="200">
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/more"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_more"/>
+                        <ImageButton
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:id="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/more"
+                            android:id="@id/expandable_text"
+                            android:layout_toLeftOf="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16sp"
+                            android:textColor="#666666" />
+                    </RelativeLayout>
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
 
 
             </LinearLayout>
@@ -247,19 +272,46 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About company"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    expandableTextView:maxCollapsedLines="1"
+                    expandableTextView:animDuration="200">
+                    <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/more1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_more"/>
+                        <ImageButton
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_alignParentEnd="true"
+                            android:id="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/more1"
+                            android:id="@id/expandable_text"
+                            android:layout_toLeftOf="@id/expand_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="16sp"
+                            android:textColor="#666666" />
 
-                    />
+                    </RelativeLayout>
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
 
-                <TextView
-                    android:id="@+id/ProjectAboutCompany"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -319,6 +371,8 @@
                 android:textColor="@color/white" />
 
         </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 </LinearLayout>
