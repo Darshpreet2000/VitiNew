@@ -42,7 +42,7 @@ public class API {
     public static final String DELETESKILL = API_DOMAIN + "/api/user/skillsDelete";
 
     public static final String DELETEEDU = API_DOMAIN + "/api/user/eduDelete";
-
+    public static final String Withdraw=API_DOMAIN+"/api/user/withdraw";
     public static final String DELETEEXP = API_DOMAIN + "/api/user/expDelete";
     public static final String GIGSAPPLY = API_DOMAIN + "/api/gig/apply";
     public static final String CampaignApply=API_DOMAIN+"/api/campaign/apply";
