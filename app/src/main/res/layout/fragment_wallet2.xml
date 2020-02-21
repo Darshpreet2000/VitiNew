@@ -13,20 +13,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-        <LinearLayout
-            android:background="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:layout_margin="4dp"
+                android:padding="8dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -36,26 +35,30 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text=" ₹"
+                    android:textColor="@color/white"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Wallet Balance"
                     android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
             </LinearLayout>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+
+
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:layout_margin="4dp"
+                android:padding="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,27 +70,29 @@
                     android:layout_height="wrap_content"
                     android:text="Referred"
                     android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
             </LinearLayout>
 
-        </LinearLayout>
+
 
 
 
         <LinearLayout
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:padding="8dp">
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/referalwallet"
@@ -96,30 +101,40 @@
 
                     android:text="0"
                     android:textColor="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ₹"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Earned through referral"
                     android:textColor="@color/white" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
             </LinearLayout>
 
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:padding="8dp"
             >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,28 +144,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Earned by completing gigs"
+                    android:text=" ₹"
                     android:textColor="@color/white"/>
             </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Earned by completing gigs"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
+            </LinearLayout>
 
-        </LinearLayout>
+
 
 
 
         <LinearLayout
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:padding="8dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -160,26 +183,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Earned by completing projects"
+                    android:text=" ₹"
                     android:textColor="@color/white"/>
             </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Earned by completing projects"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
+            </LinearLayout>
 
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="12dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:padding="8dp"
             >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/wallet"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -189,17 +220,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Earned by completing campaigns"
+                    android:text=" ₹"
                     android:textColor="@color/white"/>
             </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Earned by completing campaigns"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wallet"/>
+            </LinearLayout>
 
-        </LinearLayout>
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textColor="@color/black"
     android:layout_margin="8dp"
-    android:text="Withdraw method"
+    android:text="Withdraw Method"
     android:textSize="24sp"/>
 
     <LinearLayout
