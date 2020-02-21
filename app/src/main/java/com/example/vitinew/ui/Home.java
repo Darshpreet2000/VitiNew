@@ -109,7 +109,6 @@ public class Home extends Fragment {
     public void setuptoolbar(){
         toolbar=getActivity().findViewById(R.id.toolbar);
         toolbar.getMenu().clear();
-        toolbar.inflateMenu(R.menu.search);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));

@@ -198,11 +198,4 @@ DrawerLayout drawer;
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.search,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
 }
