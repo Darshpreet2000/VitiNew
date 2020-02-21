@@ -138,11 +138,14 @@ public class Wallet extends Fragment {
                         String projectEarnings = jsonObject.getString("projectEarnings");
 
                         String campaignEarnings = jsonObject.getString("campaignEarnings");
-
+                        String refferedNumber=jsonObject.getString("referred");
+                        String WalletBalance=jsonObject.getString("balance");
                         referall.setText(referralEarnings);
                         gig.setText(gigEarnings);
                         project.setText(projectEarnings);
                         campaign.setText(campaignEarnings);
+                        TotalWalletBalance.setText(""+WalletBalance);
+                        Reffered.setText(refferedNumber);
                         //set here two more detail reffered and wallet balance
                        // Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
 

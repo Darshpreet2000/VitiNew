@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.example.vitinew.ui.Wallet;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +67,8 @@ public class PaymentViaAmazonGiftCard extends AppCompatActivity {
                     case "SUCCESS":
 
                         Toast.makeText(PaymentViaAmazonGiftCard.this, " we will process payout in 12-16 hours ", Toast.LENGTH_SHORT).show();
-
+                        Intent i = new Intent(PaymentViaAmazonGiftCard.this, Wallet.class);
+                        startActivity(i);
                         break;
                     default:
                         Toast.makeText(PaymentViaAmazonGiftCard.this, "" + code, Toast.LENGTH_SHORT).show();
