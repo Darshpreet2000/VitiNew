@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.example.vitinew.ui.Wallet;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,10 +68,22 @@ public class PaymentViaPaytm extends AppCompatActivity {
                     case "SUCCESS":
 
                         Toast.makeText(PaymentViaPaytm.this, " we will process payout in 12-16 hours ", Toast.LENGTH_SHORT).show();
+                        /*Handler handler=new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent =new Intent(PaymentViaPaytm.this,Wallet.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        },3000);*/
+
 
                         break;
                     default:
                         Toast.makeText(PaymentViaPaytm.this, ""+code, Toast.LENGTH_SHORT).show();
+
                         break;
 
                 }
@@ -76,6 +91,7 @@ public class PaymentViaPaytm extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
+
             }
         }
 

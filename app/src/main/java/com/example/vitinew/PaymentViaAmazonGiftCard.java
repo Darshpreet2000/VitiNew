@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -67,8 +68,17 @@ public class PaymentViaAmazonGiftCard extends AppCompatActivity {
                     case "SUCCESS":
 
                         Toast.makeText(PaymentViaAmazonGiftCard.this, " we will process payout in 12-16 hours ", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(PaymentViaAmazonGiftCard.this, Wallet.class);
-                        startActivity(i);
+                       /* Handler handler=new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent =new Intent(PaymentViaAmazonGiftCard.this,Wallet.class);
+                                startActivity(intent);
+                                finish();
+
+
+                            }
+                        },3000);*/
                         break;
                     default:
                         Toast.makeText(PaymentViaAmazonGiftCard.this, "" + code, Toast.LENGTH_SHORT).show();
