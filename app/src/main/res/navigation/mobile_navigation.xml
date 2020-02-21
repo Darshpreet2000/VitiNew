@@ -112,32 +112,32 @@
     <fragment
         android:id="@+id/addSkill"
         android:name="com.example.vitinew.ui.ResumeExtra.AddSkill"
-        android:label="fragment_add_skill"
+        android:label="Add Skill"
         tools:layout="@layout/fragment_add_skill" />
     <fragment
         android:id="@+id/addEducation"
         android:name="com.example.vitinew.ui.ResumeExtra.AddEducation"
-        android:label="fragment_add_education"
+        android:label="Add Education"
         tools:layout="@layout/fragment_add_education" />
     <fragment
         android:id="@+id/addProject"
         android:name="com.example.vitinew.ui.ResumeExtra.AddProject"
-        android:label="fragment_add_project"
+        android:label="Add Project"
         tools:layout="@layout/fragment_add_project" />
     <fragment
         android:id="@+id/addHobbies"
         android:name="com.example.vitinew.ui.ResumeExtra.AddHobbies"
-        android:label="fragment_add_hobbies"
+        android:label="Add Hobbies"
         tools:layout="@layout/fragment_add_hobbies" />
     <fragment
         android:id="@+id/addExperience"
         android:name="com.example.vitinew.ui.ResumeExtra.AddExperience"
-        android:label="fragment_add_experience"
+        android:label="Add Experience"
         tools:layout="@layout/fragment_add_experience" />
     <fragment
         android:id="@+id/addAchievements"
         android:name="com.example.vitinew.ui.ResumeExtra.AddAchievements"
-        android:label="fragment_add_achievements"
+        android:label="Add Achievements"
         tools:layout="@layout/fragment_add_achievements" />
     <fragment
         android:id="@+id/addSocial"

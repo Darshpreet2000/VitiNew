@@ -1,7 +1,6 @@
-package com.example.vitinew;
+package com.example.vitinew.Details;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -18,13 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.example.vitinew.Adapters.questionsAdapter;
 import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
-import com.example.vitinew.Classes.questions;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.example.vitinew.question_answer;
 import com.github.thunder413.datetimeutils.DateTimeStyle;
 import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.ms.square.android.expandabletextview.ExpandableTextView;

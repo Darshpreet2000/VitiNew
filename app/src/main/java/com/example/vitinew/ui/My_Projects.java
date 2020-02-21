@@ -49,116 +49,10 @@ public class My_Projects extends Fragment {
     private ArrayList<Integer> Projectidlist = new ArrayList<Integer>();
 
     Toolbar toolbar;
+
     public My_Projects() {
         // Required empty public constructor
     }
-    private final ResponseListener responseListener = new ResponseListener() {
-
-        @Override
-        public void onRequestStart() {
-            MyProjectProgressbar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        public void onSuccess(String response) {
-            try {
-                Log.d("strvalue",response);
-                JSONObject json = new JSONObject(response);
-                JSONObject jsonObject = json.getJSONObject("response");
-                String code=jsonObject.getString("code");
-                allProject.clear();
-                switch(code){
-                    case "SUCCESS":
-                        Log.d("myProjectt",jsonObject.toString());
-                        JSONObject gigsObject=new JSONObject();
-                        gigsObject= jsonObject.getJSONObject("project");
-                        allProject.clear();
-
-                            //JSONObject gigsObject=InternshipArray.getJSONObject(i);
-                            int id=gigsObject.getInt("id");
-                            String cats=gigsObject.getString("cat");
-
-                            String stipend=gigsObject.getString("stipend");
-                            // int per_cost=gigsObject.getInt("per_cost");
-                            String title=gigsObject.getString("title");
-                            String description=gigsObject.getString("des");
-                            String user=gigsObject.getString("user");
-                            String start=gigsObject.getString("start");
-                            String end=gigsObject.getString("end");
-                            String created_at=gigsObject.getString("created_at");
-                            String updated_at=gigsObject.getString("updated_at");
-                            String duration=gigsObject.getString("duration");
-                            String benefits=gigsObject.getString("benefits");
-                            String place=gigsObject.getString("place");
-                            String count=gigsObject.getString("count");
-                            String skills=gigsObject.getString("skills");
-
-                            String proofs=gigsObject.getString("proofs");
-
-
-
-                            ProjectDisplay thisProject = new ProjectDisplay();
-                            thisProject.setId(id);
-                            thisProject.setCat(cats);
-                            thisProject.setTitle(title);
-                            //  Log.d("internship",thisProject.getTitle().toString());
-                            thisProject.setDes(description);
-                            thisProject.setUser(user);
-                            thisProject.setStart(start);
-                            thisProject.setEnd(end);
-                            thisProject.setCreated_at(created_at);
-                            thisProject.setUpdated_at(updated_at);
-                            thisProject.setDuration(duration);
-                            thisProject.setBenifits(benefits);
-                            thisProject.setStipend(stipend);
-                            thisProject.setPlace(place);
-                            thisProject.setCount(count);
-                            thisProject.setSkill(skills);
-                            thisProject.setProofs(proofs);
-                           /* thisgig.setBrand(brand);
-                            thisgig.setId(id);
-                            thisgig.setUser_id(user_id);
-                            thisgig.setPer_cost(per_cost);
-                            thisgig.setCampaign_title(gigs_title);
-                            thisgig.setCats(cats);
-                            thisgig.setDescription(gigs_description);
-                            thisgig.setLogo(logo);
-                            thisgig.setCreated_at_timestamp(created_at);
-                            thisgig.setUpdated_at(updated_at);*/
-                            allProject.add(thisProject);
-
-
-
-
-
-                         MyPrjectRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                        DesplayProjectAdapter adapter = new DesplayProjectAdapter(allProject);
-                        // Attach the adapter to the recyclerview to populate items
-                        MyPrjectRecyclerView.setAdapter(adapter);
-                        MyPrjectRecyclerView.setHasFixedSize(true);
-
-
-                        break;
-                    default:
-                        Toast.makeText(getContext(), "something wrong", Toast.LENGTH_SHORT).show();
-                        break;
-
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } finally {
-                MyProjectProgressbar.setVisibility(GONE);
-            }
-        }
-
-        @Override
-        public void onError(VolleyError error) {
-            String s = "";
-            MyProjectProgressbar.setVisibility(GONE);
-
-        }
-    };
 
 
 
@@ -173,43 +67,42 @@ public class My_Projects extends Fragment {
         public void onSuccess(String response) {
             try {
                 //Toast.makeText(getContext(), "inside", Toast.LENGTH_SHORT).show();
-                Log.d("str",response);
+                Log.d("str", response);
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
-                String code=jsonObject.getString("code");
+                String code = jsonObject.getString("code");
                 allProject.clear();
-                switch(code){
+                switch (code) {
                     case "SUCCESS":
-                        Log.d("myProject",jsonObject.toString());
-                        JSONArray InternshipArray=new JSONArray();
-                        InternshipArray= jsonObject.getJSONArray("projectsinfo");
+                        Log.d("myProject", jsonObject.toString());
+                        JSONArray InternshipArray = new JSONArray();
+                        InternshipArray = jsonObject.getJSONArray("projectsinfo");
                         Projectidlist.clear();
-                        if(InternshipArray.length()==0){
+                        if (InternshipArray.length() == 0) {
                             Toast.makeText(getContext(), "you have not applied for any Project", Toast.LENGTH_SHORT).show();
                         }
-                        for(int i=0;i<InternshipArray.length();i++){
-                            JSONObject gigsObject=InternshipArray.getJSONObject(i);
-                            int id=gigsObject.getInt("id");
-                            String cats=gigsObject.getString("cat");
+                        for (int i = 0; i < InternshipArray.length(); i++) {
+                            JSONObject gigsObject = InternshipArray.getJSONObject(i);
+                            int id = gigsObject.getInt("id");
+                            String cats = gigsObject.getString("cat");
 
-                            String stipend=gigsObject.getString("stipend");
+                            String stipend = gigsObject.getString("stipend");
                             // int per_cost=gigsObject.getInt("per_cost");
-                            String title=gigsObject.getString("title");
-                            String description=gigsObject.getString("des");
-                            String user=gigsObject.getString("user");
-                            String start=gigsObject.getString("start");
-                            String end=gigsObject.getString("end");
-                            String created_at=gigsObject.getString("created_at");
-                            String updated_at=gigsObject.getString("updated_at");
-                            String duration=gigsObject.getString("duration");
-                            String benefits=gigsObject.getString("benefits");
-                            String place=gigsObject.getString("place");
-                            String count=gigsObject.getString("count");
-                            String skills=gigsObject.getString("skills");
+                            String title = gigsObject.getString("title");
+                            String description = gigsObject.getString("des");
+                            String user = gigsObject.getString("user");
+                            String start = gigsObject.getString("start");
+                            String end = gigsObject.getString("end");
+                            String created_at = gigsObject.getString("created_at");
+                            String updated_at = gigsObject.getString("updated_at");
+                            String duration = gigsObject.getString("duration");
+                            String benefits = gigsObject.getString("benefits");
+                            String place = gigsObject.getString("place");
+                            String count = gigsObject.getString("count");
+                            String skills = gigsObject.getString("skills");
 
-                            String proofs=gigsObject.getString("proofs");
-                            String image=gigsObject.getString("image");
-
+                            String proofs = gigsObject.getString("proofs");
+                            String image = gigsObject.getString("image");
 
 
                             ProjectDisplay thisProject = new ProjectDisplay();
@@ -251,7 +144,6 @@ public class My_Projects extends Fragment {
                         MyPrjectRecyclerView.setHasFixedSize(true);
 
 
-
                         break;
                     default:
                         Toast.makeText(getContext(), "something wrong", Toast.LENGTH_SHORT).show();
@@ -275,23 +167,21 @@ public class My_Projects extends Fragment {
     };
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setuptoolbar();
-        View view =inflater.inflate(R.layout.my_projects, container, false);
+        View view = inflater.inflate(R.layout.my_projects, container, false);
 
         // Inflate the projectlist for this fragment
         userController = new UserController(getContext());
-        myuserController=new UserController(getContext());
-        MyProjectProgressbar=view.findViewById(R.id.MyProjectProgressbar);
-        MyPrjectRecyclerView=view.findViewById(R.id.MyprojectRecyclerView);
-        Map<String, String> dataMap = new HashMap<String,String>();
-        dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        myuserController = new UserController(getContext());
+        MyProjectProgressbar = view.findViewById(R.id.MyProjectProgressbar);
+        MyPrjectRecyclerView = view.findViewById(R.id.MyprojectRecyclerView);
+        Map<String, String> dataMap = new HashMap<String, String>();
+        dataMap.put("id", String.valueOf(SaveSharedPreference.getUserId(getContext())));
         //dataMap.put("id","4");
-        myuserController.getRequest(dataMap, API.MyProject,MyProjectresponseListener);
+        myuserController.getRequest(dataMap, API.MyProject, MyProjectresponseListener);
 
      /*   MyProjectProgressbar.setVisibility(View.VISIBLE);
         Handler handler=new Handler();
@@ -322,11 +212,11 @@ public class My_Projects extends Fragment {
 */
 
 
-
         return view;
     }
-    private void setuptoolbar(){
-        toolbar=getActivity().findViewById(R.id.toolbar);
+
+    private void setuptoolbar() {
+        toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.getMenu().clear();
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
         toolbar.setBackgroundColor(getResources().getColor(R.color.white));

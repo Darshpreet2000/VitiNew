@@ -2,7 +2,6 @@ package com.example.vitinew.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vitinew.AboutCampaign;
+import com.example.vitinew.Details.AboutCampaign;
 import com.example.vitinew.Classes.campaignClass;
 import com.example.vitinew.R;
-import com.example.vitinew.gigDetails;
 import com.example.vitinew.gigsAdapter;
 import com.squareup.picasso.Picasso;
 

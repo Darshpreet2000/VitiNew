@@ -1,4 +1,4 @@
-package com.example.vitinew;
+package com.example.vitinew.Details;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,15 +15,14 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Classes.campaignClass;
-import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
 import com.github.thunder413.datetimeutils.DateTimeStyle;
 import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

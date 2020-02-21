@@ -1,18 +1,12 @@
-package com.example.vitinew;
+package com.example.vitinew.Details;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,23 +18,18 @@ import com.android.volley.VolleyError;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static android.graphics.Typeface.BOLD;
-import static android.view.View.GONE;
 
 public class gigDetails extends AppCompatActivity {
     TextView gigsdetail,title,brand;

@@ -26,10 +26,10 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".PaymentViaAmazonGiftCard"></activity>
         <activity android:name=".PaymentViaPaytm" />
-        <activity android:name=".AboutCampaign" />
+        <activity android:name=".Details.AboutCampaign" />
         <activity android:name=".question_answer" />
-        <activity android:name=".ProjectDetail" />
-        <activity android:name=".gigDetails" />
+        <activity android:name=".Details.ProjectDetail" />
+        <activity android:name=".Details.gigDetails" />
         <activity
             android:name=".LoginRegister"
             android:theme="@style/LoginRegister" />

@@ -6,22 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.ProjectDisplay;
-import com.example.vitinew.Classes.gigsClass;
-import com.example.vitinew.ProjectDetail;
+import com.example.vitinew.Details.ProjectDetail;
 import com.example.vitinew.R;
-import com.example.vitinew.gigDetails;
-import com.example.vitinew.gigsAdapter;
 import com.squareup.picasso.Picasso;
-import com.truecaller.multisim.v;
 
 import java.io.Serializable;
 import java.util.ArrayList;

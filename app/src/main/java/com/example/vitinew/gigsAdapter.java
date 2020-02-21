@@ -9,18 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.gigsClass;
+import com.example.vitinew.Details.gigDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class gigsAdapter  extends
         RecyclerView.Adapter<gigsAdapter.gigsholder> {
@@ -70,7 +68,7 @@ public class gigsAdapter  extends
         holder.gigsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(v.getContext(),gigDetails.class);
+                Intent intent =new Intent(v.getContext(), gigDetails.class);
                 intent.putExtra("class",currentnote);
                 v.getContext().startActivity(intent);
             }
