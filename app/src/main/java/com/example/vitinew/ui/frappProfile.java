@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -147,7 +148,7 @@ public class frappProfile extends Fragment {
     public frappProfile() {
         // Required empty public constructor
     }
-
+TextView refer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -166,6 +167,11 @@ public class frappProfile extends Fragment {
             StrictMode.setThreadPolicy(policy);
         }
         user = new UserController(getContext());
+
+        Map<String, String> dataMap = new HashMap<String,String>();
+        Log.e("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        //dataMap.put("id","4");
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -419,4 +425,7 @@ public class frappProfile extends Fragment {
         }
         return 0;
     }
+
+
+
 }

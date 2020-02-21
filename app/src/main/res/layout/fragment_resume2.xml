@@ -119,7 +119,12 @@
                 android:text="Add Projects"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
-
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:layout_margin="10dp"
+           android:layout_below="@id/project_button"
+           android:background="@color/dark_gray"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -167,6 +172,13 @@
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:layout_below="@id/add_education"
+                android:background="@color/dark_gray"/>
+
         </RelativeLayout>
 
         <LinearLayout
@@ -212,7 +224,11 @@
                 android:text="Add Experience"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/dark_gray"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -262,7 +278,12 @@
                 android:text="Add Skills"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:layout_below="@id/Add_Skills"
+                android:background="@color/dark_gray"/>
         </RelativeLayout>
 
         <ProgressBar
@@ -322,7 +343,11 @@
                 android:text="Add Hobbies"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/dark_gray"/>
         </LinearLayout>
 
         <LinearLayout
@@ -372,7 +397,11 @@
                 android:text="Add Achievements"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/dark_gray"/>
         </LinearLayout>
 
         <LinearLayout
@@ -416,6 +445,11 @@
                 android:text="Add Social Profiles"
                 android:textColor="@color/white"
                 app:theme="@style/profile_button" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/dark_gray"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

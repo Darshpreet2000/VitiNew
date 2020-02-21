@@ -41,12 +41,12 @@ import static android.view.View.GONE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class City extends Fragment {
+public class Referral extends Fragment {
 
     Toolbar toolbar;
  Button apply;
  TextView referall;
-    public City() {
+    public Referral() {
         // Required empty public constructor
     }
 

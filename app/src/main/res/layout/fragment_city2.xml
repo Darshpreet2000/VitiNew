@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ui.City">
+    tools:context=".ui.Referral">
     <ImageView
         android:id="@+id/imageView2"
         android:scaleType="centerCrop"

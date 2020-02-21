@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/city"
-        android:name="com.example.vitinew.ui.City"
+        android:name="com.example.vitinew.ui.Referral"
         android:label="Referall"
         tools:layout="@layout/fragment_city2" />
     <fragment
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/internships"
         android:name="com.example.vitinew.ui.Projects"
-        android:label="Internships"
+        android:label="Projects"
         tools:layout="@layout/fragment_projects" >
         <action
             android:id="@+id/action_internships_to_my_Interships"
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/missions"
         android:name="com.example.vitinew.ui.Gigs"
-        android:label="Missions"
+        android:label="Gigs"
         tools:layout="@layout/fragment_gigs" >
         <action
             android:id="@+id/action_missions_to_my_Missions"
@@ -147,6 +147,6 @@
     <fragment
         android:id="@+id/campaign"
         android:name="com.example.vitinew.ui.Campaign"
-        android:label="campaign"
+        android:label="Campaign"
         tools:layout="@layout/campaign" />
 </navigation>

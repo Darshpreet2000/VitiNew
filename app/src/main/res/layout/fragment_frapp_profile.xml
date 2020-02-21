@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.frappProfile">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <ImageView
         card_view:layout_constraintTop_toTopOf="parent"
         android:layout_margin="20dp"
@@ -16,13 +21,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/user_image" />
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
 
         android:id="@+id/constraint2"
         card_view:layout_constraintTop_toTopOf="parent"
         card_view:layout_constraintLeft_toRightOf="@id/userimage_on_profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
      <TextView
          card_view:layout_constraintLeft_toLeftOf="parent"
          card_view:layout_constraintTop_toTopOf="parent"
@@ -34,45 +40,135 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text=""/>
+ <LinearLayout
+     card_view:layout_constraintTop_toBottomOf="@id/username_frappprofile"
+     card_view:layout_constraintLeft_toLeftOf="parent"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="30dp"
+            android:src="@drawable/phone"
+            card_view:layout_constraintRight_toRightOf="@id/phone_number"
+            card_view:layout_constraintEnd_toStartOf="@id/phone_number"
+            />
 
         <EditText
             card_view:layout_constraintTop_toBottomOf="@id/username_frappprofile"
             card_view:layout_constraintLeft_toLeftOf="parent"
             android:id="@+id/phone_number"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="phone number"/>
-
-        <EditText
+ </LinearLayout>
+        <LinearLayout
             card_view:layout_constraintTop_toTopOf="@id/phone_number"
             card_view:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="30dp"
+                android:src="@drawable/curriculum"
+                card_view:layout_constraintRight_toRightOf="@id/phone_number"
+                card_view:layout_constraintEnd_toStartOf="@id/phone_number"
+                />
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:id="@+id/name"
             android:hint="name"
             android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="30dp"
+
+                android:src="@drawable/citystatepin"
+                card_view:layout_constraintRight_toRightOf="@id/phone_number"
+                card_view:layout_constraintEnd_toStartOf="@id/phone_number"
+                />
         <EditText
             card_view:layout_constraintTop_toTopOf="@id/name"
             card_view:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
                android:id="@+id/city"
-            android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:hint="City"
             android:layout_height="wrap_content"/>
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="30dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="30dp"
+
+        android:src="@drawable/citystatepin"
+        card_view:layout_constraintRight_toRightOf="@id/phone_number"
+        card_view:layout_constraintEnd_toStartOf="@id/phone_number"
+        />
+    <EditText
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+
+            android:hint="State"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintTop_toTopOf="@id/city" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/citystatepin"
+            card_view:layout_constraintEnd_toStartOf="@id/phone_number"
+            card_view:layout_constraintRight_toRightOf="@id/phone_number" />
 
         <EditText
-            card_view:layout_constraintTop_toTopOf="@id/city"
+            card_view:layout_constraintTop_toTopOf="@id/state"
             card_view:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="30dp"
-            android:id="@+id/state"
-            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/zip"
             android:layout_width="match_parent"
-            android:hint="State"
+            android:hint="Zip"
+            android:inputType="phone"
             android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    </LinearLayout>
 <ProgressBar
     card_view:layout_constraintEnd_toEndOf="parent"
     card_view:layout_constraintTop_toTopOf="parent"
@@ -82,18 +178,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/progressbar"/>
-        <EditText
-            card_view:layout_constraintTop_toTopOf="@id/state"
-            card_view:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="30dp"
-            android:id="@+id/zip"
-            android:layout_marginLeft="30dp"
-            android:layout_width="match_parent"
-            android:hint="Zip"
-            android:inputType="phone"
-            android:layout_height="wrap_content"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         card_view:layout_constraintTop_toBottomOf="@id/constraint2"
@@ -120,7 +207,7 @@
                android:layout_height="wrap_content"
                android:textColor="@color/white"
                android:textSize="16sp"
-               android:text="Explore Exciting Missions"/>
+               android:text="Explore Exciting Gigs"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -170,37 +257,7 @@
         card_view:cardUseCompatPadding="true"
         card_view:layout_constraintTop_toBottomOf="@id/card_view2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/mainheading2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:text="Referall code"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/mainheading2"
-                android:layout_margin="10dp"
-                android:paddingLeft="10dp"
-                android:text="Use this code to invite your friends to use the platform, and you will get 5% of your friend's earnings."
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Code" />
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -262,6 +319,8 @@
         android:minHeight="0dp"
         android:height="40dp"
         android:width="200dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:id="@+id/save"
         card_view:theme="@style/profile_button"
         android:textColor="@color/white"
@@ -272,5 +331,5 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="10dp"
         android:text="Save Changes"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 </ScrollView>
