@@ -78,7 +78,7 @@ public class City extends Fragment {
         Log.e("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
         dataMap.put("id",String.valueOf(SaveSharedPreference.getUserId(getContext())));
         //dataMap.put("id","4");
-        user.getRequest(dataMap, API.REFERAL,responseListener);
+        user.getRequest(dataMap, API.USERDETAILS,responseListener);
      apply.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -108,9 +108,11 @@ public class City extends Fragment {
                 String code=jsonObject.getString("code");
                 switch(code){
                     case "SUCCESS":
-                        JSONArray gigsarray=new JSONArray();
 
-
+                        JSONObject j=new JSONObject();
+                        j=jsonObject.getJSONObject("user");
+                        String codes=j.getString("ref_code");
+                        referall.setText(codes);
                         break;
                     default:
                         Toast.makeText(getContext(), "something wrong", Toast.LENGTH_SHORT).show();
