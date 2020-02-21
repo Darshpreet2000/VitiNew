@@ -82,6 +82,14 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/textView5">
 
+            <TextView
+                android:id="@+id/pro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:text="Projects" />
+
             <ImageView
                 android:layout_width="30dp"
                 android:visibility="gone"
@@ -93,7 +101,7 @@
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/projectsrecycle"
-                android:layout_below="@+id/addProjecti"
+                android:layout_below="@id/pro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -131,7 +139,6 @@
                 />
             <TextView
                 android:id="@+id/Education"
-                android:layout_below="@id/addEducationi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -141,9 +148,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addedu"
+                android:layout_below="@+id/Education"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Education" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/add_education"
@@ -230,7 +237,7 @@
                 android:id="@+id/addskillList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/addSkilli" />
+                android:layout_below="@id/Skills" />
 
             <TextView
                 android:id="@+id/Skills"
@@ -338,10 +345,13 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/achievementstext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

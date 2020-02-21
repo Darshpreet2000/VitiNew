@@ -128,7 +128,7 @@ public class Resume extends Fragment {
                     ProjectDetails add = new ProjectDetails(skillobj.getString("title"), skillobj.getString("des"), skillobj.getString("id"));
                     Finalprojects.add(add);
                 }
-                if(Finalprojects.isEmpty()){
+                if(!Finalprojects.isEmpty()){
                     addprojecti.setVisibility(View.VISIBLE);
                     addproject.setVisibility(View.INVISIBLE);
                 }
@@ -262,9 +262,9 @@ public class Resume extends Fragment {
                     Addskills add = new Addskills(skillobj.getString("name"), skillobj.getString("rating"), skillobj.getString("id"));
                     Finalskills.add(add);
                 }
-                if(Finalskills.isEmpty()){
+                if(!Finalskills.isEmpty()){
                     addskillsi.setVisibility(View.VISIBLE);
-                    addskills.setVisibility(View.VISIBLE);
+                    addskills.setVisibility(View.INVISIBLE);
                 }
                 Display display = getActivity().getWindowManager().getDefaultDisplay();
                 DisplayMetrics outMetrics = new DisplayMetrics();
@@ -315,7 +315,7 @@ public class Resume extends Fragment {
                     AddEducation add = new AddEducation(skillobj.getString("type"), skillobj.getString("name"), skillobj.getString("course"), skillobj.getString("start"), skillobj.getString("end"), skillobj.getString("id"));
                     FinalEducations.add(add);
                 }
-              if(FinalEducations.isEmpty()){
+              if(!FinalEducations.isEmpty()){
                   addeducationi.setVisibility(View.VISIBLE);
                   addeducation.setVisibility(View.INVISIBLE);
               }

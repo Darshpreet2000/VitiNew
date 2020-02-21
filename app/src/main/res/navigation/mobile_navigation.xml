@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/my_Missions"
         android:name="com.example.vitinew.ui.My_Gigs"
-        android:label="My Missions"
+        android:label="My Gigs"
         tools:layout="@layout/my_gigs" />
     <fragment
         android:id="@+id/my_Interships"
         android:name="com.example.vitinew.ui.My_Projects"
-        android:label="My Internships"
+        android:label="My Projects"
         tools:layout="@layout/my_projects" />
     <fragment
         android:id="@+id/resume"

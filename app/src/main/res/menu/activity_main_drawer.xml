@@ -9,16 +9,20 @@
             android:title="@string/resume" />
         <item
             android:id="@+id/my_Missions"
-            android:title="@string/my_mission" />
+            android:title="My Gigs" />
         <item
             android:id="@+id/my_Interships"
-            android:title="@string/my_internships" />
+            android:title="My Projects" />
         <item
             android:id="@+id/wallet"
             android:title="@string/wallet" />
         <item
             android:id="@+id/support"
             android:title="@string/support" />
+
+        <item
+            android:id="@+id/frappProfile"
+            android:title="My Profile" />
         <item
             android:id="@+id/city"
             android:title="Referrals" />
@@ -29,9 +33,6 @@
         <item
             android:id="@+id/logout2"
             android:title="@string/logout" />
-        <item
-            android:id="@+id/frappProfile"
-            android:title="My Profile" />
     </group>
 
 </menu>
