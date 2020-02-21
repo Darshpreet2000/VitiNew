@@ -43,7 +43,7 @@ import static android.view.View.GONE;
  * A simple {@link Fragment} subclass.
  */
 public class Wallet extends Fragment {
-    TextView referall, gig, project, campaign;
+    TextView referall, gig, project, campaign,TotalWalletBalance,Reffered;
     LinearLayout withdrawPaytm,WithdrawAmazonGiftCard;
     Toolbar toolbar;
 
@@ -64,18 +64,26 @@ public class Wallet extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        referall = view.findViewById(R.id.referal);
+        referall = view.findViewById(R.id.referalwallet);
         gig = view.findViewById(R.id.gigs);
         project = view.findViewById(R.id.projects);
         campaign = view.findViewById(R.id.campaigns);
+        TotalWalletBalance=view.findViewById(R.id.TotalWalletBalance);
+        Reffered=view.findViewById(R.id.Reffered);
+
         WithdrawAmazonGiftCard=view.findViewById(R.id.WithdrawAmazonGiftCard);
         withdrawPaytm=view.findViewById(R.id.WithdrawViaPaytm);
         withdrawPaytm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(), PaymentViaPaytm.class);
-                intent.putExtra("id",1);
-                startActivity(intent);
+                if(Integer.parseInt("0"+TotalWalletBalance.getText().toString())>500) {
+                    Intent intent = new Intent(getContext(), PaymentViaPaytm.class);
+                    intent.putExtra("id", 1);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(v.getContext(), "Wallet Balance Should Greater Then 500 Rs  Your Wallet Balance is "+TotalWalletBalance.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
                 //paytm process
                 //id 1
 
@@ -86,9 +94,14 @@ public class Wallet extends Fragment {
             public void onClick(View v) {
                 //withdraw amazon gift card
                 //id 2
-                Intent intent=new Intent(getContext(), PaymentViaAmazonGiftCard.class);
-                intent.putExtra("id",2);
-                startActivity(intent);
+                if(Integer.parseInt("0"+TotalWalletBalance.getText().toString())>500) {
+                    Intent intent = new Intent(getContext(), PaymentViaAmazonGiftCard.class);
+                    intent.putExtra("id", 2);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(v.getContext(), "Wallet Balance Should Greater Then 500 Rs  Your Wallet Balance is "+TotalWalletBalance.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
         UserController user = new UserController(getContext());
@@ -115,6 +128,7 @@ public class Wallet extends Fragment {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code = jsonObject.getString("code");
+                Log.d("strwalletdetail", jsonObject.toString());
                 switch (code) {
                     case "SUCCESS":
                         String referralEarnings = jsonObject.getString("referralEarnings");
@@ -124,12 +138,16 @@ public class Wallet extends Fragment {
                         String projectEarnings = jsonObject.getString("projectEarnings");
 
                         String campaignEarnings = jsonObject.getString("campaignEarnings");
-
+                        String refferedNumber=jsonObject.getString("referred");
+                        String WalletBalance=jsonObject.getString("balance");
                         referall.setText(referralEarnings);
                         gig.setText(gigEarnings);
                         project.setText(projectEarnings);
                         campaign.setText(campaignEarnings);
-                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                        TotalWalletBalance.setText(""+WalletBalance);
+                        Reffered.setText(refferedNumber);
+                        //set here two more detail reffered and wallet balance
+                       // Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
 
                         break;
                     default:

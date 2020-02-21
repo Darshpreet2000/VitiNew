@@ -1,9 +1,12 @@
 package com.example.vitinew;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +18,8 @@ import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.example.vitinew.ui.Wallet;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,10 +68,22 @@ public class PaymentViaPaytm extends AppCompatActivity {
                     case "SUCCESS":
 
                         Toast.makeText(PaymentViaPaytm.this, " we will process payout in 12-16 hours ", Toast.LENGTH_SHORT).show();
+                        /*Handler handler=new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent =new Intent(PaymentViaPaytm.this,Wallet.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        },3000);*/
+
 
                         break;
                     default:
                         Toast.makeText(PaymentViaPaytm.this, ""+code, Toast.LENGTH_SHORT).show();
+
                         break;
 
                 }
@@ -74,6 +91,7 @@ public class PaymentViaPaytm extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
+
             }
         }
 
@@ -98,13 +116,55 @@ public class PaymentViaPaytm extends AppCompatActivity {
         WithdrawNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(AmountDetail.getText().toString())<500){
+                if(Integer.parseInt("0"+AmountDetail.getText().toString())<500){
+                    if(AmountDetail.getText().toString().isEmpty()){
+                        AmountDetail.setError("Enter Amount");
+                        AmountDetail.requestFocus();
+                        return;
+
+
+                    }
+                    if(PhoneNumber.getText().toString().isEmpty()){
+                        AmountDetail.setError("Enter Email Detail");
+                        AmountDetail.requestFocus();
+                        return;
+
+
+                    }
                     Toast.makeText(PaymentViaPaytm.this, "Amount Should Grater then 500 Rs", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    paymentdetail=PhoneNumber.getText().toString();
-                    amount=AmountDetail.getText().toString();
-                    Withdraw(paymentdetail);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PaymentViaPaytm.this);
+
+                    // set title
+                    alertDialogBuilder.setTitle("Alert");
+
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("Does Phone Number Correct ?")
+                            .setCancelable(false)
+                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    paymentdetail=PhoneNumber.getText().toString();
+                                    amount=AmountDetail.getText().toString();
+                                    Withdraw(paymentdetail);
+
+                                }
+                            })
+                            .setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(PaymentViaPaytm.this, "CANCEL button click ", Toast.LENGTH_SHORT).show();
+
+                                    dialog.cancel();
+                                }
+                            });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+
                 }
             }
         });
