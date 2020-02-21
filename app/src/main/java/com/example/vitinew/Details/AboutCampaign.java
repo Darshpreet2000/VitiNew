@@ -3,7 +3,9 @@ package com.example.vitinew.Details;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
 import com.github.thunder413.datetimeutils.DateTimeStyle;
 import com.github.thunder413.datetimeutils.DateTimeUtils;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -38,31 +41,53 @@ public class AboutCampaign extends AppCompatActivity {
             ,Start,end;
     campaignClass  campaigns=new campaignClass();
     Button apply;
+    ExpandableTextView expTv_terms;
     String tasklist= "";
     UserController userController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.campaign_detail);
-       campaigndetail=findViewById(R.id.campaigndescriptionDetail);
+        ExpandableTextView expTv_about = (ExpandableTextView) findViewById(R.id.expand_text_view_aboutcampaign);
+        ExpandableTextView expTv_inst = (ExpandableTextView) findViewById(R.id.expand_text_view_instruction);
+
+        ExpandableTextView expTv_req = (ExpandableTextView) findViewById(R.id.expand_text_view_requirements);
+        ExpandableTextView expTv_benefit = (ExpandableTextView) findViewById(R.id.expand_text_view_benefits);
+           expTv_terms = (ExpandableTextView) findViewById(R.id.expand_text_view_terms);
+
+
         Intent intent=getIntent();
         campaigns= (campaignClass) intent.getSerializableExtra("class");
-        campaigndetail.setText(campaigns.getDes());
 
         Reward=findViewById(R.id.campaignReward);
-        Term=findViewById(R.id.campaignTerm);
         imageView=findViewById(R.id.imageView1);
 
-        ImpTerm=findViewById(R.id.campaignImpTerm);
+
         termAndCondition=findViewById(R.id.checkboxTerm);
         City=findViewById(R.id.campaigCity);
-        instruction=findViewById(R.id.campaigInstuction);
+//        instruction=findViewById(R.id.campaigInstuction);
         City.setText(campaigns.getCity());
-        instruction.setText(campaigns.getInstructions());
-        benifits=findViewById(R.id.campaignBenifits);
-        requirement=findViewById(R.id.campaignRequirement);
-        benifits.setText(campaigns.getBenefits());
-        requirement.setText(campaigns.getRequirements());
+       // instruction.setText(campaigns.getInstructions());
+  //      benifits=findViewById(R.id.campaignBenifits);
+    //    requirement=findViewById(R.id.campaignRequirement);
+   //     benifits.setText(campaigns.getBenefits());
+     //   requirement.setText(campaigns.getRequirements());
+        if (Build.VERSION.SDK_INT >= 24) {
+            expTv_about.setText(Html.fromHtml("<strong><h2>About Campaign</h2></strong>"+campaigns.getDes()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+
+            expTv_inst.setText(Html.fromHtml("<strong><h2>Instruction</h2></strong>"+campaigns.getInstructions()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+            expTv_benefit.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>"+campaigns.getBenefits()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+            expTv_req.setText(Html.fromHtml("<strong><h2>Requirements</h2></strong>"+campaigns.getRequirements()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            expTv_about.setText(Html.fromHtml("<h2>About Campaign</h2>"+campaigns.getDes()+"<br>"));
+
+            expTv_inst.setText(Html.fromHtml("<strong><h2>Instruction</h2></strong>"+campaigns.getInstructions()+"<br>"));
+            expTv_benefit.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>"+campaigns.getBenefits()+"<br>"));
+            expTv_req.setText(Html.fromHtml("<strong><h2>Requirements</h2></strong>"+campaigns.getRequirements()+"<br>"));
+
+        }
+
         title=findViewById(R.id.campaigndetailTitle);
         Start=findViewById(R.id.campaignStarting);
         end=findViewById(R.id.campaignEnding);
@@ -132,8 +157,15 @@ public class AboutCampaign extends AppCompatActivity {
 
 
                         Reward.setText(Rewardvalue);
-                        Term.setText(terms);
-                        ImpTerm.setText("Imp Terms:\n"+impTerms);
+
+                        if (Build.VERSION.SDK_INT >= 24) {
+                            expTv_terms.setText(Html.fromHtml("<strong><h2>Terms</h2></strong>"+terms+"<br>", Html.FROM_HTML_MODE_LEGACY));
+
+                        } else {
+
+                            expTv_terms.setText(Html.fromHtml("<strong><h2>Terms</h2></strong>"+terms+"<br>"));
+
+                        }
 
 
                         break;

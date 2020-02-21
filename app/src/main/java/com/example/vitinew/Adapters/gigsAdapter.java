@@ -1,4 +1,4 @@
-package com.example.vitinew;
+package com.example.vitinew.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Details.gigDetails;
+import com.example.vitinew.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

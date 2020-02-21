@@ -14,8 +14,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="60dp"
         app:layout_constraintBottom_toTopOf="@id/projectlistlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
         android:src="@drawable/com_truecaller_icon" />
 
     <androidx.cardview.widget.CardView
@@ -33,16 +33,14 @@
     <LinearLayout android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
-            android:text="Title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
+
         <TextView
             android:layout_width="match_parent"
             android:id="@+id/campaigndetailTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="check"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"/>
         <LinearLayout
@@ -131,27 +129,45 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_margin="10dp"
-                android:layout_height="wrap_content"/>
         </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view_aboutcampaign"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="About Campaign"/>
-        <TextView
-            android:id="@+id/campaigndescriptionDetail"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            />
+            expandableTextView:maxCollapsedLines="1"
+            expandableTextView:animDuration="200">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/more"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_more"/>
+                <ImageButton
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_toRightOf="@+id/more"
+                    android:id="@id/expandable_text"
+                    android:layout_toLeftOf="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666" />
+
+            </RelativeLayout>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,60 +192,167 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"/>
-        <TextView
+
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view_instruction"
             android:layout_width="match_parent"
-            android:text="Instruction"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
+            expandableTextView:maxCollapsedLines="1"
+            expandableTextView:animDuration="200">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/more1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_more"/>
+                <ImageButton
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_toRightOf="@+id/more1"
+                    android:id="@id/expandable_text"
+                    android:layout_toLeftOf="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666" />
+
+            </RelativeLayout>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view_requirements"
             android:layout_width="match_parent"
-            android:id="@+id/campaigInstuction"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
+            expandableTextView:maxCollapsedLines="1"
+            expandableTextView:animDuration="200">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/more4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_more"/>
+                <ImageButton
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_toRightOf="@+id/more4"
+                    android:id="@id/expandable_text"
+                    android:layout_toLeftOf="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666" />
+
+            </RelativeLayout>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view_benefits"
             android:layout_width="match_parent"
-            android:text="Requirement"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
+            expandableTextView:maxCollapsedLines="1"
+            expandableTextView:animDuration="200">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/more2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_more"/>
+                <ImageButton
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_toRightOf="@+id/more2"
+                    android:id="@id/expandable_text"
+                    android:layout_toLeftOf="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666" />
+
+            </RelativeLayout>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+        <com.ms.square.android.expandabletextview.ExpandableTextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/expand_text_view_terms"
             android:layout_width="match_parent"
-            android:id="@+id/campaignRequirement"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:text="Benifits"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/campaignBenifits"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:text="Terms"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/campaignTerm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:id="@+id/campaignImpTerm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_margin="10dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            expandableTextView:maxCollapsedLines="1"
+            expandableTextView:animDuration="200">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/more3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_more"/>
+                <ImageButton
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_toRightOf="@+id/more3"
+                    android:id="@id/expandable_text"
+                    android:layout_toLeftOf="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:textColor="#666666" />
+
+            </RelativeLayout>
+        </com.ms.square.android.expandabletextview.ExpandableTextView>
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

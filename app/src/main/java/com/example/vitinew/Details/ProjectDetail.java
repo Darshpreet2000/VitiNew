@@ -123,23 +123,23 @@ public class ProjectDetail extends AppCompatActivity {
         ApplyBefore.setText(e);
   //      WorkPlace.setText(projectdetail.getWorkPlace());
         if (Build.VERSION.SDK_INT >= 24) {
-            AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes(), Html.FROM_HTML_MODE_LEGACY));
+            AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes()+"<br>", Html.FROM_HTML_MODE_LEGACY));
 
 
         } else {
-            AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes()));
+            AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes()+"<br>"));
 
         }
         if (Build.VERSION.SDK_INT >= 24) {
-            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits(), Html.FROM_HTML_MODE_LEGACY));
-            AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany(), Html.FROM_HTML_MODE_LEGACY));
-            skill.setText(Html.fromHtml("<strong><h2>Skills</h2></strong>" +projectdetail.getSkill(), Html.FROM_HTML_MODE_LEGACY));
+            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+            AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany()+"<br>", Html.FROM_HTML_MODE_LEGACY));
+            skill.setText(Html.fromHtml("<strong><h2>Skills</h2></strong>" +projectdetail.getSkill()+"<br>", Html.FROM_HTML_MODE_LEGACY));
 
         } else {
-            skill.setText(Html.fromHtml("<strong><h2>Skills Required</h2></strong>" +projectdetail.getSkill()));
+            skill.setText(Html.fromHtml("<strong><h2>Skills Required</h2></strong>" +projectdetail.getSkill()+"<br>"));
 
-            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits()));
-            AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany()));
+            benefits.setText(Html.fromHtml("<strong><h2>Benefits</h2></strong>" +projectdetail.getBenefits()+"<br>"));
+            AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany()+"<br>"));
 
         }
         Start.setText(s);

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vitinew.Details.AboutCampaign;
 import com.example.vitinew.Classes.campaignClass;
 import com.example.vitinew.R;
-import com.example.vitinew.gigsAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;

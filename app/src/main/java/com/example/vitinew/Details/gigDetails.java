@@ -64,10 +64,10 @@ Log.v("",""+"gig id is"+gig.getId());
 
 // IMPORTANT - call setText on the ExpandableTextView to set the text content to display
         if (Build.VERSION.SDK_INT >= 24) {
-            expTv1.setText(Html.fromHtml("<strong><h2>About Gigs</h2></strong>"+gig.getDescription(), Html.FROM_HTML_MODE_LEGACY));
+            expTv1.setText(Html.fromHtml("<strong><h2>About Gigs</h2></strong>"+gig.getDescription()+"<br>", Html.FROM_HTML_MODE_LEGACY));
 
         } else {
-            expTv1.setText(Html.fromHtml("<h1 style=\"color:black;\">About Gig</h1>"+gig.getDescription()));
+            expTv1.setText(Html.fromHtml("<h1 style=\"color:black;\">About Gig</h1>"+gig.getDescription()+"<br>"));
         }
 
         userController.getRequest(dataMap, API.GigsDetails,responseListener);

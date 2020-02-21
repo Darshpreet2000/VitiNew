@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,21 +21,16 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.vitinew.Classes.SaveSharedPreference;
-import com.example.vitinew.Classes.gigsClass;
 import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.example.vitinew.gigsAdapter;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static android.view.View.GONE;
 
 /**
  * A simple {@link Fragment} subclass.
