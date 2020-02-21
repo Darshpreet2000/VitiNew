@@ -66,6 +66,7 @@ public class Resume extends Fragment {
     UserController userController;
     RecyclerView addExperience;
     RecyclerView addskillList, addedu, addProjects;
+    ImageView addskillsi, addeducationi, addprojecti, addhobbyi, addexperiencei, addachievementi;
     Button addskills, addeducation, addproject, addhobby, addexperience, addachievement, socialprofile;
 
     public Resume() {
@@ -126,6 +127,10 @@ public class Resume extends Fragment {
                     JSONObject skillobj = skills.getJSONObject(i);
                     ProjectDetails add = new ProjectDetails(skillobj.getString("title"), skillobj.getString("des"), skillobj.getString("id"));
                     Finalprojects.add(add);
+                }
+                if(Finalprojects.isEmpty()){
+                    addprojecti.setVisibility(View.VISIBLE);
+                    addproject.setVisibility(View.INVISIBLE);
                 }
                 addProjects.setLayoutManager(new LinearLayoutManager(getContext()));
                 addProjectAdapter addskilladapter = new addProjectAdapter(Finalprojects, getContext());
@@ -257,6 +262,10 @@ public class Resume extends Fragment {
                     Addskills add = new Addskills(skillobj.getString("name"), skillobj.getString("rating"), skillobj.getString("id"));
                     Finalskills.add(add);
                 }
+                if(Finalskills.isEmpty()){
+                    addskillsi.setVisibility(View.VISIBLE);
+                    addskills.setVisibility(View.VISIBLE);
+                }
                 Display display = getActivity().getWindowManager().getDefaultDisplay();
                 DisplayMetrics outMetrics = new DisplayMetrics();
                 display.getMetrics(outMetrics);
@@ -269,6 +278,7 @@ public class Resume extends Fragment {
                 addskillList.setLayoutManager(mLayoutManager);
                 addskilladapter addskilladapter = new addskilladapter(Finalskills, getContext());
                 addskillList.setAdapter(addskilladapter);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -305,7 +315,10 @@ public class Resume extends Fragment {
                     AddEducation add = new AddEducation(skillobj.getString("type"), skillobj.getString("name"), skillobj.getString("course"), skillobj.getString("start"), skillobj.getString("end"), skillobj.getString("id"));
                     FinalEducations.add(add);
                 }
-
+              if(FinalEducations.isEmpty()){
+                  addeducationi.setVisibility(View.VISIBLE);
+                  addeducation.setVisibility(View.INVISIBLE);
+              }
                 addedu.setLayoutManager(new LinearLayoutManager(getContext()));
                 addEducationAdapter addskilladapter = new addEducationAdapter(FinalEducations, getContext());
                 addedu.setAdapter(addskilladapter);
@@ -338,8 +351,40 @@ public class Resume extends Fragment {
         addexperience = view.findViewById(R.id.addexperiences);
         addExperience = view.findViewById(R.id.experienceList);
         addachievement = view.findViewById(R.id.Add_Achievements);
+///////////////////
 
+        addskillsi = view.findViewById(R.id.addSkilli);
+        addprojecti = view.findViewById(R.id.addProjecti);
+        addexperiencei = view.findViewById(R.id.addexperiencei);
+        addeducationi= view.findViewById(R.id.addEducationi);
+      addskillsi.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSkill);
 
+          }
+      });
+      addprojecti.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addProject);
+
+          }
+      });
+      addexperiencei.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addExperience);
+
+          }
+      });
+addeducationi.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addEducation);
+
+    }
+});
         addachievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -82,20 +82,20 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/textView5">
 
-            <TextView
-                android:id="@+id/about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_margin="20dp"
-                android:text="About me"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
+            <ImageView
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:id="@+id/addProjecti"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+               android:src="@drawable/resumeplus"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/projectsrecycle"
+                android:layout_below="@+id/addProjecti"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/about_me" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/project_button"
@@ -120,8 +120,18 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/about_me_relative">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:id="@+id/addEducationi"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/resumeplus"
+                />
             <TextView
                 android:id="@+id/Education"
+                android:layout_below="@id/addEducationi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -166,6 +176,17 @@
                 android:text="Experience"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="30dp"
+                android:id="@+id/addexperiencei"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/resumeplus"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/experienceList"
                 android:layout_width="match_parent"
@@ -195,11 +216,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_experience">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/addSkilli"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/resumeplus"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addskillList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Skills" />
+                android:layout_below="@id/addSkilli" />
 
             <TextView
                 android:id="@+id/Skills"
