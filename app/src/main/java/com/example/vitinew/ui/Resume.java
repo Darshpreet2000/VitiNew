@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -255,7 +257,16 @@ public class Resume extends Fragment {
                     Addskills add = new Addskills(skillobj.getString("name"), skillobj.getString("rating"), skillobj.getString("id"));
                     Finalskills.add(add);
                 }
-                addskillList.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                Display display = getActivity().getWindowManager().getDefaultDisplay();
+                DisplayMetrics outMetrics = new DisplayMetrics();
+                display.getMetrics(outMetrics);
+
+                float density  = getResources().getDisplayMetrics().density;
+                float dpWidth  = outMetrics.widthPixels / density;
+                int columns = Math.round(dpWidth/300);
+                GridLayoutManager mLayoutManager;
+                mLayoutManager = new GridLayoutManager(getActivity(),columns);
+                addskillList.setLayoutManager(mLayoutManager);
                 addskilladapter addskilladapter = new addskilladapter(Finalskills, getContext());
                 addskillList.setAdapter(addskilladapter);
             } catch (JSONException e) {
