@@ -4,9 +4,9 @@
     package="com.example.vitinew">
 
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -18,13 +18,14 @@
         android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/herodylogo"
+        android:label="Herody"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:label="Herody"
-        tools:replace="android:label"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".PaymentViaAmazonGiftCard"></activity>
+        android:usesCleartextTraffic="true"
+        tools:replace="android:label">
+        <activity android:name=".ShowResume"></activity>
+        <activity android:name=".PaymentViaAmazonGiftCard" />
         <activity android:name=".PaymentViaPaytm" />
         <activity android:name=".Details.AboutCampaign" />
         <activity android:name=".question_answer" />

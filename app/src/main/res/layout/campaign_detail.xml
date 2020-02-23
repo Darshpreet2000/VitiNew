@@ -143,11 +143,6 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/more"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_more"/>
                 <ImageButton
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
@@ -158,6 +153,8 @@
                     android:background="@android:color/transparent"/>
                 <TextView
                     android:layout_toRightOf="@+id/more"
+
+                    android:layout_alignParentStart="true"
                     android:id="@id/expandable_text"
                     android:layout_toLeftOf="@id/expand_collapse"
                     android:layout_width="wrap_content"
@@ -207,11 +204,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/more1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_more"/>
+
                 <ImageButton
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
@@ -221,8 +214,8 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"/>
                 <TextView
-                    android:layout_toRightOf="@+id/more1"
                     android:id="@id/expandable_text"
+                    android:layout_alignParentStart="true"
                     android:layout_toLeftOf="@id/expand_collapse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -248,11 +241,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/more4"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_more"/>
+
                 <ImageButton
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
@@ -262,7 +251,8 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"/>
                 <TextView
-                    android:layout_toRightOf="@+id/more4"
+
+                    android:layout_alignParentStart="true"
                     android:id="@id/expandable_text"
                     android:layout_toLeftOf="@id/expand_collapse"
                     android:layout_width="wrap_content"
@@ -287,11 +277,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/more2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_more"/>
+
                 <ImageButton
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
@@ -301,8 +287,9 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"/>
                 <TextView
-                    android:layout_toRightOf="@+id/more2"
                     android:id="@id/expandable_text"
+
+                    android:layout_alignParentStart="true"
                     android:layout_toLeftOf="@id/expand_collapse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -327,11 +314,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/more3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_more"/>
+
                 <ImageButton
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
@@ -341,8 +324,9 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"/>
                 <TextView
-                    android:layout_toRightOf="@+id/more3"
                     android:id="@id/expandable_text"
+
+                    android:layout_alignParentStart="true"
                     android:layout_toLeftOf="@id/expand_collapse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

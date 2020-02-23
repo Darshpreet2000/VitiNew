@@ -4,9 +4,18 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/frappProfile"
+            android:title="My Profile" />
+
         <item
             android:id="@+id/resume"
-            android:title="@string/resume" />
+            android:title="My Resume" />
+
+        <item
+            android:id="@+id/mycampaigns"
+            android:title="My Campaigns" />
         <item
             android:id="@+id/my_Missions"
             android:title="My Gigs" />
@@ -15,21 +24,19 @@
             android:title="My Projects" />
         <item
             android:id="@+id/wallet"
-            android:title="@string/wallet" />
-        <item
-            android:id="@+id/support"
-            android:title="@string/support" />
+            android:title="My Wallet" />
 
-        <item
-            android:id="@+id/frappProfile"
-            android:title="My Profile" />
         <item
             android:id="@+id/city"
-            android:title="Referrals" />
+            android:title="My Referrals" />
+
+
         <item
             android:id="@+id/about_us2"
-            android:title="@string/about_us" />
-
+            android:title="About Us" />
+        <item
+            android:id="@+id/support"
+            android:title="Contact Us" />
         <item
             android:id="@+id/logout2"
             android:title="@string/logout" />

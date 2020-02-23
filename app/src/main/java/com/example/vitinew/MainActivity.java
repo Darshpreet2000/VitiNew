@@ -2,6 +2,7 @@ package com.example.vitinew;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -118,6 +119,7 @@ DrawerLayout drawer;
                 public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                     switch (destination.getId()) {
                         case R.id.home2:
+
                             set_toolbar_home();
                             toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
                                 @Override
@@ -153,6 +155,21 @@ DrawerLayout drawer;
                                 }
                             });
                             break;
+                        case R.id.support:
+                            // set_toolbar_mission();
+                            onBackPressed();
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://herody.in/support"));
+                            startActivity(browserIntent);
+                           break;
+
+                        case R.id.about_us2:
+                            // set_toolbar_mission();
+                            onBackPressed();
+                            Intent browsersIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://herody.in/app-about"));
+                            startActivity(browsersIntent);
+                            break;
+
+
 
                     }
 

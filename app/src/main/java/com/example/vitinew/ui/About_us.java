@@ -1,9 +1,13 @@
 package com.example.vitinew.ui;
 
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -32,6 +36,12 @@ public class About_us extends Fragment {
         // Inflate the projectlist for this fragment
         return inflater.inflate(R.layout.fragment_about_us, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     private void setuptoolbar(){
         toolbar=getActivity().findViewById(R.id.toolbar);
         toolbar.getMenu().clear();

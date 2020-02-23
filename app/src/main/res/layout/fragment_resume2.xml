@@ -7,7 +7,8 @@
 
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/constraint_resume"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +17,7 @@
         <ImageView
             android:id="@+id/userimage_on_resume"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/user_image"
@@ -25,7 +27,9 @@
 
         <TextView
             android:id="@+id/username_resume"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text=""
@@ -46,41 +50,39 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/username_resume" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/location_resume" />
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:checked="true"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Web resume visibility"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView4" />
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:layout_width="0dp"
+                android:id="@+id/download"
+                android:text="Download Resume"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_margin="5dp"
+                android:id="@+id/show"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:text="Show Resume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
 
+        </LinearLayout>
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:id="@+id/about_me_relative"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/textView5">
+            android:layout_height="wrap_content">
 <ImageView
     android:id="@+id/im1"
     android:layout_width="30dp"
@@ -537,5 +539,5 @@
                 android:layout_margin="10dp"
                 android:background="@color/dark_gray"/>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
