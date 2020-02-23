@@ -1,9 +1,11 @@
 package com.example.vitinew.ui;
 
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -17,6 +19,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -584,6 +588,7 @@ addeducationi.setOnClickListener(new View.OnClickListener() {
             newt= String.valueOf((Html.fromHtml(text)));
 
         }
+       requestAppPermissions();
         write("Resume",newt);
 
     }
@@ -614,5 +619,28 @@ addeducationi.setOnClickListener(new View.OnClickListener() {
             e.printStackTrace();
             return false;
         }
+    }
+    private void requestAppPermissions() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            return;
+        }
+
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[] {
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, 1); // your request code
+    }
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 }
