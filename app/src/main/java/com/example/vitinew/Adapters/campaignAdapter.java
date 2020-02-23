@@ -63,7 +63,7 @@ public class campaignAdapter extends  RecyclerView.Adapter<campaignAdapter.campa
         holder.title.setText(currentnote.getTitle());
         holder.campaignbrand.setText(currentnote.getBrand());
         Picasso.get().load(currentnote.getLogo()).into(holder.campaignicon);
-        holder.pos.setText(String.valueOf(currentnote.getUcount()));
+        holder.pos.setText(String.valueOf("Positions: " + currentnote.getUcount()));
         holder.stipend.setText(String.valueOf(currentnote.getReward()));
 
 //        holder.description.setText(String.valueOf(currentnote.getDescription()));

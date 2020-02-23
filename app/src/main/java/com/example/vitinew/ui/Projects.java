@@ -98,13 +98,13 @@ public class Projects extends Fragment {
                             String place=gigsObject.getString("place");
                             String count=gigsObject.getString("count");
                             String skills=gigsObject.getString("skills");
-
+String brand=gigsObject.getString("brand");
                             String proofs=gigsObject.getString("proofs");
                            String image=gigsObject.getString("image");
 
 
                             ProjectDisplay thisProject = new ProjectDisplay();
-
+thisProject.setCompanyName(brand);
                             thisProject.setImage(image);
                             thisProject.setId(id);
                             thisProject.setCat(cats);

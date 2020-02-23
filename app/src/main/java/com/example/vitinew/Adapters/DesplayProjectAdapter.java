@@ -62,13 +62,13 @@ public class DesplayProjectAdapter extends
         holder.Projecttitle.setText(currentnote.getTitle());
 
        // holder.description.setText(currentnote.getDes());
-        holder.position.setText(currentnote.getCount()+" Positions");
+        holder.position.setText(currentnote.getCount());
         holder.stipend.setText(currentnote.getStipend());
       holder.time.setText(currentnote.getDuration());
         Log.d("this",currentnote.getTitle());
 
         Picasso.get().load(currentnote.getImage()).into(holder.gigsicon);
-        holder.cat.setText(currentnote.getCat());
+        holder.cat.setText(currentnote.getCompanyName());
         ///holder.gigsbrand.setText();
       //  holder.description.setText(String.valueOf(currentnote.getDescription()));
        holder.ProjectListLayout.setOnClickListener(new View.OnClickListener() {

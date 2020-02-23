@@ -20,8 +20,8 @@
     <ImageView
         android:id="@+id/gigsicon"
         android:layout_margin="10dp"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/com_truecaller_icon" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,29 +30,35 @@
 
         <TextView
             android:id="@+id/gigstitle"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gigs" />
 
         <TextView
             android:id="@+id/gigsbrand"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="gigs brand" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="gigs brand"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="14sp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <ImageView
-            android:layout_margin="10dp"
-            android:layout_width="30dp"
+            android:layout_width="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:layout_height="30dp"
             android:id="@+id/moneyimage"
             android:src="@drawable/campaign_rewards" />
@@ -64,6 +70,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="10dp"
                 android:text="1000" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
