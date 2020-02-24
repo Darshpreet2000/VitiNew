@@ -6,21 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vitinew.Classes.ProjectDisplay;
-import com.example.vitinew.Classes.gigsClass;
-import com.example.vitinew.ProjectDetail;
+import com.example.vitinew.Details.ProjectDetail;
 import com.example.vitinew.R;
-import com.example.vitinew.gigDetails;
-import com.example.vitinew.gigsAdapter;
-import com.truecaller.multisim.v;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -67,11 +62,13 @@ public class DesplayProjectAdapter extends
         holder.Projecttitle.setText(currentnote.getTitle());
 
        // holder.description.setText(currentnote.getDes());
-        holder.position.setText(currentnote.getCount()+" Positions");
+        holder.position.setText(currentnote.getCount());
         holder.stipend.setText(currentnote.getStipend());
-
+      holder.time.setText(currentnote.getDuration());
         Log.d("this",currentnote.getTitle());
-        holder.cat.setText(currentnote.getCat());
+
+        Picasso.get().load(currentnote.getImage()).into(holder.gigsicon);
+        holder.cat.setText(currentnote.getCompanyName());
         ///holder.gigsbrand.setText();
       //  holder.description.setText(String.valueOf(currentnote.getDescription()));
        holder.ProjectListLayout.setOnClickListener(new View.OnClickListener() {
@@ -103,11 +100,11 @@ public class DesplayProjectAdapter extends
         public DesplayProjectHolder(@NonNull View itemView) {
             super(itemView);
             Projecttitle=itemView.findViewById(R.id.ProjectTitle);
-            time=itemView.findViewById(R.id.time);
+            time=itemView.findViewById(R.id.duration);
             position=itemView.findViewById(R.id.postions);
            stipend=itemView.findViewById(R.id.stipend);
      cat=itemView.findViewById(R.id.category);
-
+        gigsicon=itemView.findViewById(R.id.projectlogo);
             //gigsicon=itemView.findViewById(R.id.gigsicon);
            // gigscat=itemView.findViewById(R.id.gigscats);
           //  gigsbrand=itemView.findViewById(R.id.gigsbrand);

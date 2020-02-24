@@ -1,18 +1,37 @@
 package com.example.vitinew.ui;
 
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.fonts.Font;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
+import android.text.Html;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +39,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.example.vitinew.Adapters.addEducationAdapter;
@@ -32,19 +52,35 @@ import com.example.vitinew.Classes.Addskills;
 import com.example.vitinew.Classes.ProjectDetails;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
+import com.example.vitinew.ShowResume;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
+import com.example.vitinew.ui.ResumeExtra.AddProject;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.view.View.GONE;
 
 /**
@@ -53,8 +89,10 @@ import static android.view.View.GONE;
 public class Resume extends Fragment {
     String skilladded;
     int ratingadded;
+    Button download,show;
     ImageView hdel, achdel;
     TextView username;
+    String rh="",ra="",rs="";
     List<Addskills> Finalskills = new ArrayList<>();
     List<ProjectDetails> Finalprojects = new ArrayList<ProjectDetails>();
     List<AddEducation> FinalEducations = new ArrayList<>();
@@ -64,6 +102,7 @@ public class Resume extends Fragment {
     UserController userController;
     RecyclerView addExperience;
     RecyclerView addskillList, addedu, addProjects;
+    ImageView addskillsi, addeducationi, addprojecti, addhobbyi, addexperiencei, addachievementi;
     Button addskills, addeducation, addproject, addhobby, addexperience, addachievement, socialprofile;
 
     public Resume() {
@@ -125,6 +164,10 @@ public class Resume extends Fragment {
                     ProjectDetails add = new ProjectDetails(skillobj.getString("title"), skillobj.getString("des"), skillobj.getString("id"));
                     Finalprojects.add(add);
                 }
+                if(!Finalprojects.isEmpty()){
+                    addprojecti.setVisibility(View.VISIBLE);
+                    addproject.setVisibility(View.INVISIBLE);
+                }
                 addProjects.setLayoutManager(new LinearLayoutManager(getContext()));
                 addProjectAdapter addskilladapter = new addProjectAdapter(Finalprojects, getContext());
                 addProjects.setAdapter(addskilladapter);
@@ -171,6 +214,9 @@ public class Resume extends Fragment {
                 TextView social = getActivity().findViewById(R.id.socialtext);
                 TextView hobby = getActivity().findViewById(R.id.hobbytext);
                 social.setText("Twitter\n" + twitter + "\n" + "LinkedIn\n" + linkedin + "\n" + "Github\n" + github + "\n" + "Instagram\n" + insta);
+               rh=hobbies;
+               rs="Twitter\n" + twitter + "\n" + "LinkedIn\n" + linkedin + "\n" + "Github\n" + github + "\n" + "Instagram\n" + insta;
+                 ra=achievements;
                 hobby.setText(hobbies);
 
             } catch (JSONException e) {
@@ -255,9 +301,23 @@ public class Resume extends Fragment {
                     Addskills add = new Addskills(skillobj.getString("name"), skillobj.getString("rating"), skillobj.getString("id"));
                     Finalskills.add(add);
                 }
-                addskillList.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                if(!Finalskills.isEmpty()){
+                    addskillsi.setVisibility(View.VISIBLE);
+                    addskills.setVisibility(View.INVISIBLE);
+                }
+                Display display = getActivity().getWindowManager().getDefaultDisplay();
+                DisplayMetrics outMetrics = new DisplayMetrics();
+                display.getMetrics(outMetrics);
+
+                float density  = getResources().getDisplayMetrics().density;
+                float dpWidth  = outMetrics.widthPixels / density;
+                int columns = Math.round(dpWidth/300);
+                GridLayoutManager mLayoutManager;
+                mLayoutManager = new GridLayoutManager(getActivity(),columns);
+                addskillList.setLayoutManager(mLayoutManager);
                 addskilladapter addskilladapter = new addskilladapter(Finalskills, getContext());
                 addskillList.setAdapter(addskilladapter);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
@@ -294,7 +354,10 @@ public class Resume extends Fragment {
                     AddEducation add = new AddEducation(skillobj.getString("type"), skillobj.getString("name"), skillobj.getString("course"), skillobj.getString("start"), skillobj.getString("end"), skillobj.getString("id"));
                     FinalEducations.add(add);
                 }
-
+              if(!FinalEducations.isEmpty()){
+                  addeducationi.setVisibility(View.VISIBLE);
+                  addeducation.setVisibility(View.INVISIBLE);
+              }
                 addedu.setLayoutManager(new LinearLayoutManager(getContext()));
                 addEducationAdapter addskilladapter = new addEducationAdapter(FinalEducations, getContext());
                 addedu.setAdapter(addskilladapter);
@@ -328,7 +391,54 @@ public class Resume extends Fragment {
         addExperience = view.findViewById(R.id.experienceList);
         addachievement = view.findViewById(R.id.Add_Achievements);
 
+        download = view.findViewById(R.id.download);
 
+        show = view.findViewById(R.id.show);
+///////////////////
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+         downloadresume();
+            }
+        });
+ show.setOnClickListener(new View.OnClickListener() {
+     @Override
+     public void onClick(View v) {
+         showresume();
+     }
+ });
+        addskillsi = view.findViewById(R.id.addSkilli);
+        addprojecti = view.findViewById(R.id.addProjecti);
+        addexperiencei = view.findViewById(R.id.addexperiencei);
+        addeducationi= view.findViewById(R.id.addEducationi);
+      addskillsi.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addSkill);
+
+          }
+      });
+      addprojecti.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addProject);
+
+          }
+      });
+      addexperiencei.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addExperience);
+
+          }
+      });
+addeducationi.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Navigation.findNavController(getView()).navigate(R.id.action_resume_to_addEducation);
+
+    }
+});
         addachievement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -399,5 +509,138 @@ public class Resume extends Fragment {
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
         toolbar.setBackgroundColor(getResources().getColor(R.color.white));
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
+    }
+    private String getresumedata(){
+        String text="";
+        text=text+"<h1>Education</h1>";
+        for(int i=0;i<FinalEducations.size();i++){
+        AddEducation c=FinalEducations.get(i);
+          text+=  "<strong>School Type <br> </strong>"+c.getType()+"<br>";
+
+            text+=  "<strong>Institute Name<br>  </strong>"+c.getName()+"<br>";
+
+            text+=  "<strong>Course Name  <br></strong>"+c.getCourse()+"<br>";
+
+            text+=  "<strong>Start Date <br> </strong>"+c.getStart()+"<br>";
+
+            text+=  "<strong>End Date  <br></strong>"+c.getEnd()+"<br>";
+
+        }
+
+                text+=
+                "<strong><h2>Projects</h2></strong>";
+        for(int i=0;i<Finalprojects.size();i++){
+            ProjectDetails c=Finalprojects.get(i);
+            text+=  "<strong>Title  </strong><br>"+c.getTitle()+"<br>";
+
+            text+=  "<strong>Description </strong><br>"+c.getDesc()+"<br>";
+        }
+
+
+        text+=
+                "<strong><h2>Experience</h2></strong>";
+
+        for(int i=0;i<FinalExperience.size();i++){
+            AddExp c=FinalExperience.get(i);
+            text+=  "<strong>Organisation <br> </strong>"+c.getOrg()+"<br>";
+
+            text+=  "<strong>Designation <br>  </strong>"+c.getDes()+"<br>";
+
+            text+=  "<strong>Description  <br></strong>"+c.getDesc()+"<br>";
+
+            text+=  "<strong>Start Date <br> </strong>"+c.getStart()+"<br>";
+
+            text+=  "<strong>End Date  <br></strong>"+c.getEnd()+"<br>";
+
+        }
+         text+=
+                "<strong><h2>Skills</h2></strong>";
+        for(int i=0;i<Finalskills.size();i++){
+            Addskills c=Finalskills.get(i);
+            text+=  "<strong>Name  </strong><br>"+c.getSkillname()+"<br>";
+
+            text+=  "<strong>Rating </strong><br>"+c.getRating()+"<br>";
+        }
+
+
+        text+=
+                "<strong><h2>Hobbies</h2></strong><br>"+rh+
+                "<strong><h2>Achievements</h2></strong><br>"+ra+
+                "<strong><h2>Social Profiles</h2></strong><br>"+rs;
+      return text;
+    }
+
+    private void showresume(){
+        String text=getresumedata();
+        Intent i=new Intent(getContext(), ShowResume.class);
+        i.putExtra("text",text);
+        startActivity(i);
+    }
+    String newt="";
+    private void downloadresume() {
+
+        String text = getresumedata();
+
+        if (Build.VERSION.SDK_INT >= 24) {
+          newt= String.valueOf((Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)));
+
+        } else {
+            newt= String.valueOf((Html.fromHtml(text)));
+
+        }
+       requestAppPermissions();
+        write("Resume",newt);
+
+    }
+    public Boolean write(String fname,String fcontent) {
+        try {
+            //Create file path for Pdf
+            String fpath = "/sdcard/" + fname + ".pdf";
+            File file = new File(fpath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            // create an instance of itext document
+           com.itextpdf.text.Document document = new Document();
+            PdfWriter.getInstance(document,
+                    new FileOutputStream(file.getAbsoluteFile()));
+            document.open();
+            Toast.makeText(getContext(), ""+fpath, Toast.LENGTH_SHORT).show();
+            //using add method in document to insert a paragraph
+            document.add(new Paragraph("Resume"));
+            document.add(new Paragraph(fcontent));
+            // close document
+            document.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } catch (DocumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private void requestAppPermissions() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            return;
+        }
+
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[] {
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, 1); // your request code
+    }
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 }

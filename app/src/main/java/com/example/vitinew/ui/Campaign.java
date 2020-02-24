@@ -1,8 +1,10 @@
 package com.example.vitinew.ui;
 
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -145,7 +147,12 @@ public class Campaign extends Fragment {
         }
     }
 
+    Toolbar toolbar;
+    public void setuptoolbar(){
+        toolbar=getActivity().findViewById(R.id.toolbar);
+        toolbar.getMenu().clear();
 
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -153,7 +160,7 @@ public class Campaign extends Fragment {
         ProjectProgressbar= view.findViewById(R.id.progressBarcampaigns);
         PrjectRecyclerView=view.findViewById(R.id.campaignRecyclerView);
         userController = new UserController(getContext());
-
+ setuptoolbar();
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
        JSONObject jsonObject=new JSONObject();

@@ -4,34 +4,42 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/resume"
-            android:title="@string/resume" />
-        <item
-            android:id="@+id/my_Missions"
-            android:title="@string/my_mission" />
-        <item
-            android:id="@+id/my_Interships"
-            android:title="@string/my_internships" />
-        <item
-            android:id="@+id/wallet"
-            android:title="@string/wallet" />
-        <item
-            android:id="@+id/support"
-            android:title="@string/support" />
-        <item
-            android:id="@+id/city"
-            android:title="@string/city" />
-        <item
-            android:id="@+id/about_us2"
-            android:title="@string/about_us" />
 
-        <item
-            android:id="@+id/logout2"
-            android:title="@string/logout" />
         <item
             android:id="@+id/frappProfile"
             android:title="My Profile" />
+
+        <item
+            android:id="@+id/resume"
+            android:title="My Resume" />
+
+        <item
+            android:id="@+id/mycampaigns"
+            android:title="My Campaigns" />
+        <item
+            android:id="@+id/my_Missions"
+            android:title="My Gigs" />
+        <item
+            android:id="@+id/my_Interships"
+            android:title="My Projects" />
+        <item
+            android:id="@+id/wallet"
+            android:title="My Wallet" />
+
+        <item
+            android:id="@+id/city"
+            android:title="My Referrals" />
+
+
+        <item
+            android:id="@+id/about_us2"
+            android:title="About Us" />
+        <item
+            android:id="@+id/support"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/logout2"
+            android:title="@string/logout" />
     </group>
 
 </menu>

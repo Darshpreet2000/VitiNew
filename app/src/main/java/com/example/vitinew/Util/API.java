@@ -21,6 +21,7 @@ public class API {
 
     public static final String Gigs = API_DOMAIN + "/api/gigs";
     public static final String Campaign=API_DOMAIN+"/api/campaigns";
+    public static final String MYCampaign=API_DOMAIN+"/api/user/campaigns";
     public static final String GigsDetails = API_DOMAIN + "/api/gig/details";
     public static final String CampaignDetail=API_DOMAIN+"/api/campaign/details";
 
@@ -42,12 +43,14 @@ public class API {
     public static final String DELETESKILL = API_DOMAIN + "/api/user/skillsDelete";
 
     public static final String DELETEEDU = API_DOMAIN + "/api/user/eduDelete";
-
+    public static final String Withdraw=API_DOMAIN+"/api/user/withdraw";
     public static final String DELETEEXP = API_DOMAIN + "/api/user/expDelete";
     public static final String GIGSAPPLY = API_DOMAIN + "/api/gig/apply";
     public static final String CampaignApply=API_DOMAIN+"/api/campaign/apply";
     public static final String USERGIGS = API_DOMAIN + "/api/user/gigs";
     public static final String PROFILE = API_DOMAIN + "/api/user/profileUpdate";
     public static final String IMAGE = API_DOMAIN + "/api/user/profileImage";
+    public static final String TRANSACTIONS = API_DOMAIN + "/api/user/allTransactions";
 
+    public static final String REFERAL = API_DOMAIN + "api/user/register";
 }

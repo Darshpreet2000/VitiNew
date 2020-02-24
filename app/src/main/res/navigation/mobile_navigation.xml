@@ -20,18 +20,18 @@
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/city"
-        android:name="com.example.vitinew.ui.City"
-        android:label="City"
+        android:name="com.example.vitinew.ui.Referral"
+        android:label="Referall"
         tools:layout="@layout/fragment_city2" />
     <fragment
         android:id="@+id/my_Missions"
         android:name="com.example.vitinew.ui.My_Gigs"
-        android:label="My Missions"
+        android:label="My Gigs"
         tools:layout="@layout/my_gigs" />
     <fragment
         android:id="@+id/my_Interships"
         android:name="com.example.vitinew.ui.My_Projects"
-        android:label="My Internships"
+        android:label="My Projects"
         tools:layout="@layout/my_projects" />
     <fragment
         android:id="@+id/resume"
@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/internships"
         android:name="com.example.vitinew.ui.Projects"
-        android:label="Internships"
+        android:label="Projects"
         tools:layout="@layout/fragment_projects" >
         <action
             android:id="@+id/action_internships_to_my_Interships"
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/missions"
         android:name="com.example.vitinew.ui.Gigs"
-        android:label="Missions"
+        android:label="Gigs"
         tools:layout="@layout/fragment_gigs" >
         <action
             android:id="@+id/action_missions_to_my_Missions"
@@ -103,7 +103,11 @@
         android:id="@+id/frappProfile"
         android:name="com.example.vitinew.ui.frappProfile"
         android:label="Frapp Profile"
-        tools:layout="@layout/fragment_frapp_profile" />
+        tools:layout="@layout/fragment_frapp_profile" >
+        <action
+            android:id="@+id/action_frappProfile_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
   <fragment
     android:id="@+id/logout2"
     android:name="com.example.vitinew.ui.Logout"
@@ -112,32 +116,32 @@
     <fragment
         android:id="@+id/addSkill"
         android:name="com.example.vitinew.ui.ResumeExtra.AddSkill"
-        android:label="fragment_add_skill"
+        android:label="Add Skill"
         tools:layout="@layout/fragment_add_skill" />
     <fragment
         android:id="@+id/addEducation"
         android:name="com.example.vitinew.ui.ResumeExtra.AddEducation"
-        android:label="fragment_add_education"
+        android:label="Add Education"
         tools:layout="@layout/fragment_add_education" />
     <fragment
         android:id="@+id/addProject"
         android:name="com.example.vitinew.ui.ResumeExtra.AddProject"
-        android:label="fragment_add_project"
+        android:label="Add Project"
         tools:layout="@layout/fragment_add_project" />
     <fragment
         android:id="@+id/addHobbies"
         android:name="com.example.vitinew.ui.ResumeExtra.AddHobbies"
-        android:label="fragment_add_hobbies"
+        android:label="Add Hobbies"
         tools:layout="@layout/fragment_add_hobbies" />
     <fragment
         android:id="@+id/addExperience"
         android:name="com.example.vitinew.ui.ResumeExtra.AddExperience"
-        android:label="fragment_add_experience"
+        android:label="Add Experience"
         tools:layout="@layout/fragment_add_experience" />
     <fragment
         android:id="@+id/addAchievements"
         android:name="com.example.vitinew.ui.ResumeExtra.AddAchievements"
-        android:label="fragment_add_achievements"
+        android:label="Add Achievements"
         tools:layout="@layout/fragment_add_achievements" />
     <fragment
         android:id="@+id/addSocial"
@@ -147,6 +151,11 @@
     <fragment
         android:id="@+id/campaign"
         android:name="com.example.vitinew.ui.Campaign"
-        android:label="campaign"
+        android:label="Campaign"
         tools:layout="@layout/campaign" />
+    <fragment
+        android:id="@+id/mycampaigns"
+        android:name="com.example.vitinew.ui.MyCampaign"
+        android:label="My Campaigns"
+        tools:layout="@layout/fragment_my_campaign" />
 </navigation>

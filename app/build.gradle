@@ -59,12 +59,17 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.7.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "net.gotev:uploadservice:4.1.0"
-    compile 'com.squareup.okhttp3:okhttp:3.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.5.0'
     implementation "org.apache.httpcomponents:httpmime:4.3"
     implementation "androidx.core:core-ktx:+"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+
+    compile'com.itextpdf:itextpdf:5.0.6'
+
+
 }
 repositories {
     mavenCentral()

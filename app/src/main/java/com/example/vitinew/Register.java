@@ -37,18 +37,18 @@ public class Register extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        if(SaveSharedPreference.getUserName(Register.this).length() == 0)
+       /* if(SaveSharedPreference.getUserName(Register.this).length() == 0)
         {
             // call Login Activity
         }
         else
         { startActivity(new Intent(Register.this,MainActivity.class));
             // Stay at the current activity.
-        }
+        }*/
         name=findViewById(R.id.FullName);
         referal=findViewById(R.id.referal);
         userController=new UserController(Register.this);
-        username=findViewById(R.id.username);
+       // username=findViewById(R.id.username);
         password=findViewById(R.id.password);
         confirmpassword=findViewById(R.id.confirmpassword);
         email=findViewById(R.id.Email);

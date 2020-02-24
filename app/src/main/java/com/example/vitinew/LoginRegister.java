@@ -43,7 +43,6 @@ String name,phone,email;
             finish();
             // Stay at the current activity.
         }
-
     }
     private final ITrueCallback sdkCallback = new ITrueCallback() {
 

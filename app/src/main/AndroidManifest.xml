@@ -6,6 +6,7 @@
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -16,16 +17,19 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/herodylogo"
         android:label="Herody"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutCampaign"></activity>
+        <activity android:name=".ShowResume"></activity>
+        <activity android:name=".PaymentViaAmazonGiftCard" />
+        <activity android:name=".PaymentViaPaytm" />
+        <activity android:name=".Details.AboutCampaign" />
         <activity android:name=".question_answer" />
-        <activity android:name=".ProjectDetail" />
-        <activity android:name=".gigDetails" />
+        <activity android:name=".Details.ProjectDetail" />
+        <activity android:name=".Details.gigDetails" />
         <activity
             android:name=".LoginRegister"
             android:theme="@style/LoginRegister" />
@@ -43,7 +47,7 @@
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/LoginTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

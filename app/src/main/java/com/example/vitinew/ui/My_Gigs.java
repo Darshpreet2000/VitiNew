@@ -25,7 +25,7 @@ import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.example.vitinew.gigsAdapter;
+import com.example.vitinew.Adapters.gigsAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -98,6 +98,7 @@ public class My_Gigs extends Fragment {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code=jsonObject.getString("code");
+                Log.d("myGigsstr",response);
                 mygigs.clear();
                 switch(code){
                     case "SUCCESS":

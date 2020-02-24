@@ -2,6 +2,7 @@ package com.example.vitinew;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -13,6 +14,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -93,7 +95,8 @@ DrawerLayout drawer;
                     .build();
             navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationView, navController);
             NavigationUI.setupWithNavController(bottom, navController);
 
@@ -118,6 +121,7 @@ DrawerLayout drawer;
                 public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                     switch (destination.getId()) {
                         case R.id.home2:
+
                             set_toolbar_home();
                             toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
                                 @Override
@@ -148,12 +152,26 @@ DrawerLayout drawer;
                                 public boolean onMenuItemClick(MenuItem item) {
                                     if (item.getItemId() == R.id.campaign)
                                         navController.navigate(R.id.action_missions_to_campaign);
-                                    else
-                                        navController.navigate(R.id.action_missions_to_frappProfile);
+
                                     return true;
                                 }
                             });
                             break;
+                        case R.id.support:
+                            // set_toolbar_mission();
+                            onBackPressed();
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://herody.in/support"));
+                            startActivity(browserIntent);
+                           break;
+
+                        case R.id.about_us2:
+                            // set_toolbar_mission();
+                            onBackPressed();
+                            Intent browsersIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://herody.in/app-about"));
+                            startActivity(browsersIntent);
+                            break;
+
+
 
                     }
 
@@ -197,13 +215,6 @@ DrawerLayout drawer;
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
         toolbar.setBackgroundColor(getResources().getColor(R.color.white));
         toolbar.setTitleTextColor(getResources().getColor(R.color.black));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.search,menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
 }

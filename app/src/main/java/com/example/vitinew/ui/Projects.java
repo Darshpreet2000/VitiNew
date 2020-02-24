@@ -98,12 +98,14 @@ public class Projects extends Fragment {
                             String place=gigsObject.getString("place");
                             String count=gigsObject.getString("count");
                             String skills=gigsObject.getString("skills");
-
+String brand=gigsObject.getString("brand");
                             String proofs=gigsObject.getString("proofs");
-
+                           String image=gigsObject.getString("image");
 
 
                             ProjectDisplay thisProject = new ProjectDisplay();
+thisProject.setCompanyName(brand);
+                            thisProject.setImage(image);
                             thisProject.setId(id);
                             thisProject.setCat(cats);
                             thisProject.setTitle(title);
@@ -188,21 +190,7 @@ public class Projects extends Fragment {
                     NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                     navController.navigate(R.id.action_internships_to_my_Interships);
                 }
-             else if(item.getItemId()==R.id.filter){
-                    BottomSheetBehavior mBottomSheetBehavior;
-                    View bottomSheet = getActivity().findViewById(R.id.bottom_sheet);
-                    mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
-                    botomSheetDialogFragment= new bottomdialog();
-                   botomSheetDialogFragment.show(getActivity().getSupportFragmentManager(),"Bottom Sheet Dialog Fragment");
-                    mBottomSheetBehavior = BottomSheetBehavior.from(getActivity().findViewById(R.id.bottom_sheet));
-                    mBottomSheetBehavior = BottomSheetBehavior.from(getActivity().findViewById(R.id.bottom_sheet));
-                    mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    mBottomSheetBehavior.setPeekHeight(0);
-                    mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    mBottomSheetBehavior.setPeekHeight(0);
-
-                    mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }
+            
                 return true;
             }
         });
