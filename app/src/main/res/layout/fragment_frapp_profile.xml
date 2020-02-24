@@ -197,7 +197,7 @@
             android:layout_margin="20dp"
             android:background="@color/colorPrimary"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="30dp">
            <TextView
                android:paddingRight="40dp"
                android:layout_alignParentRight="true"
@@ -207,7 +207,7 @@
                android:layout_height="wrap_content"
                android:textColor="@color/white"
                android:textSize="16sp"
-               android:text="Explore Exciting Gigs"/>
+               android:text="Explore Exciting Campaigns"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView

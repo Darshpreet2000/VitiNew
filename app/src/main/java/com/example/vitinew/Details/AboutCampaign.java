@@ -32,6 +32,9 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,12 +104,24 @@ public class AboutCampaign extends AppCompatActivity {
         title.setText(campaigns.getTitle());
         Date start = DateTimeUtils.formatDate(campaigns.getStart());
         Date endD = DateTimeUtils.formatDate(campaigns.getEnd());
-      String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.MEDIUM);
-        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.MEDIUM);
-        Start.setText(s);
-        end.setText(e);
+
+        String s=campaigns.getStart();
+        String e=campaigns.getEnd();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("dd-MM-yyyy");
+
+        try {
+            Date s1=dateFormat.parse(s);
+
+            Date e1=dateFormat.parse(e);
+            Start.setText(s1.toString());
+            end.setText(e1.toString());
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
 
         Picasso.get().load(campaigns.getLogo()).into(imageView);
+
+
 
         userController = new UserController(AboutCampaign.this);
         Map<String, String> dataMap = new HashMap<String,String>();

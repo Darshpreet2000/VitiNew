@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.example.vitinew.App;
 import com.example.vitinew.Classes.ProjectDisplay;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
@@ -35,6 +36,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -116,12 +119,19 @@ public class ProjectDetail extends AppCompatActivity {
 //        Stipend.setText(projectdetail.getStipend());
         Duration.setText(projectdetail.getDuration());
         Position.setText(projectdetail.getPosition());
+        String s=projectdetail.getStart();
+        String e=projectdetail.getEnd();
+        SimpleDateFormat dateFormat= new SimpleDateFormat("dd-MM-yyyy");
 
-        Date start = DateTimeUtils.formatDate(projectdetail.getStart());
-        Date endD = DateTimeUtils.formatDate(projectdetail.getEnd());
-        String s=  DateTimeUtils.formatWithStyle(start, DateTimeStyle.MEDIUM);
-        String e=  DateTimeUtils.formatWithStyle(endD, DateTimeStyle.MEDIUM);
-        ApplyBefore.setText(e);
+        try {
+            Date s1=dateFormat.parse(s);
+
+            Date e1=dateFormat.parse(e);
+            Start.setText(s1.toString());
+          ApplyBefore.setText(e1.toString());
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
   //      WorkPlace.setText(projectdetail.getWorkPlace());
         if (Build.VERSION.SDK_INT >= 24) {
             AboutProject.setText(Html.fromHtml("<strong><h2>About Project</h2></strong>" + projectdetail.getDes()+"<br>", Html.FROM_HTML_MODE_LEGACY));
@@ -143,7 +153,6 @@ public class ProjectDetail extends AppCompatActivity {
             AboutCompany.setText(Html.fromHtml("<strong><h2>About Company</h2></strong>" + projectdetail.getAboutCompany()+"<br>"));
 
         }
-        Start.setText(s);
         Proof.setText(projectdetail.getProofs());
 
     }

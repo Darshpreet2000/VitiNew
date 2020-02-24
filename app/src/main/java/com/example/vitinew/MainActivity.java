@@ -14,6 +14,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -94,7 +95,8 @@ DrawerLayout drawer;
                     .build();
             navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
             NavigationUI.setupWithNavController(navigationView, navController);
             NavigationUI.setupWithNavController(bottom, navController);
 

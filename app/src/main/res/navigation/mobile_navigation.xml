@@ -103,7 +103,11 @@
         android:id="@+id/frappProfile"
         android:name="com.example.vitinew.ui.frappProfile"
         android:label="Frapp Profile"
-        tools:layout="@layout/fragment_frapp_profile" />
+        tools:layout="@layout/fragment_frapp_profile" >
+        <action
+            android:id="@+id/action_frappProfile_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
   <fragment
     android:id="@+id/logout2"
     android:name="com.example.vitinew.ui.Logout"
@@ -152,6 +156,6 @@
     <fragment
         android:id="@+id/mycampaigns"
         android:name="com.example.vitinew.ui.MyCampaign"
-        android:label="fragment_my_campaign"
+        android:label="My Campaigns"
         tools:layout="@layout/fragment_my_campaign" />
 </navigation>

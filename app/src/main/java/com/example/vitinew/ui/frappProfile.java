@@ -13,9 +13,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.os.StrictMode;
 import android.provider.MediaStore;
@@ -39,6 +41,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.MultiPartRequest;
@@ -71,7 +74,7 @@ import static android.view.View.GONE;
  * A simple {@link Fragment} subclass.
  */
 public class frappProfile extends Fragment {
-
+CardView card;
     UserController user;
     Toolbar toolbar;
     File mFile;
@@ -198,7 +201,16 @@ TextView refer;
 
     private void getallwidgets() {
         name = getView().findViewById(R.id.name);
-        city = getView().findViewById(R.id.city);
+
+        CardView card;
+        card=getView().findViewById(R.id.card_view);
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(),MainActivity.class));
+            }
+        }); city = getView().findViewById(R.id.city);
         state = getView().findViewById(R.id.state);
         zip = getView().findViewById(R.id.zip);
         phone = getView().findViewById(R.id.phone_number);
