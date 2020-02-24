@@ -2,11 +2,13 @@ package com.example.vitinew.Details;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.example.vitinew.Classes.SaveSharedPreference;
 import com.example.vitinew.Classes.campaignClass;
 import com.example.vitinew.Connections.UserController;
+import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
@@ -48,6 +51,10 @@ public class AboutCampaign extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.campaign_detail);
+   getSupportActionBar().setHomeButtonEnabled(true);
+   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+   getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+   getSupportActionBar().setTitle("Campaign Details");
         ExpandableTextView expTv_about = (ExpandableTextView) findViewById(R.id.expand_text_view_aboutcampaign);
         ExpandableTextView expTv_inst = (ExpandableTextView) findViewById(R.id.expand_text_view_instruction);
 
@@ -244,5 +251,15 @@ public class AboutCampaign extends AppCompatActivity {
             Toast.makeText(AboutCampaign.this, "Apply Limit Exceeded", Toast.LENGTH_SHORT).show();
         }
     };
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

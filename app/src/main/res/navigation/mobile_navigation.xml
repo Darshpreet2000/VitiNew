@@ -149,4 +149,9 @@
         android:name="com.example.vitinew.ui.Campaign"
         android:label="Campaign"
         tools:layout="@layout/campaign" />
+    <fragment
+        android:id="@+id/mycampaigns"
+        android:name="com.example.vitinew.ui.MyCampaign"
+        android:label="fragment_my_campaign"
+        tools:layout="@layout/fragment_my_campaign" />
 </navigation>

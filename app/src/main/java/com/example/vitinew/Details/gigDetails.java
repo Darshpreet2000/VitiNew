@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -45,6 +46,11 @@ public class gigDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gig_details);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Gig Details");
         Intent intent=getIntent();
         title=findViewById(R.id.title);
         brand=findViewById(R.id.Brand);
@@ -182,6 +188,16 @@ Log.v("",""+"gig id is"+gig.getId());
             Toast.makeText(gigDetails.this, "something wrong", Toast.LENGTH_SHORT).show();
         }
     };
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }
