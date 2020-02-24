@@ -58,7 +58,7 @@ public class Wallet extends Fragment {
         // Inflate the projectlist for this fragment
         setuptoolbar();
 
-        return inflater.inflate(R.layout.fragment_wallet2, container, false);
+        return inflater.inflate(R.layout.wallet, container, false);
     }
 
     @Override
