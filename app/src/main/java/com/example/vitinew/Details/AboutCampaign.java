@@ -207,7 +207,8 @@ public class AboutCampaign extends AppCompatActivity {
         jsn.put("uid",uid);
         jsn.put("terms",true);
         //+"?id="+2+"&uid="+uid+"&terms=true"
-        Log.v("JSON is",jsn.toString());
+        Log.v("JSONisCampaign",jsn.toString());
+
         userController.postWithJsonRequest(API.CampaignApply,jsn,applyListener);
 
     }
@@ -229,7 +230,7 @@ public class AboutCampaign extends AppCompatActivity {
                 switch(code){
                     case "SUCCESS":
 
-                        Toast.makeText(AboutCampaign.this, "Applied Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AboutCampaign.this, "campaign Applied Successfully", Toast.LENGTH_SHORT).show();
 
                         break;
                     default:

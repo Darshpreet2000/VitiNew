@@ -21,6 +21,7 @@ public class API {
 
     public static final String Gigs = API_DOMAIN + "/api/gigs";
     public static final String Campaign=API_DOMAIN+"/api/campaigns";
+    public static final String MYCampaign=API_DOMAIN+"/api/user/campaigns";
     public static final String GigsDetails = API_DOMAIN + "/api/gig/details";
     public static final String CampaignDetail=API_DOMAIN+"/api/campaign/details";
 
