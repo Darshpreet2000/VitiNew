@@ -98,6 +98,7 @@ public class My_Gigs extends Fragment {
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code=jsonObject.getString("code");
+                Log.d("myGigsstr",response);
                 mygigs.clear();
                 switch(code){
                     case "SUCCESS":

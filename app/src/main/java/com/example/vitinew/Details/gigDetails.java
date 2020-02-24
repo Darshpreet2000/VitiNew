@@ -134,9 +134,12 @@ Log.v("",""+"gig id is"+gig.getId());
         JSONObject jsn=new JSONObject();
         Toast.makeText(this, "id="+String.valueOf(gig.getId()+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))), Toast.LENGTH_SHORT).show();
       //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
-     String id=String.valueOf(gig.getId());
+
+        String id=String.valueOf(gig.getId());
         String  uid=String.valueOf(SaveSharedPreference.getUserId(gigDetails.this));
-        userController.postWithJsonRequest(API.GIGSAPPLY+"?id="+id+"&uid="+uid,jsn,applyListener);
+        jsn.put("id",id);
+        jsn.put("uid",uid);
+        userController.postWithJsonRequest(API.GIGSAPPLY,jsn,applyListener);
         Log.v("JSON is",jsn.toString());
     }
 
