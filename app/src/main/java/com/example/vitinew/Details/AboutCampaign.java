@@ -24,8 +24,6 @@ import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.github.thunder413.datetimeutils.DateTimeStyle;
-import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
@@ -102,8 +100,6 @@ public class AboutCampaign extends AppCompatActivity {
         Start=findViewById(R.id.campaignStarting);
         end=findViewById(R.id.campaignEnding);
         title.setText(campaigns.getTitle());
-        Date start = DateTimeUtils.formatDate(campaigns.getStart());
-        Date endD = DateTimeUtils.formatDate(campaigns.getEnd());
 
         String s=campaigns.getStart();
         String e=campaigns.getEnd();
