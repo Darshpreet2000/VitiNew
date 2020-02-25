@@ -24,7 +24,9 @@ public class API {
     public static final String MYCampaign=API_DOMAIN+"/api/user/campaigns";
     public static final String GigsDetails = API_DOMAIN + "/api/gig/details";
     public static final String CampaignDetail=API_DOMAIN+"/api/campaign/details";
-
+    public static final String CampaignAppliedStatus=API_DOMAIN+"/api/user/campaigns";
+    public static final String GigsAppliedStatus=API_DOMAIN+"/api/user/gigs";
+    public static final String ProjectAppliedStatus=API_DOMAIN+"/api/user/projects";
     public static final String UPDATEPROJECT = API_DOMAIN + "/api/user/projectsUpdate";
     public static final String PROJECT = API_DOMAIN + "/api/user/projects";
     public static final String UPDATEHOBBY = API_DOMAIN + "/api/user/hobbiesUpdate";

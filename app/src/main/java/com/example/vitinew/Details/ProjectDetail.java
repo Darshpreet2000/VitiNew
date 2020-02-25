@@ -45,6 +45,8 @@ public class ProjectDetail extends AppCompatActivity {
     RecyclerView questions;
     List<com.example.vitinew.Classes.questions> questionsList = new ArrayList<>();
     TextView Description;
+    UserController muserController;
+
 
     private JSONObject generateApplyRequest() {
         JSONArray array = new JSONArray();
@@ -86,11 +88,11 @@ public class ProjectDetail extends AppCompatActivity {
     ExpandableTextView AboutProject, AboutCompany,skill,benefits;
     TextView ProjectTitle, CompanyName, Stipend, Duration, Position, ApplyBefore, WorkPlace,
             Start,Proof;
-    Button ApplyNow;
+    Button apply;
     ImageView imageView;
 
     private void getAllwidget() {
-        ApplyNow = findViewById(R.id.ProjectApplyNow);
+        apply = findViewById(R.id.ProjectApplyNow);
         imageView = findViewById(R.id.imageView1);
         ProjectTitle = findViewById(R.id.ProjectTitle);
         CompanyName = findViewById(R.id.companyName);
@@ -156,6 +158,96 @@ public class ProjectDetail extends AppCompatActivity {
     }
 
     int id;
+    private final ResponseListener AppliedresponseListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+                Log.d("strresponse",response);
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                //String image=jsonObject.getString("image");
+                String code=jsonObject.getString("code");
+                Log.d("strstatus",json.toString());
+                switch(code){
+                    case "SUCCESS":
+                        JSONArray status=new JSONArray();
+                        status=jsonObject.getJSONArray("projects");
+                        Log.d("statusarray",status.toString()+""+projectdetail.getId());
+                        int currentCampaignId=projectdetail.getId();
+
+                        for(int i=0;i<status.length();i++){
+                            JSONObject thisjsonOnject=new JSONObject();
+                            thisjsonOnject=status.getJSONObject(i);
+                            int k=thisjsonOnject.getInt("jid");
+
+                            if(k==currentCampaignId){
+                                int StatusCode=thisjsonOnject.getInt("status");
+                                switch(StatusCode){
+                                    case 0:
+                                        apply.setText("Applied");
+                                        apply.setClickable(false);
+
+                                        break;
+
+                                    case 1:
+                                        apply.setText("Application Approved.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 2:
+                                        apply.setText("Application Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 3:
+                                        apply.setText("Proof submitted.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                    case 4:
+                                        apply.setText("Proof Accepted, paid.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 5:
+                                        apply.setText("Proof Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                    default:
+                                        apply.setClickable(true);
+                                        break;
+
+
+
+                                }
+                                break;
+                            }
+
+                        }
+
+
+
+
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,12 +269,21 @@ public class ProjectDetail extends AppCompatActivity {
         Picasso.get().load(projectdetail.getImage()).into(imageView);
         // Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
         JSONObject request = generateRequest();
+        muserController=new UserController(ProjectDetail.this);
+        JSONObject jsn=new JSONObject();
+        try {
+            jsn.put("id",String.valueOf(SaveSharedPreference.getUserId(ProjectDetail.this)));
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+
+        muserController.postWithJsonRequest(API.ProjectAppliedStatus,jsn,AppliedresponseListener);
         UserController user = new UserController(getApplicationContext());
         ctx = ProjectDetail.this;
         user.postWithJsonRequest(API.PROJECT_DETAIL, request, ProjectDetailListner);
         // Description=findViewById(R.id.ProjectDesCription);
         // Description.setText(projectdetail.getDes());
-        ApplyNow.setOnClickListener(new View.OnClickListener() {
+        apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //    UserController applyController=new UserController(getApplicationContext());
