@@ -39,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ProjectDetail extends AppCompatActivity {
     ProjectDisplay projectdetail;
@@ -193,37 +194,35 @@ public class ProjectDetail extends AppCompatActivity {
                                     case 0:
                                         apply.setText("Applied");
                                         apply.setClickable(false);
-
                                         break;
-
                                     case 1:
-                                        apply.setText("Application Approved.");
+                                        apply.setText("Shortlisted");
                                         apply.setClickable(false);
                                         break;
                                     case 2:
-                                        apply.setText("Application Rejected.");
+                                        apply.setText("Selected");
                                         apply.setClickable(false);
                                         break;
                                     case 3:
-                                        apply.setText("Proof submitted.");
+                                        apply.setText("Rejected");
                                         apply.setClickable(false);
                                         break;
 
                                     case 4:
-                                        apply.setText("Proof Accepted, paid.");
+                                        apply.setText("Proof Submitted");
                                         apply.setClickable(false);
                                         break;
                                     case 5:
-                                        apply.setText("Proof Rejected.");
+                                        apply.setText("Certiicate Issued");
                                         apply.setClickable(false);
                                         break;
-
+                                    case 6:
+                                        apply.setText("Payout");
+                                        apply.setClickable(false);
+                                        break;
                                     default:
                                         apply.setClickable(true);
                                         break;
-
-
-
                                 }
                                 break;
                             }

@@ -107,6 +107,7 @@ public class AboutCampaign extends AppCompatActivity {
         String s=campaigns.getStart();
         String e=campaigns.getEnd();
         SimpleDateFormat dateFormat= new SimpleDateFormat("dd-MM-yyyy");
+        dateFormat.getTimeZone();
 
         try {
             Date s1=dateFormat.parse(s);
