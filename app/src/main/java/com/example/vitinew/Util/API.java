@@ -2,7 +2,7 @@ package com.example.vitinew.Util;
 
 public class API {
 
-    public static final String API_DOMAIN = "http://live.herody.in";
+    public static final String API_DOMAIN = "https://herody.in";
     public static final String LOGIN = API_DOMAIN + "/api/user/login";
 
     public static final String USERDETAILS = API_DOMAIN + "/api/user/details";
@@ -26,7 +26,7 @@ public class API {
     public static final String CampaignDetail=API_DOMAIN+"/api/campaign/details";
     public static final String CampaignAppliedStatus=API_DOMAIN+"/api/user/campaigns";
     public static final String GigsAppliedStatus=API_DOMAIN+"/api/user/gigs";
-    public static final String ProjectAppliedStatus=API_DOMAIN+"/api/user/projects";
+    public static final String ProjectAppliedStatus=API_DOMAIN+"/api/user/jprojects";
     public static final String UPDATEPROJECT = API_DOMAIN + "/api/user/projectsUpdate";
     public static final String PROJECT = API_DOMAIN + "/api/user/projects";
     public static final String UPDATEHOBBY = API_DOMAIN + "/api/user/hobbiesUpdate";

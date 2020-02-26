@@ -244,7 +244,7 @@ Log.v("",""+"gig id is"+gig.getId());
 
     private void applynow() throws JSONException {
         JSONObject jsn=new JSONObject();
-        Toast.makeText(this, "id="+String.valueOf(gig.getId()+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "id="+String.valueOf(gig.getId()+"uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))), Toast.LENGTH_SHORT).show();
       //  Toast.makeText(this, "uid= "+String.valueOf(SaveSharedPreference.getUserId(gigDetails.this))+"  id="+String.valueOf(gig.getId()), Toast.LENGTH_SHORT).show();
 
         String id=String.valueOf(gig.getId());
