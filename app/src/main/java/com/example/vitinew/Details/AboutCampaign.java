@@ -113,8 +113,8 @@ public class AboutCampaign extends AppCompatActivity {
             Date s1=dateFormat.parse(s);
 
             Date e1=dateFormat.parse(e);
-            Start.setText(s1.toString());
-            end.setText(e1.toString());
+            Start.setText(s1.toString().substring(0,11));
+            end.setText(e1.toString().substring(0,11));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }

@@ -128,8 +128,8 @@ public class ProjectDetail extends AppCompatActivity {
             Date s1=dateFormat.parse(s);
 
             Date e1=dateFormat.parse(e);
-            Start.setText(s1.toString());
-          ApplyBefore.setText(e1.toString());
+            Start.setText(s1.toString().substring(0,11));
+          ApplyBefore.setText(e1.toString().substring(0,11));
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -170,7 +170,6 @@ public class ProjectDetail extends AppCompatActivity {
         public void onSuccess(String response) {
             try {
                 Log.d("strresponse",response);
-
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 //String image=jsonObject.getString("image");
@@ -244,6 +243,7 @@ public class ProjectDetail extends AppCompatActivity {
         @Override
         public void onError(VolleyError error) {
             String s = "";
+            error.printStackTrace();
         }
     };
 
