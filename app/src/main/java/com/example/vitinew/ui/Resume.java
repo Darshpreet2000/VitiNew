@@ -91,7 +91,7 @@ public class Resume extends Fragment {
     int ratingadded;
     Button download,show;
     ImageView hdel, achdel;
-    TextView username;
+    TextView username,f,t,l,g,i;
     String rh="",ra="",rs="";
     List<Addskills> Finalskills = new ArrayList<>();
     List<ProjectDetails> Finalprojects = new ArrayList<ProjectDetails>();
@@ -203,6 +203,7 @@ public class Resume extends Fragment {
                 String uername=user.getString("name");
                 String hobbies = user.getString("hobbies");
                 String achievements = user.getString("achievements");
+                String fb = user.getString("fb");
                 String twitter = user.getString("twitter");
                 String linkedin = user.getString("linkedin");
                 String github = user.getString("github");
@@ -211,9 +212,12 @@ public class Resume extends Fragment {
                 TextView usertext=getActivity().findViewById(R.id.username_resume);
                  usertext.setText(uername);
                 achieve.setText(achievements);
-                TextView social = getActivity().findViewById(R.id.socialtext);
                 TextView hobby = getActivity().findViewById(R.id.hobbytext);
-                social.setText("Twitter\n" + twitter + "\n" + "LinkedIn\n" + linkedin + "\n" + "Github\n" + github + "\n" + "Instagram\n" + insta);
+               f.setText(fb);
+                t.setText(twitter);
+                l.setText(linkedin);
+                g.setText(github);
+                i.setText(insta);
                rh=hobbies;
                rs="Twitter\n" + twitter + "\n" + "LinkedIn\n" + linkedin + "\n" + "Github\n" + github + "\n" + "Instagram\n" + insta;
                  ra=achievements;
@@ -390,6 +394,15 @@ public class Resume extends Fragment {
         addexperience = view.findViewById(R.id.addexperiences);
         addExperience = view.findViewById(R.id.experienceList);
         addachievement = view.findViewById(R.id.Add_Achievements);
+ f = view.findViewById(R.id.fb);
+
+       t = view.findViewById(R.id.tw);
+
+        l = view.findViewById(R.id.l);
+
+        g = view.findViewById(R.id.g);
+
+        i = view.findViewById(R.id.i);
 
         download = view.findViewById(R.id.download);
 

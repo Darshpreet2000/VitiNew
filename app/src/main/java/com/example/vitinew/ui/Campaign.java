@@ -76,6 +76,8 @@ public class Campaign extends Fragment {
                 allcampain.clear();
                 switch(code){
                     case "SUCCESS":
+
+
                         JSONArray CampaignArray=new JSONArray();
                         CampaignArray= jsonObject.getJSONArray("campaigns");
                         allcampain.clear();

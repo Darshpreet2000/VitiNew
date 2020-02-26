@@ -40,7 +40,99 @@ public class gigDetails extends AppCompatActivity {
     String image;
     ImageView imageView;
     String tasklist= "";
- UserController userController;
+ UserController userController,muserController;
+    private final ResponseListener AppliedresponseListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+                Log.d("strresponse",response);
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                //String image=jsonObject.getString("image");
+                String code=jsonObject.getString("code");
+                Log.d("strstatus",json.toString());
+                switch(code){
+                    case "SUCCESS":
+                        JSONArray status=new JSONArray();
+                        status=jsonObject.getJSONArray("gigs");
+                        Log.d("statusarray",status.toString()+""+gig.getId());
+                        int currentCampaignId=gig.getId();
+
+                        for(int i=0;i<status.length();i++){
+                            JSONObject thisjsonOnject=new JSONObject();
+                            thisjsonOnject=status.getJSONObject(i);
+                            int k=thisjsonOnject.getInt("cid");
+
+                            if(k==currentCampaignId){
+                                int StatusCode=thisjsonOnject.getInt("status");
+                                switch(StatusCode){
+                                    case 0:
+                                        apply.setText("Applied");
+                                        apply.setClickable(false);
+
+                                        break;
+
+                                    case 1:
+                                        apply.setText("Application Approved.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 2:
+                                        apply.setText("Application Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 3:
+                                        apply.setText("Proof submitted.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                    case 4:
+                                        apply.setText("Proof Accepted, paid.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 5:
+                                        apply.setText("Proof Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                    default:
+                                        apply.setClickable(true);
+
+
+
+                                }
+                                break;
+                            }
+
+                        }
+
+
+
+
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+        }
+    };
+
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +168,22 @@ Log.v("",""+"gig id is"+gig.getId());
             expTv1.setText(Html.fromHtml("<h1 style=\"color:black;\">About Gig</h1>"+gig.getDescription()+"<br>"));
         }
 
+
+
+        muserController=new UserController(gigDetails.this);
+        JSONObject jsn=new JSONObject();
+        try {
+            jsn.put("id",String.valueOf(SaveSharedPreference.getUserId(gigDetails.this)));
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+
+        muserController.postWithJsonRequest(API.GigsAppliedStatus,jsn,AppliedresponseListener);
+
+
         userController.getRequest(dataMap, API.GigsDetails,responseListener);
       apply=findViewById(R.id.applygig);
+
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

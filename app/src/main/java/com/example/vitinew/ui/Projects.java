@@ -27,7 +27,6 @@ import com.example.vitinew.Connections.UserController;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.example.vitinew.ui.Extras.bottomdialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -69,7 +68,7 @@ public class Projects extends Fragment {
         @Override
         public void onSuccess(String response) {
             try {
-                Log.d("str",response);
+                Log.d("strjproject",response);
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
                 String code=jsonObject.getString("code");
@@ -78,6 +77,7 @@ public class Projects extends Fragment {
                     case "SUCCESS":
                         JSONArray InternshipArray=new JSONArray();
                         InternshipArray= jsonObject.getJSONArray("projects");
+                        Log.d("internship",InternshipArray.toString());
                         allProject.clear();
                         for(int i=0;i<InternshipArray.length();i++){
                             JSONObject gigsObject=InternshipArray.getJSONObject(i);
@@ -98,13 +98,13 @@ public class Projects extends Fragment {
                             String place=gigsObject.getString("place");
                             String count=gigsObject.getString("count");
                             String skills=gigsObject.getString("skills");
-String brand=gigsObject.getString("brand");
+                            String brand=gigsObject.getString("brand");
                             String proofs=gigsObject.getString("proofs");
-                           String image=gigsObject.getString("image");
+                          String image=gigsObject.getString("image");
 
 
                             ProjectDisplay thisProject = new ProjectDisplay();
-thisProject.setCompanyName(brand);
+                            thisProject.setCompanyName(brand);
                             thisProject.setImage(image);
                             thisProject.setId(id);
                             thisProject.setCat(cats);
@@ -180,7 +180,13 @@ thisProject.setCompanyName(brand);
         PrjectRecyclerView=view.findViewById(R.id.projectRecyclerView);
         Map<String, String> dataMap = new HashMap<String,String>();
         dataMap.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
-        userController.getRequest(dataMap, API.AllProject,responseListener);
+        JSONObject jsn=new JSONObject();
+        try {
+            jsn.put("uid",String.valueOf(SaveSharedPreference.getUserId(getContext())));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        userController.postWithJsonRequest(API.AllProject,jsn,responseListener);
 
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

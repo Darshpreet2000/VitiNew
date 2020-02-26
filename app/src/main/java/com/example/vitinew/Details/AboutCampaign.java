@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +25,10 @@ import com.example.vitinew.MainActivity;
 import com.example.vitinew.R;
 import com.example.vitinew.Util.API;
 import com.example.vitinew.Webrequest.ResponseListener;
-import com.github.thunder413.datetimeutils.DateTimeStyle;
-import com.github.thunder413.datetimeutils.DateTimeUtils;
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,7 +49,8 @@ public class AboutCampaign extends AppCompatActivity {
     Button apply;
     ExpandableTextView expTv_terms;
     String tasklist= "";
-    UserController userController;
+    UserController userController,muserController;
+    int StatusCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,12 +103,11 @@ public class AboutCampaign extends AppCompatActivity {
         Start=findViewById(R.id.campaignStarting);
         end=findViewById(R.id.campaignEnding);
         title.setText(campaigns.getTitle());
-        Date start = DateTimeUtils.formatDate(campaigns.getStart());
-        Date endD = DateTimeUtils.formatDate(campaigns.getEnd());
 
         String s=campaigns.getStart();
         String e=campaigns.getEnd();
         SimpleDateFormat dateFormat= new SimpleDateFormat("dd-MM-yyyy");
+        dateFormat.getTimeZone();
 
         try {
             Date s1=dateFormat.parse(s);
@@ -120,16 +120,25 @@ public class AboutCampaign extends AppCompatActivity {
         }
 
         Picasso.get().load(campaigns.getLogo()).into(imageView);
+        apply=findViewById(R.id.applycampaign);
 
+        muserController=new UserController(AboutCampaign.this);
+        JSONObject jsn=new JSONObject();
+        try {
+            jsn.put("id",String.valueOf(SaveSharedPreference.getUserId(AboutCampaign.this)));
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
 
+        muserController.postWithJsonRequest(API.CampaignAppliedStatus,jsn,AppliedresponseListener);
 
         userController = new UserController(AboutCampaign.this);
         Map<String, String> dataMap = new HashMap<String,String>();
         //Log.v("",""+"gig id is"+gig.getId());
         dataMap.put("id",String.valueOf(campaigns.getId()));
         userController.getRequest(dataMap, API.CampaignDetail,responseListener);
-        apply=findViewById(R.id.applycampaign);
 
+        apply.setClickable(false);
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,11 +175,13 @@ public class AboutCampaign extends AppCompatActivity {
 
                 JSONObject json = new JSONObject(response);
                 JSONObject jsonObject = json.getJSONObject("response");
-                String image=jsonObject.getString("image");
+                //String image=jsonObject.getString("image");
                 String code=jsonObject.getString("code");
                 Log.d("strresponsejson",json.toString());
                 switch(code){
                     case "SUCCESS":
+
+
                         JSONObject campaign=jsonObject.getJSONObject("campaign");
 
                             String terms=campaign.getString("terms");
@@ -208,6 +219,97 @@ public class AboutCampaign extends AppCompatActivity {
             String s = "";
         }
     };
+
+
+    private final ResponseListener AppliedresponseListener = new ResponseListener() {
+
+        @Override
+        public void onRequestStart() {
+
+        }
+
+        @Override
+        public void onSuccess(String response) {
+            try {
+                Log.d("strresponse",response);
+
+                JSONObject json = new JSONObject(response);
+                JSONObject jsonObject = json.getJSONObject("response");
+                //String image=jsonObject.getString("image");
+                String code=jsonObject.getString("code");
+                Log.d("strstatus",json.toString());
+                switch(code){
+                    case "SUCCESS":
+                        JSONArray status=new JSONArray();
+                        status=jsonObject.getJSONArray("campaigns");
+                        Log.d("statusarray",status.toString()+""+campaigns.getId());
+                        int currentCampaignId=campaigns.getId();
+
+                        for(int i=0;i<status.length();i++){
+                            JSONObject thisjsonOnject=new JSONObject();
+                            thisjsonOnject=status.getJSONObject(i);
+                            int k=thisjsonOnject.getInt("cid");
+
+                            if(k==currentCampaignId){
+                                StatusCode=thisjsonOnject.getInt("status");
+                                switch(StatusCode){
+                                    case 0:
+                                        apply.setText("Applied");
+                                        apply.setClickable(false);
+
+                                        break;
+
+                                    case 1:
+                                        apply.setText("Application Approved.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 2:
+                                        apply.setText("Application Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 3:
+                                        apply.setText("Proof submitted.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                    case 4:
+                                        apply.setText("Proof Accepted, paid.");
+                                        apply.setClickable(false);
+                                        break;
+                                    case 5:
+                                        apply.setText("Proof Rejected.");
+                                        apply.setClickable(false);
+                                        break;
+
+                                        default:
+                                            apply.setClickable(true);
+
+
+
+                                }
+                                break;
+                            }
+
+                        }
+
+
+
+
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+            }
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            String s = "";
+        }
+    };
+
 
 
 
